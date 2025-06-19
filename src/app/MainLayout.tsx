@@ -5,7 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@emotion/react";
-import theme from "@/theme";
+import theme from "@/lib/theme";
 
 export default function MainLayout({
   children,
