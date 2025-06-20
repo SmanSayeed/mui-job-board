@@ -4,21 +4,6 @@ import Link from "next/link";
 export default function Logo() {
     const theme = useTheme();
     return ( <>
-   
-    {/* <Typography
-        variant="h2"
-        noWrap
-        component="a"
-        href="/"
-        sx={{
-            ml: 1,
-            color: 'text.secondary',
-            fontWeight: 700,
-            fontSize: { xs: '1.25rem', md: '1.5rem' }, // Responsive font size
-          }}
-      >
-        Logo
-      </Typography> */}
 
        {/* Logo */}
        <Typography
@@ -33,9 +18,6 @@ export default function Logo() {
             >
               Logo
             </Typography>
-
-
-  
  
     </>
     )
