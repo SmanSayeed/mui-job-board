@@ -1,8 +1,6 @@
 "use client"
-import { Box, Typography, Avatar } from "@mui/material"
+import { Box, Typography, Avatar, Button } from "@mui/material"
 import JobTypeBadge from "../atoms/JobTypeBadge"
-import SaveButton from "../atoms/SaveButton"
-import QuickApplyButton from "../atoms/QuickApplyButton"
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday"
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
 import ProfileImage from "../atoms/ProfileImage"
@@ -31,12 +29,12 @@ export default function JobCard({
   description,
 }: JobCardProps) {
   return (
-    <Box sx={{ p: 3, backgroundColor: "#FFFFFF", borderRadius: "8px", mb: 3 }}>
+    <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: "#FFFFFF", borderRadius: "8px", mb: 3 }}>
       {/* Match Percentage */}
       <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
         <Typography
           sx={{
-            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontFamily: "Inter, sans-serif",
             fontWeight: 500,
             fontSize: "0.875rem",
             color: "#3F83F8",
@@ -50,16 +48,27 @@ export default function JobCard({
       </Box>
 
       {/* Job Header */}
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", mb: 2 }}>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          mb: 2,
+          flexDirection: { xs: "column", sm: "row" },
+          gap: { xs: 2, sm: 0 },
+        }}
+      >
+        <Box sx={{ display: "flex", alignItems: "center",gap:{xs:2} }}>
+         
         <ProfileImage src="/profile2.jpg" profileVariant="user_profile_image" />
+        
           <Box>
             <Typography
               sx={{
-                fontFamily: "var(--font-inter), Inter, sans-serif",
+                fontFamily: "Inter, sans-serif",
                 fontWeight: 500,
-                fontSize: "1.125rem", // 18px
-                lineHeight: 1.3, // 130%
+                fontSize: { xs: "1rem", md: "1.125rem" },
+                lineHeight: 1.3,
                 letterSpacing: 0,
                 color: "#000000",
                 verticalAlign: "middle",
@@ -67,15 +76,15 @@ export default function JobCard({
             >
               {position}
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, flexWrap: "wrap" }}>
               <Typography
                 sx={{
-                  fontFamily: "var(--font-inter), Inter, sans-serif",
+                  fontFamily: "Inter, sans-serif",
                   fontWeight: 500,
-                  fontSize: "0.875rem", // 14px
-                  lineHeight: 1.5, // 150%
+                  fontSize: "0.875rem",
+                  lineHeight: 1.5,
                   letterSpacing: 0,
-                  color: "#111928", // Gray/900
+                  color: "#111928",
                   verticalAlign: "middle",
                 }}
               >
@@ -83,12 +92,12 @@ export default function JobCard({
               </Typography>
               <Typography
                 sx={{
-                  fontFamily: "var(--font-inter), Inter, sans-serif",
+                  fontFamily: "Inter, sans-serif",
                   fontWeight: 500,
-                  fontSize: "0.75rem", // 12px
-                  lineHeight: 1.5, // 150%
+                  fontSize: "0.75rem",
+                  lineHeight: 1.5,
                   letterSpacing: 0,
-                  color: "#4B5563", // Gray/600
+                  color: "#4B5563",
                   verticalAlign: "middle",
                 }}
               >
@@ -98,7 +107,7 @@ export default function JobCard({
           </Box>
         </Box>
 
-        <Box sx={{ display: "flex", gap: 1 }}>
+        <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
           {jobTypes.map((type) => (
             <JobTypeBadge key={type} label={type} />
           ))}
@@ -106,33 +115,41 @@ export default function JobCard({
       </Box>
 
       {/* Job Details */}
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "flex-start",
+          flexDirection: "column",
+          gap: 2,
+          mb: 2,
+        }}
+      >
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
           <CalendarTodayIcon sx={{ fontSize: 14, color: "#4B5563" }} />
           <Typography
             sx={{
-              fontFamily: "var(--font-inter), Inter, sans-serif",
+              fontFamily: "Inter, sans-serif",
               fontWeight: 400,
-              fontSize: "0.875rem", // 14px
-              lineHeight: 1.5, // 150%
+              fontSize: "0.875rem",
+              lineHeight: 1.5,
               letterSpacing: 0,
-              color: "#4B5563", // Gray/600
+              color: "#4B5563",
             }}
           >
             {date}
           </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, background:"#E1EFFE", padding:"4px", borderRadius:"10px" }}>
           <AttachMoneyIcon sx={{ fontSize: 14, color: "#4B5563" }} />
           <Typography
             sx={{
-              fontFamily: "var(--font-inter), Inter, sans-serif",
+              fontFamily: "Inter, sans-serif",
               fontWeight: 400,
-              fontSize: "0.875rem", // 14px
-              lineHeight: 1.5, // 150%
+              fontSize: "0.875rem",
+              lineHeight: 1.5,
               letterSpacing: 0,
-              color: "#4B5563", // Gray/600
+              color: "#4B5563",
             }}
           >
             {salary}
@@ -141,7 +158,7 @@ export default function JobCard({
       </Box>
 
       {/* Tags */}
-      <Box sx={{ display: "flex", gap: 1, mb: 2 }}>
+      <Box sx={{ display: "flex", gap: 1, mb: 2, flexWrap: "wrap" }}>
         {tags.map((tag) => (
           <JobTypeBadge key={tag} label={tag} />
         ))}
@@ -151,12 +168,12 @@ export default function JobCard({
       <Box sx={{ mb: 3 }}>
         <Typography
           sx={{
-            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontFamily: "Inter, sans-serif",
             fontWeight: 600,
-            fontSize: "0.875rem", // 14px
-            lineHeight: 1.5, // 150%
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
             letterSpacing: 0,
-            color: "#4B5563", // Gray/600
+            color: "#4B5563",
             mb: 1,
           }}
         >
@@ -166,10 +183,10 @@ export default function JobCard({
           sx={{
             fontFamily: "Roboto, sans-serif",
             fontWeight: 400,
-            fontSize: "0.75rem", // 12px
-            lineHeight: 1.4, // 140%
+            fontSize: "0.75rem",
+            lineHeight: 1.4,
             letterSpacing: 0,
-            color: "#4B5563", // Gray/600
+            color: "#4B5563",
           }}
         >
           {description}
@@ -177,9 +194,60 @@ export default function JobCard({
       </Box>
 
       {/* Action Buttons */}
-      <Box sx={{ display: "flex", gap: 2 }}>
-        <SaveButton />
-        <QuickApplyButton />
+      <Box
+        sx={{
+          display: "flex",
+          gap: 2,
+          flexDirection: { xs: "column", sm: "row" },
+        }}
+      >
+        <Button
+          sx={{
+            width: { xs: "100%", sm: "84px" },
+            height: "40px",
+            padding: "8px 12px",
+            gap: "8px",
+            borderRadius: "8px",
+            backgroundColor: "#F3F4F6",
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+            color: "#3F83F8",
+            textTransform: "none",
+            "&:hover": {
+              backgroundColor: "#E5E7EB",
+            },
+          }}
+        >
+          Save
+        </Button>
+        <Button
+          variant="contained"
+          sx={{
+            width: { xs: "100%", sm: "132px" },
+            height: "40px",
+            padding: "8px 12px",
+            gap: "8px",
+            borderRadius: "8px",
+            backgroundColor: "#1A56DB",
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+            color: "#FFFFFF",
+            textTransform: "none",
+            boxShadow: "none",
+            "&:hover": {
+              backgroundColor: "#1E40AF",
+              boxShadow: "none",
+            },
+          }}
+        >
+          Quick Apply
+        </Button>
       </Box>
     </Box>
   )

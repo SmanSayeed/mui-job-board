@@ -39,32 +39,26 @@ const jobsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
-  {
-    position: "Graphic Designer",
-    company: "KNEG AB",
-    location: "Sweden",
-    date: "March 22, 2025",
-    salary: "100,000 EUR/yr",
-    jobTypes: ["FULL TIME", "HYBRID"],
-    tags: ["IT", "Social", "Recruiting", "HR"],
-    matchPercentage: 95,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
 ]
 
 export default function MainContent() {
   return (
-    <Box sx={{ flex: 1, p: 3 }}>
+    <Box
+      sx={{
+        flex: 1,
+        p: { xs: 1, md: 3 },
+        maxWidth: { xs: "100%", lg: "calc(100% - 640px)" },
+      }}
+    >
       {/* Page Title */}
       <Typography
         sx={{
-          fontFamily: "var(--font-inter), Inter, sans-serif",
+          fontFamily: "Inter, sans-serif",
           fontWeight: 600,
-          fontSize: "1.625rem", // 26px
-          lineHeight: 1.3, // 130%
+          fontSize: { xs: "1.25rem", md: "1.625rem" },
+          lineHeight: 1.3,
           letterSpacing: 0,
-          color: "#4B5563", // Gray/600
+          color: "#4B5563",
           verticalAlign: "middle",
           mb: 1,
         }}
@@ -75,12 +69,12 @@ export default function MainContent() {
       {/* Page Subtitle */}
       <Typography
         sx={{
-          fontFamily: "var(--font-inter), Inter, sans-serif",
+          fontFamily: "Inter, sans-serif",
           fontWeight: 400,
-          fontSize: "1rem", // 16px
-          lineHeight: 1.3, // 130%
+          fontSize: { xs: "0.875rem", md: "1rem" },
+          lineHeight: 1.3,
           letterSpacing: 0,
-          color: "#4B5563", // Gray/600
+          color: "#4B5563",
           verticalAlign: "middle",
           mb: 3,
         }}

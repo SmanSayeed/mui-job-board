@@ -5,17 +5,17 @@ export default function LoginButton() {
   return (
     <Button
       sx={{
-        width: "90.5px",
+        minWidth: { xs: "70px", md: "90.5px" },
         height: "40px",
         padding: "8px 16px",
         borderRadius: "4px",
         backgroundColor: "transparent",
         fontFamily: "Roboto, sans-serif",
         fontWeight: 600,
-        fontSize: "0.875rem", // Body/Size Medium
-        lineHeight: 1, // 100%
+        fontSize: { xs: "0.75rem", md: "0.875rem" },
+        lineHeight: 1,
         letterSpacing: 0,
-        color: "#303030", // Text/Neutral/Default
+        color: "#303030",
         textTransform: "none",
         "&:hover": {
           backgroundColor: "rgba(26, 86, 219, 0.04)",

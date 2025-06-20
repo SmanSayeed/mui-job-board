@@ -8,12 +8,12 @@ export default function Logo() {
       <Typography
         component="div"
         sx={{
-          fontFamily: "var(--font-inter), Inter, sans-serif",
+          fontFamily: "Inter, sans-serif",
           fontWeight: 600,
-          fontSize: "2rem", // 32px from Figma
-          lineHeight: 1.1, // 110% from Figma
+          fontSize: { xs: "1.5rem", md: "2rem" },
+          lineHeight: 1.1,
           letterSpacing: 0,
-          color: "#4B5563", // Gray/600 from Figma
+          color: "#4B5563",
           verticalAlign: "middle",
           cursor: "pointer",
         }}

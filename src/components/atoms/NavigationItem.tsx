@@ -14,21 +14,21 @@ export default function NavigationItem({ label, href, isActive = false }: Naviga
       component={Link}
       href={href}
       sx={{
-        fontFamily: "var(--font-inter), Inter, sans-serif",
+        fontFamily: "Inter, sans-serif",
         fontWeight: 600,
-        fontSize: "0.875rem", // 14px
-        lineHeight: 1.5, // 150%
+        fontSize: "0.875rem",
+        lineHeight: 1.5,
         letterSpacing: 0,
         textAlign: "center",
         verticalAlign: "middle",
-        color: isActive ? "#3F83F8" : "#4B5563", // Blue/500 or Gray/600
+        color: isActive ? "#3F83F8" : "#4B5563",
         textTransform: "none",
         padding: "8px 12px",
         minWidth: "auto",
         position: "relative",
         "&:hover": {
           backgroundColor: "transparent",
-          color: "#3F83F8", // Blue/500
+          color: "#3F83F8",
         },
         "&::after": isActive
           ? {
@@ -39,7 +39,7 @@ export default function NavigationItem({ label, href, isActive = false }: Naviga
               transform: "translateX(-50%)",
               width: "100%",
               height: "2px",
-              backgroundColor: "#3F83F8", // Blue/500
+              backgroundColor: "#3F83F8",
             }
           : {},
       }}
