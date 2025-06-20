@@ -7,9 +7,8 @@ import RightSidebar from "../organisms/RightSidebar"
 
 export default function JobListingTemplate() {
   return (
-    <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}>
-      <Header />
-      <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2 } }}>
+  <>
+    <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2 },my:3,mx:2 }}>
         <Box
           sx={{
             display: "flex",
@@ -23,6 +22,8 @@ export default function JobListingTemplate() {
           <RightSidebar />
         </Box>
       </Container>
-    </Box>
+  </>
+    
+
   )
 }

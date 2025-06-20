@@ -2,8 +2,9 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter"
 import type React from "react"
 
-import { ThemeProvider, CssBaseline } from "@mui/material"
+import { ThemeProvider, CssBaseline, Box } from "@mui/material"
 import theme from "@/lib/theme"
+import Header from "./Header"
 
 export default function UserLayout({
   children,
@@ -14,7 +15,10 @@ export default function UserLayout({
     <AppRouterCacheProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}>
+        <Header />
         {children}
+        </Box>
       </ThemeProvider>
     </AppRouterCacheProvider>
   )
