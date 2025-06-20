@@ -61,7 +61,7 @@ export function AuthIcons() {
         </Box>
       </IconButton>
       <IconButton color="inherit" onClick={handleMenu} sx={{ p: 0 }}>
-        <ProfileImage src="profile1.jpg" profileVariant="user_profile_image" />
+        <ProfileImage src="/profile1.jpg" profileVariant="user_profile_image" />
         <ArrowDropDownIcon />
       </IconButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} transformOrigin={{ vertical: 'top', horizontal: 'right' }}>

@@ -14,7 +14,7 @@ export default function UserLayout({
 }>) {
   return (
         <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}>
-        <Header />
+        <Header type="user" />
         <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2 },my:3,mx:2 }}>
         <Box
           sx={{

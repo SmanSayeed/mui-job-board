@@ -8,8 +8,18 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz"
 import JobTypeBadge from "@/components/atoms/JobTypeBadge"
 import SkillBadge from "@/components/atoms/SkillBadge"
+import Dialog from "@mui/material/Dialog"
+import DialogTitle from "@mui/material/DialogTitle"
+import DialogContent from "@mui/material/DialogContent"
+import DialogActions from "@mui/material/DialogActions"
+import Alert from "@mui/material/Alert"
+import CloseIcon from "@mui/icons-material/Close"
+import { useState } from "react"
 
 export default function JobDetailPage() {
+  const [openApply, setOpenApply] = useState(false);
+  const handleApplyClick = () => setOpenApply(true);
+  const handleCloseApply = () => setOpenApply(false);
   return (
     <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}>
       <Container maxWidth="lg" sx={{ py: 3 }}>
@@ -72,6 +82,7 @@ export default function JobDetailPage() {
                     boxShadow: "none",
                   },
                 }}
+                onClick={handleApplyClick}
               >
                 Apply Now
               </Button>
@@ -364,6 +375,29 @@ export default function JobDetailPage() {
               </Box>
             </Box>
           </Box>
+
+          {/* Apply Now Dialog */}
+          <Dialog open={openApply} onClose={handleCloseApply} maxWidth="xs" fullWidth>
+            <DialogTitle sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pb: 0 }}>
+              Application Submitted
+              <IconButton onClick={handleCloseApply} size="small">
+                <CloseIcon />
+              </IconButton>
+            </DialogTitle>
+            <DialogContent>
+              <Alert severity="success" sx={{ mb: 2, fontSize: '1rem' }}>
+                Your application has been submitted successfully!
+              </Alert>
+              <Typography variant="body2" color="text.secondary">
+                Thank you for applying. We will review your application and get back to you soon.
+              </Typography>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCloseApply} variant="contained" color="primary" autoFocus>
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Box>
       </Container>
     </Box>

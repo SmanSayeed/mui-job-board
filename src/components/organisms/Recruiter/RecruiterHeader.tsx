@@ -1,15 +1,15 @@
 "use client"
 import { AppBar, Toolbar, Container } from "@mui/material"
-import Logo from "../atoms/Logo"
-import Navigation from "../molecules/Navigation"
-import AuthButtons from "../molecules/AuthButtons"
-import MobileNavigation from "../molecules/MobileNavigation"
+import Logo from "../../atoms/Logo"
+import Navigation from "../../molecules/Navigation"
+import AuthButtons from "../../molecules/AuthButtons"
+import MobileNavigation from "../../molecules/MobileNavigation"
 
 export interface HeaderProps {
   type?: 'user' | 'recruiter';
 }
 
-export default function Header({ type = 'user' }: HeaderProps) {
+export default function RecruiterHeader({ type = 'user' }: HeaderProps) {
   return (
     <AppBar
       position="static"
@@ -28,7 +28,6 @@ export default function Header({ type = 'user' }: HeaderProps) {
             px: { xs: 1, sm: 2 },
           }}
         >
-          <Logo type={type} />
           <Navigation type={type} />
           <AuthButtons />
           <MobileNavigation />
