@@ -16,7 +16,7 @@ export default function page() {
     const user = login(email, password);
     if (user) {
       if (user.role === 'user') {
-        router.push('/job-details');
+        router.push('/job-details/'+1);
       } else if (user.role === 'recruiter') {
         router.push('/recruiter/job-listings');
       }

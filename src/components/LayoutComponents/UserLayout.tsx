@@ -4,8 +4,8 @@ import type React from "react"
 
 import { ThemeProvider, CssBaseline, Box, Container } from "@mui/material"
 import theme from "@/lib/theme"
-import Header from "./Header"
-import LeftSidebar from "./LeftSideBar"
+import Header from "../organisms/Header"
+import LeftSidebar from "../organisms/LeftSideBar"
 
 export default function UserLayout({
   children,
@@ -13,9 +13,6 @@ export default function UserLayout({
   children: React.ReactNode
 }>) {
   return (
-    <AppRouterCacheProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
         <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}>
         <Header />
         <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2 },my:3,mx:2 }}>
@@ -32,7 +29,5 @@ export default function UserLayout({
         </Box>
         </Container>
         </Box>
-      </ThemeProvider>
-    </AppRouterCacheProvider>
   )
 }
