@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+This is a Job next js 15 application that is using material UI (MUI)
+1. Develop with next js 15 App router way
+2. Follow atomic design pattern. Check the project structure how the atomic design pattern is added here.
+3. Always follow src/lib/theme.ts file
+4. Check the component-style.md file in root the idea of the projects theming pattern
+5. Always use typescript best practices
+
+6. Make re-usable atoms, molecules and pass proper by maintaining types properly

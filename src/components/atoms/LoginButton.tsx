@@ -1,0 +1,29 @@
+"use client"
+import { Button } from "@mui/material"
+
+export default function LoginButton() {
+  return (
+    <Button
+      sx={{
+        width: "90.5px",
+        height: "40px",
+        padding: "8px 16px",
+        borderRadius: "4px",
+        backgroundColor: "transparent",
+        fontFamily: "Roboto, sans-serif",
+        fontWeight: 600,
+        fontSize: "0.875rem", // Body/Size Medium
+        lineHeight: 1, // 100%
+        letterSpacing: 0,
+        color: "#303030", // Text/Neutral/Default
+        textTransform: "none",
+        "&:hover": {
+          backgroundColor: "rgba(26, 86, 219, 0.04)",
+          color: "#303030",
+        },
+      }}
+    >
+      Login
+    </Button>
+  )
+}

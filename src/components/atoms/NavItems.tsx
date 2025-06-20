@@ -1,60 +1,31 @@
 "use client"
-import { useState } from "react"
-import {
-  Typography,
-  Button,
-  Box,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  useMediaQuery,
-  useTheme,
-  Divider,
-} from "@mui/material"
-import MenuIcon from "@mui/icons-material/Menu"
-import CloseIcon from "@mui/icons-material/Close"
 
+import type React from "react"
+import { Button, Box, useTheme } from "@mui/material"
 
-interface NavigationItem {
+interface NavItem {
   label: string
   href: string
   isActive?: boolean
 }
 
-const navigationItems: NavigationItem[] = [
-  { label: "Home", href: "/", isActive: true },
-  { label: "Jobs", href: "/jobs" },
-  { label: "Extra Jobs", href: "/extra-jobs" },
-  { label: "Get Career Help", href: "/career-help" },
-]
+interface NavItemsProps {
+  navItems: NavItem[]
+}
 
-export default function NavItems() {
+const NavItems: React.FC<NavItemsProps> = ({ navItems }) => {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const handleMobileMenuToggle = () => {
-    setMobileMenuOpen(!mobileMenuOpen)
-  }
-
-  const handleMobileMenuClose = () => {
-    setMobileMenuOpen(false)
-  }
-
-  const renderDesktopNavigation = () => (
-    <Box sx={{ display: { xs: "none", md: "flex" }, gap: 4 }}>
-      {navigationItems.map((item) => (
+  return (
+    <Box sx={{ display: "flex", gap: 2 }}>
+      {navItems.map((item) => (
         <Button
           key={item.label}
           href={item.href}
           sx={{
             color: item.isActive ? theme.palette.action.active : theme.palette.text.primary,
             textTransform: "none",
-            fontSize: "0.95rem",
-            fontWeight: item.isActive ? 600 : 500,
+            ...theme.typography.subtitle1, // Use the navigation typography variant
             padding: "8px 12px",
             minWidth: "auto",
             position: "relative",
@@ -79,139 +50,38 @@ export default function NavItems() {
           {item.label}
         </Button>
       ))}
-    </Box>
-  )
-
-  const renderMobileNavigation = () => (
-    <Drawer
-      anchor="right"
-      open={mobileMenuOpen}
-      onClose={handleMobileMenuClose}
-      sx={{
-        "& .MuiDrawer-paper": {
-          width: 280,
-          backgroundColor: theme.palette.background.paper,
-        },
-      }}
-    >
-      <Box sx={{ p: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Typography variant="h6" sx={{ fontWeight: 600 }}>
-          Menu
-        </Typography>
-        <IconButton onClick={handleMobileMenuClose} size="small">
-          <CloseIcon />
-        </IconButton>
-      </Box>
-      <Divider />
-      <List sx={{ pt: 0 }}>
-        {navigationItems.map((item) => (
-          <ListItem key={item.label} disablePadding>
-            <ListItemButton
-              href={item.href}
-              onClick={handleMobileMenuClose}
-              selected={item.isActive}
-              sx={{
-                py: 1.5,
-                px: 2,
-                "&.Mui-selected": {
-                  backgroundColor: `${theme.palette.primary.main}08`,
-                  borderRight: `3px solid ${theme.palette.primary.main}`,
-                  "& .MuiListItemText-primary": {
-                    color: theme.palette.primary.main,
-                    fontWeight: 600,
-                  },
-                },
-              }}
-            >
-              <ListItemText
-                primary={item.label}
-                primaryTypographyProps={{
-                  fontSize: "1rem",
-                  fontWeight: item.isActive ? 600 : 600,
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider sx={{ mt: 2 }} />
-      <Box sx={{ p: 2, display: "flex", flexDirection: "column", gap: 2 }}>
-        <Button
-          variant="text"
-          fullWidth
-          sx={{
-            color: theme.palette.text.primary,
-            justifyContent: "flex-start",
-            textTransform: "none",
-            fontSize: "1rem",
-            fontWeight: 600,
-            py: 1.5,
-            "&:hover": {
-              backgroundColor: theme.palette.action.hover,
-              color: theme.palette.primary.main,
-            },
-          }}
-        >
-          Login
-        </Button>
-        <Button
-          variant="contained"
-          fullWidth
-          sx={{
-            backgroundColor: theme.palette.primary.main,
-            color: "white",
-            textTransform: "none",
-            fontSize: "1rem",
-            fontWeight: 500,
-            fontFamily: 'Roboto, sans-serif',
-            py: 1.5,
-            borderRadius: "6px",
-            "&:hover": {
-              backgroundColor: theme.palette.action.hover,
-            },
-          }}
-        >
-          Signup
-        </Button>
-      </Box>
-    </Drawer>
-  )
-
-  const renderAuthButtons = () => (
-    <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2, alignItems: "center" }}>
       <Button
         sx={{
-          color: theme.palette.text.primary,
+          color: theme.palette.neutral.default, // Use the custom neutral color
           textTransform: "none",
           fontSize: "0.95rem",
           fontWeight: 600,
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: "Roboto, sans-serif",
           padding: "8px 16px",
           minWidth: "auto",
           "&:hover": {
             backgroundColor: "transparent",
-            color:"#303030",
+            color: theme.palette.neutral.default,
           },
         }}
       >
         Login
       </Button>
       <Button
-        variant="contained"
         sx={{
           backgroundColor: theme.palette.primary.main,
-          color: "#F5F5F5",
+          color: theme.palette.brand.onBrand, // Use the custom brand color
           textTransform: "none",
           fontSize: "0.95rem",
           fontWeight: 600,
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: "Roboto, sans-serif",
           borderRadius: "8px",
           padding: "10px 20px",
           minWidth: "auto",
           boxShadow: "none",
           "&:hover": {
-            backgroundColor:  theme.palette.action.hover,
-            boxShadow: "0px 2px 4px rgba(25, 118, 210, 0.2)",
+            backgroundColor: theme.palette.action.hover,
+            boxShadow: "none",
           },
         }}
       >
@@ -219,32 +89,6 @@ export default function NavItems() {
       </Button>
     </Box>
   )
-
-  return (
-    <>
-            {/* Desktop Navigation */}
-            {renderDesktopNavigation()}
-            {/* Desktop Auth Buttons */}
-            {renderAuthButtons()}
-            {/* Mobile Menu Button */}
-            <IconButton
-              edge="end"
-              color="inherit"
-              aria-label="menu"
-              onClick={handleMobileMenuToggle}
-              sx={{
-                display: { xs: "flex", md: "none" },
-                color: theme.palette.text.primary,
-                "&:hover": {
-                  backgroundColor: `${theme.palette.primary.main}08`,
-                },
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            {/* Mobile Navigation Drawer */}
-            {renderMobileNavigation()}
-    
-    </>
-  )
 }
+
+export default NavItems

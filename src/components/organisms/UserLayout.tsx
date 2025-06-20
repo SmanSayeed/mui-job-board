@@ -1,20 +1,21 @@
-"use client";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import { ThemeProvider } from "@emotion/react";
-import theme from "@/lib/theme";
-import Header from "../molecules/Header";
+"use client"
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter"
+import type React from "react"
+
+import { ThemeProvider, CssBaseline } from "@mui/material"
+import theme from "@/lib/theme"
 
 export default function UserLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-      <AppRouterCacheProvider>
+    <AppRouterCacheProvider>
       <ThemeProvider theme={theme}>
-        <Header/>
+        <CssBaseline />
         {children}
-        </ThemeProvider>
-      </AppRouterCacheProvider>
-  );
+      </ThemeProvider>
+    </AppRouterCacheProvider>
+  )
 }

@@ -1,64 +1,520 @@
-import { createTheme } from '@mui/material/styles';
-import { grey } from '@mui/material/colors';
+import { createTheme } from "@mui/material/styles"
+
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1A56DB', // Matches Figma primary color
-      dark: '#000',
+      main: "#1A56DB", // Primary/700 from Figma
+      light: "#76A9FA", // Blue/400 from Figma
+      dark: "#1E40AF", // Blue/800
+      contrastText: "#FFFFFF",
+      50: "#EFF6FF",
+      100: "#DBEAFE",
+      200: "#BFDBFE",
+      300: "#93C5FD",
+      400: "#76A9FA", // Blue/400
+      500: "#3F83F8", // Blue/500 - hover and active states
+      600: "#2563EB",
+      700: "#1A56DB", // Primary color
+      800: "#1E40AF",
+      900: "#1E3A8A",
     },
     secondary: {
-      main: '#ff4081', // Matches Figma secondary color
+      main: "#ff4081",
     },
     background: {
-      default: '#fff', // Matches Figma background
+      default: "#F3F4F6", // Main body background from Figma
+      paper: "#FFFFFF", // Header background from Figma
     },
     text: {
-      primary: "#4B5563", // Matches Figma text color gray-600
-      secondary: "#111928", // Add for secondary text gray-900
+      primary: "#4B5563", // Gray/600 - main text color from Figma
+      secondary: "#111928", // Gray/900 - secondary text from Figma
     },
-    action:{
-      active:"#3F83F8", //Hover and selected color blue/500
-      hover:"#3F83F8"
-    }
+    grey: {
+      50: "#F9FAFB",
+      100: "#F3F4F6", // Gray/100 - used for buttons and backgrounds
+      200: "#E5E7EB",
+      300: "#D1D5DB",
+      400: "#9CA3AF", // Gray/400 - used for disabled states
+      500: "#6B7280",
+      600: "#4B5563", // Gray/600 - primary text
+      700: "#374151",
+      800: "#1F2937",
+      900: "#111928", // Gray/900 - secondary text
+    },
+    action: {
+      active: "#3F83F8", // Blue/500 - hover and selected color
+      hover: "#3F83F8", // Blue/500 - hover color
+      selected: "#E1EFFE", // Blue/100 - badge background
+      disabled: "#9CA3AF",
+      disabledBackground: "#F3F4F6",
+    },
+    // Custom colors for specific use cases
+    neutral: {
+      default: "#303030", // Text/Neutral/Default for login button
+      coolGray900: "#21272A", // CoolGray/900 for coach names
+      coolGray600: "#697077", // CoolGray/600 for coach designations
+    },
+    brand: {
+      onBrand: "#F5F5F5", // Text/Brand/On Brand for signup button text
+    },
   },
   typography: {
-    fontFamily: 'var(--font-inter), Inter, sans-serif',
-    h1: { fontFamily: 'var(--font-inter), Inter, sans-serif', fontWeight: 600, fontSize: '2rem' },
-    h2: { fontFamily: 'var(--font-inter), Inter, sans-serif', fontWeight: 600, fontSize: '1.5rem' },
-    h3: { fontFamily: 'var(--font-inter), Inter, sans-serif', fontWeight: 600, fontSize: '1.25rem' },
-    h4: { fontFamily: 'var(--font-inter), Inter, sans-serif', fontWeight: 600, fontSize: '1.125rem' },
-    h5: { fontFamily: 'var(--font-inter), Inter, sans-serif', fontWeight: 600, fontSize: '1rem' },
-    h6: { fontFamily: 'var(--font-inter), Inter, sans-serif', fontWeight: 600, fontSize: '0.875rem' },
-    body1: { fontFamily: 'var(--font-inter), Inter, sans-serif', fontWeight: 400, fontSize: '1rem' },
-    body2: { fontFamily: 'var(--font-inter), Inter, sans-serif', fontWeight: 400, fontSize: '0.875rem' },
-    button: { fontFamily: 'var(--font-inter), Inter, sans-serif', fontWeight: 500, fontSize: '0.875rem', textTransform: 'uppercase' },
+    fontFamily: "var(--font-inter), Inter, sans-serif",
+    // Logo typography
+    h1: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 600,
+      fontSize: "2rem", // 32px from Figma
+      lineHeight: 1.1, // 110% from Figma
+      letterSpacing: 0,
+    },
+    // Page titles (Trending Job Postings)
+    h2: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 600,
+      fontSize: "1.625rem", // 26px from Figma
+      lineHeight: 1.3, // 130% from Figma
+      letterSpacing: 0,
+    },
+    // Section titles (General Information, My Job Coach)
+    h3: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 600,
+      fontSize: "1.125rem", // 18px from Figma
+      lineHeight: 1.3, // 130% from Figma
+      letterSpacing: 0,
+    },
+    // Search Jobs title
+    h4: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 600,
+      fontSize: "1.5rem", // 24px from Figma
+      lineHeight: 1.1, // 110% from Figma
+      letterSpacing: 0,
+    },
+    // Job position names
+    h5: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 500,
+      fontSize: "1.125rem", // 18px from Figma
+      lineHeight: 1.3, // 130% from Figma
+      letterSpacing: 0,
+    },
+    // User name (Steve Smith)
+    h6: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 600,
+      fontSize: "1.625rem", // 26px from Figma
+      lineHeight: 1.3, // 130% from Figma
+      letterSpacing: 0,
+    },
+    // Navigation menu items
+    subtitle1: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 600,
+      fontSize: "0.875rem", // 14px from Figma
+      lineHeight: 1.5, // 150% from Figma
+      letterSpacing: 0,
+      textAlign: "center",
+    },
+    // Job Overview, Content titles
+    subtitle2: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 600,
+      fontSize: "0.875rem", // 14px from Figma
+      lineHeight: 1.5, // 150% from Figma
+      letterSpacing: 0,
+    },
+    // General body text, contact info, search inputs
+    body1: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 400,
+      fontSize: "1rem", // 16px from Figma
+      lineHeight: 1.3, // 130% from Figma
+      letterSpacing: 0,
+    },
+    // Page subtitles, dates, salary
+    body2: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 400,
+      fontSize: "0.875rem", // 14px from Figma
+      lineHeight: 1.5, // 150% from Figma
+      letterSpacing: 0,
+    },
+    // Country names
+    caption: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 500,
+      fontSize: "0.75rem", // 12px from Figma
+      lineHeight: 1.5, // 150% from Figma
+      letterSpacing: 0,
+    },
+    // Job content description
+    overline: {
+      fontFamily: "Roboto, sans-serif",
+      fontWeight: 400,
+      fontSize: "0.75rem", // 12px from Figma
+      lineHeight: 1.4, // 140% from Figma
+      letterSpacing: 0,
+      textTransform: "none",
+    },
+    // Button text
+    button: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 500,
+      fontSize: "0.875rem", // 14px from Figma
+      lineHeight: 1.5, // 150% from Figma
+      letterSpacing: 0,
+      textTransform: "none",
+    },
+  },
+  spacing: 8, // Base spacing unit
+  shape: {
+    borderRadius: 8, // Default border radius
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: `
+        * {
+          box-sizing: border-box;
+        }
         body {
-          background-color: #fff;
+          background-color: #F3F4F6;
+          margin: 0;
+          padding: 0;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        html {
+          -webkit-text-size-adjust: 100%;
         }
       `,
     },
-    // Add AppBar styles for consistency
     MuiAppBar: {
       styleOverrides: {
         root: {
-          boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow from Figma
+          backgroundColor: "#FFFFFF",
+          color: "#4B5563",
+          boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1)",
+          borderBottom: "1px solid #E5E7EB",
         },
       },
     },
-    // Add Button styles
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          minHeight: "64px !important",
+          paddingLeft: "24px !important",
+          paddingRight: "24px !important",
+          "@media (max-width: 900px)": {
+            paddingLeft: "16px !important",
+            paddingRight: "16px !important",
+          },
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
-        containedPrimary: {
-          padding: '8px 16px',
-          borderRadius: '4px',
+        root: {
+          textTransform: "none",
+          borderRadius: "8px",
+          fontFamily: "var(--font-inter), Inter, sans-serif",
+          fontWeight: 500,
+          fontSize: "0.875rem",
+          lineHeight: 1.5,
+          letterSpacing: 0,
+          minWidth: "auto",
+          "&:hover": {
+            boxShadow: "none",
+          },
+        },
+        // Login button styles
+        text: {
+          padding: "8px 16px",
+          color: "#303030", // Text/Neutral/Default
+          fontFamily: "Roboto, sans-serif",
+          fontWeight: 600,
+          lineHeight: 1,
+          "&:hover": {
+            backgroundColor: "transparent",
+            color: "#303030",
+          },
+        },
+        // Signup button styles
+        contained: {
+          padding: "10px 20px",
+          backgroundColor: "#1A56DB", // Primary/700
+          color: "#F5F5F5", // Text/Brand/On Brand
+          fontFamily: "Roboto, sans-serif",
+          fontWeight: 600,
+          lineHeight: 1,
+          boxShadow: "none",
+          "&:hover": {
+            backgroundColor: "#3F83F8", // Blue/500
+            boxShadow: "none",
+          },
+        },
+        // Save button styles
+        outlined: {
+          padding: "8px 12px",
+          backgroundColor: "#F3F4F6", // Gray/100
+          color: "#3F83F8", // Primary/500
+          border: "none",
+          "&:hover": {
+            backgroundColor: "#E5E7EB",
+            border: "none",
+          },
+        },
+      },
+      variants: [
+        // Quick Apply button variant
+        {
+          props: { variant: "contained", color: "primary" },
+          style: {
+            width: "132px",
+            height: "40px",
+            padding: "8px 12px",
+            backgroundColor: "#1A56DB", // Primary/700
+            color: "#FFFFFF",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            "&:hover": {
+              backgroundColor: "#1E40AF",
+            },
+          },
+        },
+        // Save button variant
+        {
+          props: { variant: "outlined", color: "primary" },
+          style: {
+            width: "84px",
+            height: "40px",
+            padding: "8px 12px",
+            backgroundColor: "#F3F4F6", // Gray/100
+            color: "#3F83F8", // Primary/500
+            border: "none",
+            "&:hover": {
+              backgroundColor: "#E5E7EB",
+              border: "none",
+            },
+          },
+        },
+        // Edit Profile button variant
+        {
+          props: { variant: "text", size: "small" },
+          style: {
+            width: "157px",
+            height: "37px",
+            padding: "8px 12px",
+            backgroundColor: "#F3F4F6", // Gray/100
+            color: "#3F83F8", // Primary/500
+            borderRadius: "8px",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            "&:hover": {
+              backgroundColor: "#E5E7EB",
+            },
+          },
+        },
+        // View Saved Jobs button variant
+        {
+          props: { variant: "outlined", size: "large" },
+          style: {
+            width: "302px",
+            height: "51px",
+            padding: "14px 24px",
+            backgroundColor: "transparent",
+            color: "#4B5563",
+            border: "1px solid #9CA3AF", // Gray/400
+            borderRadius: "8px",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "1.125rem", // 18px
+            lineHeight: 1.3,
+            "&:hover": {
+              backgroundColor: "#F9FAFB",
+              border: "1px solid #6B7280",
+            },
+          },
+        },
+      ],
+    },
+    // Badge/Chip styles for skills, job types, etc.
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          height: "25px",
+          padding: "4px 12px",
+          backgroundColor: "#E1EFFE", // Blue/100
+          color: "#111928", // Gray/900
+          fontFamily: "var(--font-inter), Inter, sans-serif",
+          fontWeight: 500,
+          fontSize: "0.875rem",
+          lineHeight: 1.5,
+          letterSpacing: 0,
+          borderRadius: "6px",
+          "& .MuiChip-label": {
+            padding: 0,
+          },
+        },
+        // Job type badges (FULL TIME, HYBRID)
+        filled: {
+          backgroundColor: "#F3F4F6", // Gray/100
+          color: "#111928", // Gray/900
+        },
+        // Skill badges
+        outlined: {
+          backgroundColor: "#E1EFFE", // Blue/100
+          color: "#111928", // Gray/900
+          border: "none",
+        },
+      },
+    },
+    // Input field styles
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          "& .MuiOutlinedInput-root": {
+            backgroundColor: "#FFFFFF",
+            borderRadius: "8px",
+            "& fieldset": {
+              borderColor: "#D1D5DB",
+            },
+            "&:hover fieldset": {
+              borderColor: "#3F83F8",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#3F83F8",
+              borderWidth: "2px",
+            },
+          },
+          "& .MuiInputLabel-root": {
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 400,
+            fontSize: "1.125rem", // 18px
+            lineHeight: 1.3,
+            color: "#4B5563", // Gray/600
+          },
+          "& .MuiOutlinedInput-input": {
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 400,
+            fontSize: "1.125rem", // 18px
+            lineHeight: 1.3,
+            color: "#111928", // Gray/900
+            "&::placeholder": {
+              color: "#76A9FA", // Blue/400
+              opacity: 1,
+            },
+          },
+        },
+      },
+    },
+    // Select dropdown styles
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#FFFFFF",
+          borderRadius: "8px",
+          fontFamily: "var(--font-inter), Inter, sans-serif",
+          fontWeight: 400,
+          fontSize: "1.125rem", // 18px
+          lineHeight: 1.3,
+          color: "#4B5563", // Gray/600
+        },
+      },
+    },
+    // Drawer styles for mobile menu
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: "#FFFFFF",
+          borderLeft: "1px solid #E5E7EB",
+        },
+      },
+    },
+    // List styles for mobile menu
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          padding: "12px 16px",
+          "&:hover": {
+            backgroundColor: "#F3F4F6",
+          },
+          "&.Mui-selected": {
+            backgroundColor: "#E1EFFE", // Blue/100
+            borderRight: "3px solid #3F83F8", // Blue/500
+            "&:hover": {
+              backgroundColor: "#DBEAFE",
+            },
+          },
         },
       },
     },
   },
-});
+})
 
-export default theme;
+// Extend the theme interface to include custom colors
+declare module "@mui/material/styles" {
+  interface Palette {
+    neutral: {
+      default: string
+      coolGray900: string
+      coolGray600: string
+    }
+    brand: {
+      onBrand: string
+    }
+  }
+
+  interface PaletteOptions {
+    neutral?: {
+      default?: string
+      coolGray900?: string
+      coolGray600?: string
+    }
+    brand?: {
+      onBrand?: string
+    }
+  }
+
+  interface PaletteColor {
+    50?: string
+    100?: string
+    200?: string
+    300?: string
+    400?: string
+    500?: string
+    600?: string
+    700?: string
+    800?: string
+    900?: string
+  }
+
+  interface SimplePaletteColorOptions {
+    50?: string
+    100?: string
+    200?: string
+    300?: string
+    400?: string
+    500?: string
+    600?: string
+    700?: string
+    800?: string
+    900?: string
+  }
+}
+
+export default theme

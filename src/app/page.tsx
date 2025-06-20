@@ -1,17 +1,6 @@
-import * as React from "react";
-import {
-  Container,
-  Typography,
-  TextField,
-  Button,
-  Box,
-  Paper,
-} from "@mui/material";
+"use client"
+import JobListingTemplate from "@/components/templates/JobListingTemplates"
 
-export default function Home() {
-  return (
-    <Container maxWidth="sm" sx={{ mt: 4 }}>
-    
-    </Container>
-  );
+export default function HomePage() {
+  return <JobListingTemplate />
 }
