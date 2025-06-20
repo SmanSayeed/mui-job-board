@@ -1,26 +1,33 @@
 import { useCallback } from 'react';
 
-export function useStorage(storage: Storage = localStorage) {
+export function useStorage(storage?: Storage) {
+  // SSR-safe: only use localStorage if window is defined
+  const isBrowser = typeof window !== "undefined";
+  const actualStorage = storage || (isBrowser ? window.localStorage : undefined);
+
   const get = useCallback((key: string) => {
+    if (!actualStorage) return null;
     try {
-      const value = storage.getItem(key);
+      const value = actualStorage.getItem(key);
       return value ? JSON.parse(value) : null;
     } catch {
       return null;
     }
-  }, [storage]);
+  }, [actualStorage]);
 
   const set = useCallback((key: string, value: any) => {
+    if (!actualStorage) return;
     try {
-      storage.setItem(key, JSON.stringify(value));
+      actualStorage.setItem(key, JSON.stringify(value));
     } catch {}
-  }, [storage]);
+  }, [actualStorage]);
 
   const remove = useCallback((key: string) => {
+    if (!actualStorage) return;
     try {
-      storage.removeItem(key);
+      actualStorage.removeItem(key);
     } catch {}
-  }, [storage]);
+  }, [actualStorage]);
 
   return { get, set, remove };
 } 

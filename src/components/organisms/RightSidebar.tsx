@@ -32,7 +32,7 @@ export default function RightSidebar() {
         display: { xs: "none", lg: "block" },
       }}
     >
-      <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: "#FFFFFF", borderRadius: "8px", }}>
+      <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: "", borderRadius: "8px", }}>
         <Typography
           sx={{
             fontFamily: "Inter, sans-serif",

@@ -39,7 +39,7 @@ export default function SortBy() {
   };
 
   return (
-    <FormControl fullWidth sx={{ mb: 3 }}>
+    <FormControl fullWidth sx={{ mb: 3, background:"#fff" }}>
       <InputLabel
         sx={{
           fontFamily: 'Inter, sans-serif',

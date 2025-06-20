@@ -1,6 +1,7 @@
 "use client"
 import { Box, Typography } from "@mui/material"
 import JobCard from "../molecules/JobCard"
+import { useTheme } from "@mui/material/styles"
 
 const jobsData = [
   {
@@ -42,6 +43,7 @@ const jobsData = [
 ]
 
 export default function MainContent() {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -51,37 +53,13 @@ export default function MainContent() {
       }}
     >
       {/* Page Title */}
-      <Typography
-        sx={{
-          fontFamily: "Inter, sans-serif",
-          fontWeight: 600,
-          fontSize: { xs: "1.25rem", md: "1.625rem" },
-          lineHeight: 1.3,
-          letterSpacing: 0,
-          color: "#4B5563",
-          verticalAlign: "middle",
-          mb: 1,
-        }}
-      >
+      <Typography sx={{ ...theme.typography.h2, color: theme.palette.text.primary, mb: 1 }}>
         Trending Job Postings
       </Typography>
-
       {/* Page Subtitle */}
-      <Typography
-        sx={{
-          fontFamily: "Inter, sans-serif",
-          fontWeight: 400,
-          fontSize: { xs: "0.875rem", md: "1rem" },
-          lineHeight: 1.3,
-          letterSpacing: 0,
-          color: "#4B5563",
-          verticalAlign: "middle",
-          mb: 3,
-        }}
-      >
+      <Typography sx={{ ...theme.typography.body1, color: theme.palette.text.primary, mb: 3 }}>
         Check out recent and trending jobs
       </Typography>
-
       {/* Job Cards */}
       {jobsData.map((job, index) => (
         <JobCard key={index} {...job} />

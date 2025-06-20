@@ -170,7 +170,7 @@ const theme = createTheme({
   },
   spacing: 8, // Base spacing unit
   shape: {
-    borderRadius: 8, // Default border radius
+    borderRadius: 4, // Default border radius
   },
   breakpoints: {
     values: {

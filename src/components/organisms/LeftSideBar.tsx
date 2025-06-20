@@ -6,8 +6,10 @@ import EmailIcon from "@mui/icons-material/Email"
 import PhoneIcon from "@mui/icons-material/Phone"
 import LocationOnIcon from "@mui/icons-material/LocationOn"
 import BusinessIcon from "@mui/icons-material/Business"
+import { useTheme } from "@mui/material/styles"
 
 export default function LeftSidebar() {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -19,87 +21,36 @@ export default function LeftSidebar() {
       <UserProfile />
 
       {/* Contact Info */}
-      <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: "#FFFFFF", borderRadius: "8px", mb: 3 }}>
-        <Typography
-          sx={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
-            fontSize: "1.125rem",
-            lineHeight: 1.3,
-            letterSpacing: 0,
-            color: "#111928",
-            verticalAlign: "middle",
-            mb: 2,
-          }}
-        >
+      <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: theme.palette.background.paper, borderRadius: theme.shape.borderRadius, mb: 3 }}>
+        <Typography sx={{ ...theme.typography.h3, color: theme.palette.text.secondary, mb: 2 }}>
           General Information
         </Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <EmailIcon sx={{ fontSize: 16, color: "#4B5563" }} />
-            <Typography
-              sx={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 400,
-                fontSize: "1rem",
-                lineHeight: 1.3,
-                letterSpacing: 0,
-                color: "#111928",
-                verticalAlign: "middle",
-              }}
-            >
+            <EmailIcon sx={{ fontSize: 16, color: theme.palette.text.primary }} />
+            <Typography sx={{ ...theme.typography.body1, color: theme.palette.text.secondary, verticalAlign: "middle" }}>
               stevesmith@gmail.com
             </Typography>
           </Box>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <PhoneIcon sx={{ fontSize: 16, color: "#4B5563" }} />
-            <Typography
-              sx={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 400,
-                fontSize: "1rem",
-                lineHeight: 1.3,
-                letterSpacing: 0,
-                color: "#111928",
-                verticalAlign: "middle",
-              }}
-            >
+            <PhoneIcon sx={{ fontSize: 16, color: theme.palette.text.primary }} />
+            <Typography sx={{ ...theme.typography.body1, color: theme.palette.text.secondary, verticalAlign: "middle" }}>
               +46780000000
             </Typography>
           </Box>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <LocationOnIcon sx={{ fontSize: 16, color: "#4B5563" }} />
-            <Typography
-              sx={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 400,
-                fontSize: "1rem",
-                lineHeight: 1.3,
-                letterSpacing: 0,
-                color: "#111928",
-                verticalAlign: "middle",
-              }}
-            >
+            <LocationOnIcon sx={{ fontSize: 16, color: theme.palette.text.primary }} />
+            <Typography sx={{ ...theme.typography.body1, color: theme.palette.text.secondary, verticalAlign: "middle" }}>
               Stockholm, Sweden
             </Typography>
           </Box>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <BusinessIcon sx={{ fontSize: 16, color: "#4B5563" }} />
-            <Typography
-              sx={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 400,
-                fontSize: "1rem",
-                lineHeight: 1.3,
-                letterSpacing: 0,
-                color: "#111928",
-                verticalAlign: "middle",
-              }}
-            >
+            <BusinessIcon sx={{ fontSize: 16, color: theme.palette.text.primary }} />
+            <Typography sx={{ ...theme.typography.body1, color: theme.palette.text.secondary, verticalAlign: "middle" }}>
               190003050050
             </Typography>
           </Box>
@@ -107,47 +58,18 @@ export default function LeftSidebar() {
       </Box>
 
       {/* Job Coach */}
-      <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: "#FFFFFF", borderRadius: "8px", mb: 3 }}>
-        <Typography
-          sx={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
-            fontSize: "1.125rem",
-            lineHeight: 1.3,
-            letterSpacing: 0,
-            color: "#111928",
-            verticalAlign: "middle",
-            mb: 2,
-          }}
-        >
+      <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: theme.palette.background.paper, borderRadius: theme.shape.borderRadius, mb: 3 }}>
+        <Typography sx={{ ...theme.typography.h3, color: theme.palette.text.secondary, mb: 2 }}>
           My Job Coach
         </Typography>
 
         <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
           <Avatar src="/placeholder.svg?height=40&width=40" sx={{ width: 40, height: 40, mr: 2 }} />
           <Box>
-            <Typography
-              sx={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 600,
-                fontSize: "0.875rem",
-                lineHeight: 1.5,
-                letterSpacing: 0,
-                color: "#21272A",
-              }}
-            >
+            <Typography sx={{ ...theme.typography.subtitle1, color: theme.palette.neutral.coolGray900 }}>
               Anna Brown
             </Typography>
-            <Typography
-              sx={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 400,
-                fontSize: "0.875rem",
-                lineHeight: 1.5,
-                letterSpacing: 0,
-                color: "#697077",
-              }}
-            >
+            <Typography sx={{ ...theme.typography.subtitle1, color: theme.palette.neutral.coolGray600, fontWeight: 400 }}>
               Job Coach
             </Typography>
           </Box>
@@ -160,29 +82,7 @@ export default function LeftSidebar() {
       </Box>
 
       {/* View Saved Jobs Button */}
-      <Button
-        fullWidth
-        sx={{
-          width: "100%",
-          height: "51px",
-          padding: "14px 24px",
-          gap: "8px",
-          borderRadius: "8px",
-          border: "1px solid #9CA3AF",
-          backgroundColor: "transparent",
-          fontFamily: "Inter, sans-serif",
-          fontWeight: 500,
-          fontSize: "1.125rem",
-          lineHeight: 1.3,
-          letterSpacing: 0,
-          color: "#3F83F8",
-          textTransform: "none",
-          "&:hover": {
-            backgroundColor: "#F9FAFB",
-            border: "1px solid #6B7280",
-          },
-        }}
-      >
+      <Button variant="outlined" size="large" fullWidth>
         View Saved Jobs
       </Button>
     </Box>

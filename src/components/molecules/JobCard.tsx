@@ -6,6 +6,8 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
 import ProfileImage from "../atoms/ProfileImage"
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import WalletIcon from '@mui/icons-material/Wallet';
+import { useTheme } from "@mui/material/styles"
+
 interface JobCardProps {
   position: string
   company: string
@@ -29,24 +31,17 @@ export default function JobCard({
   matchPercentage,
   description,
 }: JobCardProps) {
+  const theme = useTheme();
   return (
-    <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: "#FFFFFF", borderRadius: "8px", mb: 3 }}>
+    <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: theme.palette.background.paper, borderRadius: theme.shape.borderRadius, mb: 3 }}>
       {/* Match Percentage */}
       <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-        <Typography
-          sx={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: "0.875rem",
-            color: "#3F83F8",
-            display: "flex",
-            alignItems: "center",
-            gap: 0.5,
-          }}
-        >
-        <Avatar src="/icons/star.svg" sx={{height:"16px",width:"16px"}}>
-        </Avatar> {matchPercentage}% match
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+          <Avatar src="/icons/star.svg" sx={{ height: 16, width: 16, mr: 0.5 }} />
+          <Typography component="span" sx={{ ...theme.typography.body2, color: theme.palette.primary[500], display: "inline-flex", alignItems: "center" }}>
+            {matchPercentage}% match
+          </Typography>
+        </Box>
       </Box>
 
       {/* Job Header */}
@@ -67,12 +62,8 @@ export default function JobCard({
           <Box>
             <Typography
               sx={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 500,
-                fontSize: { xs: "1rem", md: "1.125rem" },
-                lineHeight: 1.3,
-                letterSpacing: 0,
-                color: "#000000",
+                ...theme.typography.h5,
+                color: theme.palette.text.primary,
                 verticalAlign: "middle",
               }}
             >
@@ -81,12 +72,8 @@ export default function JobCard({
             <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, flexWrap: "wrap" }}>
               <Typography
                 sx={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 500,
-                  fontSize: "0.875rem",
-                  lineHeight: 1.5,
-                  letterSpacing: 0,
-                  color: "#111928",
+                  ...theme.typography.body2,
+                  color: theme.palette.text.secondary,
                   verticalAlign: "middle",
                 }}
               >
@@ -94,12 +81,8 @@ export default function JobCard({
               </Typography>
               <Typography
                 sx={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 500,
-                  fontSize: "0.75rem",
-                  lineHeight: 1.5,
-                  letterSpacing: 0,
-                  color: "#4B5563",
+                  ...theme.typography.caption,
+                  color: theme.palette.text.primary,
                   verticalAlign: "middle",
                 }}
               >
@@ -127,31 +110,23 @@ export default function JobCard({
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-          <CalendarMonthOutlinedIcon sx={{ fontSize: 14, color: "#4B5563" }} />
+          <CalendarMonthOutlinedIcon sx={{ fontSize: 14, color: theme.palette.text.primary }} />
           <Typography
             sx={{
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 400,
-              fontSize: "0.875rem",
-              lineHeight: 1.5,
-              letterSpacing: 0,
-              color: "#4B5563",
+              ...theme.typography.body2,
+              color: theme.palette.text.primary,
             }}
           >
             {date}
           </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, background:"#E1EFFE", padding:"4px", borderRadius:"10px" }}>
-          <WalletIcon sx={{ fontSize: 14, color: "#4B5563" }} />
+        <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, background: theme.palette.action.selected, padding: "4px", borderRadius: "10px" }}>
+          <WalletIcon sx={{ fontSize: 14, color: theme.palette.text.primary }} />
           <Typography
             sx={{
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 400,
-              fontSize: "0.875rem",
-              lineHeight: 1.5,
-              letterSpacing: 0,
-              color: "#4B5563",
+              ...theme.typography.body2,
+              color: theme.palette.text.primary,
             }}
           >
             {salary}
@@ -170,12 +145,8 @@ export default function JobCard({
       <Box sx={{ mb: 3 }}>
         <Typography
           sx={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
-            fontSize: "0.875rem",
-            lineHeight: 1.5,
-            letterSpacing: 0,
-            color: "#4B5563",
+            ...theme.typography.subtitle2,
+            color: theme.palette.text.primary,
             mb: 1,
           }}
         >
@@ -183,12 +154,8 @@ export default function JobCard({
         </Typography>
         <Typography
           sx={{
-            fontFamily: "Roboto, sans-serif",
-            fontWeight: 400,
-            fontSize: "0.75rem",
-            lineHeight: 1.4,
-            letterSpacing: 0,
-            color: "#4B5563",
+            ...theme.typography.overline,
+            color: theme.palette.text.primary,
           }}
         >
           {description}
@@ -204,6 +171,8 @@ export default function JobCard({
         }}
       >
         <Button
+          variant="outlined"
+          color="primary"
           sx={{
             width: { xs: "100%", sm: "84px" },
             height: "40px",
@@ -227,6 +196,7 @@ export default function JobCard({
         </Button>
         <Button
           variant="contained"
+          color="primary"
           sx={{
             width: { xs: "100%", sm: "132px" },
             height: "40px",

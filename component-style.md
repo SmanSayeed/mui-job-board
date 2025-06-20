@@ -361,3 +361,494 @@ This file defines all color palettes, typography settings, spacing, breakpoints,
 
 Make sure Cursor is linked to this file to generate consistent components based on your Figma design.
 ```
+
+
+Main body background color: #F3F4F6
+
+Header Part:
+
+Header background color: #fff
+
+Logo:
+
+font-family: Inter;
+font-weight: 600;
+font-size: 32px;
+line-height: 110.00000000000001%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: #4B5563 (gray/60)
+
+Navigation menu:
+
+font-family: Inter;
+font-weight: 600;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+
+color: #4B5563 (gray/60)
+
+Hover:
+
+font-family: Inter;
+font-weight: 600;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+
+color: #3F83F8 (blue/500)
+
+active underline color: #3F83F8
+
+Login button:
+
+width: 90.5;
+height: 40;
+gap: Space/200;
+border-radius: Radius/200;
+padding: Space/300;
+border-width: Stroke/Border;
+
+Background: Transparent
+Hover: primary
+
+Typography:
+
+font-family: Roboto;
+font-weight: 600;
+font-size: Body/Size Medium;
+line-height: 100%;
+letter-spacing: 0%;
+
+color: #303030 (Text/Neutral/Default)
+
+Signup Button:
+
+Background color: #1A56DB
+
+hover: blue-400
+
+layout:
+
+width: 90.5;
+height: 40;
+gap: Space/200;
+border-radius: Radius/200;
+padding: Space/300;
+border-width: Stroke/Border;
+Typography:
+
+font-family: Roboto;
+font-weight: 600;
+font-size: Body/Size Medium;
+line-height: 100%;
+letter-spacing: 0%;
+
+color: #F5F5F5 (Text/Brand/On Brand)
+
+Left sidebar part:
+
+User information:
+
+User name: (Steve Smith):
+
+font-family: Inter;
+font-weight: 600;
+font-size: 26px;
+line-height: 130%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: Steve Smith (gray/900)
+
+Designation: (Graphic Designer)
+
+font-family: Inter;
+font-weight: 400;
+font-size: 16px;
+line-height: 130%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: #111928 (Gray 900)
+
+Badge (Communication,Teamwork etc):
+
+width: 94;
+height: 25;
+padding-top: 0․5;
+padding-right: 3;
+padding-bottom: 0․5;
+padding-left: 3;
+gap: 0;
+border-radius: rounded-md;
+
+background color: #E1EFFE (blue/100)
+
+Typography
+
+font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+text-align: center;
+
+color: #111928 (Gray 900)
+
+Edit profile button:
+
+Type="Secondary";
+Size="Small";
+State="Default";
+Icon only=False;
+Button text="Edit Profile";
+Show right icon=false;
+Show left icon=true;
+Left icon type="Icon";
+
+width: 157;
+height: 37;
+padding-top: 2;
+padding-right: 3;
+padding-bottom: 2;
+padding-left: 3;
+gap: 2;
+border-radius: rounded-lg;
+
+Background color: #F3F4F6 (Gray/100)
+
+Typography:
+
+font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+
+color: #3F83F8 (Primary/500)
+Icon color: #3F83F8 (Primary/500)
+
+Contact card title (General information)
+
+font-family: Inter;
+font-weight: 600;
+font-size: 18px;
+line-height: 130%;
+letter-spacing: 0px;
+vertical-align: middle;
+
+color: #111928 (Gray 900)
+
+Contact info: (ex: [stevesmith@gmail.com](mailto:stevesmith@gmail.com))
+
+font-family: Inter;
+font-weight: 400;
+font-size: 16px;
+line-height: 130%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: #111928 (Gray 900)
+
+My Job Coach title:
+
+font-family: Inter;
+font-weight: 600;
+font-size: 18px;
+line-height: 130%;
+letter-spacing: 0px;
+vertical-align: middle;
+
+color: #111928 (Gray 900)
+
+Coach name: (ex: Anna Brown)
+
+font-family: Inter;
+font-weight: 600;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+
+color: #21272A (CoolGray/900)
+
+Coach designation: (ex: job coach)
+
+font-family: Inter;
+font-weight: 400;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+
+color: CoolGray60: #697077
+
+Coach badges: (HR, IT Recruiter etc)
+
+font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+text-align: center;
+
+color: #111928 (Gray 900)
+
+View saved jobs button:
+
+width: 302;
+height: 51;
+padding-top: 14px;
+padding-right: 24px;
+padding-bottom: 14px;
+padding-left: 24px;
+gap: 2;
+border-radius: rounded-lg;
+border-width: 1px;
+
+background color: #9CA3AF (gray/400)
+
+font-family: Inter;
+font-weight: 500;
+font-size: 18px;
+line-height: 130%;
+letter-spacing: 0%;
+
+Middle section:
+
+Page Content title (Ex: Trending Job Postings):
+
+font-family: Inter;
+font-weight: 600;
+font-size: 26px;
+line-height: 130%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: #4B5563 (gray/60)
+
+Page content sub-title: (Check out recent and trending jobs)
+
+font-family: Inter;
+font-weight: 400;
+font-size: 16px;
+line-height: 130%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: #4B5563 (gray/60)
+
+Job card:
+
+Job post card Position Name: (Ex: Graphic Designer)
+
+font-family: Inter;
+font-weight: 500;
+font-size: 18px;
+line-height: 130%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: #000000
+
+Address (Ex: KNEG AB, )
+
+font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: #111928 Gray/900
+
+Country name (ex: Sweden)
+
+font-family: Inter;
+font-weight: 500;
+font-size: 12px;
+line-height: 150%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: gray/600
+
+Job card badge (Full Time, Hybrid):
+
+font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+text-align: center;
+
+color: (gray/900) #111928
+
+Date:
+
+font-family: Inter;
+font-weight: 400;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+
+color: #4B5563 (Gray/600)
+
+Salary: 100,000 EUR/yr:
+
+font-family: Inter;
+font-weight: 400;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+
+color: #4B5563 (Gray/600)
+
+Tags: (IT, Social etc):
+
+font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+text-align: center;
+
+color: #111928 Gray/900
+
+Content title (Job Overview ):
+
+font-family: Inter;
+font-weight: 600;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+
+color: gray/600
+
+Content: (Lorem ipsum dolor..)
+
+font-family: Roboto;
+font-weight: 400;
+font-size: 12px;
+line-height: 140%;
+letter-spacing: 0%;
+
+color: gray/600
+
+Right Sidebar (Search jobs):
+Search Jobs title:
+
+font-family: Inter;
+font-weight: 600;
+font-size: 24px;
+line-height: 110.00000000000001%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+color: gray/600
+
+search input placeholder:
+
+font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+line-height: 130%;
+letter-spacing: 0%;
+
+color: #76A9FA (blue/400)
+
+Company select option:
+
+font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+line-height: 130%;
+letter-spacing: 0%;
+
+color: gray/600
+
+Sort By select option:
+
+font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+line-height: 130%;
+letter-spacing: 0%;
+
+color: gray/600 
+
+Sort by checkbox options:
+(Highest Match)
+
+font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+line-height: 130%;
+letter-spacing: 0%;
+
+color: #000
+
+Show More options text:
+
+font-family: Inter;
+font-weight: 400;
+font-size: 18px;
+line-height: 130%;
+letter-spacing: 0%;
+
+color: blue/400
+
+Buttons:
+Save and Quick Apply Button group:
+
+Save button:
+
+font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+
+Button layout:
+
+width: 84;
+height: 40;
+padding-top: 2;
+padding-right: 3;
+padding-bottom: 2;
+padding-left: 3;
+gap: 2;
+border-radius: rounded-lg;
+
+background color: gray/100
+
+color: #3F83F8 (Primary/500)
+
+Quick apply button:
+Button layout:
+
+width: 132;
+height: 40;
+padding-top: 2;
+padding-right: 3;
+padding-bottom: 2;
+padding-left: 3;
+gap: 2;
+border-radius: rounded-lg;
+
+Background color: #1A56DB (primary/700 )
+
+typography:
+
+font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+
+color: #fff
