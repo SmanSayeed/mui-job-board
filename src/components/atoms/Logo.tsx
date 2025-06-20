@@ -1,3 +1,4 @@
+"use client"
 import { Typography, useTheme } from "@mui/material";
 import Link from "next/link";
 
@@ -6,6 +7,7 @@ export default function Logo() {
     return ( <>
 
        {/* Logo */}
+       <Link href="/">
        <Typography
               variant="h6"
               component="div"
@@ -18,6 +20,9 @@ export default function Logo() {
             >
               Logo
             </Typography>
+        </Link>
+       
+
  
     </>
     )

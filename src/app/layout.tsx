@@ -27,11 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-      <UserLayout>
-        {children}
-      </UserLayout>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        <UserLayout>
+          {children}
+        </UserLayout>
       </body>
     </html>
   );

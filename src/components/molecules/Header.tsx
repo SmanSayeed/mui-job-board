@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react"
 import {
     AppBar,
@@ -7,7 +8,6 @@ import {
 } from "@mui/material"
 import Logo from "../atoms/Logo"
 import NavItems from "../atoms/NavItems"
-
 export default function Header() {
     const theme = useTheme()
     return (
