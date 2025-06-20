@@ -31,11 +31,8 @@ html {
 
 /* Body styles */
 body {
-  /* Fallback font until MUI theme loads */
-  font-family: var(--font-geist-sans), var(--font-geist-mono), -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-  /* Prevent text size adjustment on mobile */
+  font-family: var(--font-inter), Inter, sans-serif;
   -webkit-text-size-adjust: 100%;
-  /* Ensure background color consistency */
   background-color: #fff;
   color: #000;
 }

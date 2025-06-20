@@ -9,13 +9,14 @@ export default function Logo() {
        {/* Logo */}
        <Link href="/">
        <Typography
-              variant="h6"
+              variant="h1"
               component="div"
               sx={{
                 color: 'text.primary',
-                fontWeight: 700,
-                fontSize: { xs: "1.125rem", md: "1.25rem" },
-                letterSpacing: "-0.01em",
+                fontSize: { xs: "1.125rem", md: "1.5rem" },
+                lineHeight: 1.1,
+                letterSpacing: 0,
+                verticalAlign: "middle",
               }}
             >
               Logo

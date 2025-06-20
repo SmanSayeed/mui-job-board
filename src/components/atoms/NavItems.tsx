@@ -51,7 +51,7 @@ export default function NavItems() {
           key={item.label}
           href={item.href}
           sx={{
-            color: item.isActive ? theme.palette.primary.main : theme.palette.text.primary,
+            color: item.isActive ? theme.palette.action.active : theme.palette.text.primary,
             textTransform: "none",
             fontSize: "0.95rem",
             fontWeight: item.isActive ? 600 : 500,
@@ -60,7 +60,7 @@ export default function NavItems() {
             position: "relative",
             "&:hover": {
               backgroundColor: "transparent",
-              color: theme.palette.primary.main,
+              color: theme.palette.action.hover,
             },
             "&::after": item.isActive
               ? {
@@ -71,7 +71,7 @@ export default function NavItems() {
                   transform: "translateX(-50%)",
                   width: "100%",
                   height: "2px",
-                  backgroundColor: theme.palette.primary.main,
+                  backgroundColor: theme.palette.action.active,
                 }
               : {},
           }}
@@ -127,7 +127,7 @@ export default function NavItems() {
                 primary={item.label}
                 primaryTypographyProps={{
                   fontSize: "1rem",
-                  fontWeight: item.isActive ? 600 : 500,
+                  fontWeight: item.isActive ? 600 : 600,
                 }}
               />
             </ListItemButton>
@@ -144,10 +144,10 @@ export default function NavItems() {
             justifyContent: "flex-start",
             textTransform: "none",
             fontSize: "1rem",
-            fontWeight: 500,
+            fontWeight: 600,
             py: 1.5,
             "&:hover": {
-              backgroundColor: "transparent",
+              backgroundColor: theme.palette.action.hover,
               color: theme.palette.primary.main,
             },
           }}
@@ -163,10 +163,11 @@ export default function NavItems() {
             textTransform: "none",
             fontSize: "1rem",
             fontWeight: 500,
+            fontFamily: 'Roboto, sans-serif',
             py: 1.5,
             borderRadius: "6px",
             "&:hover": {
-              backgroundColor: theme.palette.primary.dark,
+              backgroundColor: theme.palette.action.hover,
             },
           }}
         >
@@ -183,12 +184,13 @@ export default function NavItems() {
           color: theme.palette.text.primary,
           textTransform: "none",
           fontSize: "0.95rem",
-          fontWeight: 500,
+          fontWeight: 600,
+          fontFamily: 'Roboto, sans-serif',
           padding: "8px 16px",
           minWidth: "auto",
           "&:hover": {
             backgroundColor: "transparent",
-            color: theme.palette.primary.main,
+            color:"#303030",
           },
         }}
       >
@@ -198,16 +200,17 @@ export default function NavItems() {
         variant="contained"
         sx={{
           backgroundColor: theme.palette.primary.main,
-          color: "white",
+          color: "#F5F5F5",
           textTransform: "none",
           fontSize: "0.95rem",
-          fontWeight: 500,
-          borderRadius: "6px",
+          fontWeight: 600,
+          fontFamily: 'Roboto, sans-serif',
+          borderRadius: "8px",
           padding: "10px 20px",
           minWidth: "auto",
           boxShadow: "none",
           "&:hover": {
-            backgroundColor: theme.palette.primary.dark,
+            backgroundColor:  theme.palette.action.hover,
             boxShadow: "0px 2px 4px rgba(25, 118, 210, 0.2)",
           },
         }}
