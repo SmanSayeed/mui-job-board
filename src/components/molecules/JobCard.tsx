@@ -4,7 +4,8 @@ import JobTypeBadge from "../atoms/JobTypeBadge"
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday"
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
 import ProfileImage from "../atoms/ProfileImage"
-
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import WalletIcon from '@mui/icons-material/Wallet';
 interface JobCardProps {
   position: string
   company: string
@@ -43,7 +44,8 @@ export default function JobCard({
             gap: 0.5,
           }}
         >
-          🔥 {matchPercentage}% match
+        <Avatar src="/icons/star.svg" sx={{height:"16px",width:"16px"}}>
+        </Avatar> {matchPercentage}% match
         </Typography>
       </Box>
 
@@ -125,7 +127,7 @@ export default function JobCard({
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-          <CalendarTodayIcon sx={{ fontSize: 14, color: "#4B5563" }} />
+          <CalendarMonthOutlinedIcon sx={{ fontSize: 14, color: "#4B5563" }} />
           <Typography
             sx={{
               fontFamily: "Inter, sans-serif",
@@ -141,7 +143,7 @@ export default function JobCard({
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, background:"#E1EFFE", padding:"4px", borderRadius:"10px" }}>
-          <AttachMoneyIcon sx={{ fontSize: 14, color: "#4B5563" }} />
+          <WalletIcon sx={{ fontSize: 14, color: "#4B5563" }} />
           <Typography
             sx={{
               fontFamily: "Inter, sans-serif",
