@@ -1,9 +1,12 @@
 "use client"
 import { Button } from "@mui/material"
+import Link from "next/link"
 
 export default function SignupButton() {
   return (
     <Button
+      component={Link}
+      href="/signup"
       variant="contained"
       sx={{
         minWidth: { xs: "70px", md: "90.5px" },

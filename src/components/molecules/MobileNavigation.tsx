@@ -17,6 +17,8 @@ import CloseIcon from "@mui/icons-material/Close"
 import Link from "next/link"
 import LoginButton from "../atoms/LoginButton"
 import SignupButton from "../atoms/SignupButton"
+import { useAuth } from "@/hooks/useAuth"
+import { AuthIcons } from "./AuthButtons"
 
 const navigationItems = [
   { label: "Home", href: "/" },
@@ -28,6 +30,8 @@ const navigationItems = [
 export default function MobileNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const { getUser } = useAuth();
+  const user = getUser();
 
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen)
@@ -109,8 +113,7 @@ export default function MobileNavigation() {
         </List>
         <Divider sx={{ mt: 2 }} />
         <Box sx={{ p: 2, display: "flex", flexDirection: "column", gap: 2 }}>
-          <LoginButton />
-          <SignupButton />
+          {user ? <AuthIcons /> : <><LoginButton /><SignupButton /></>}
         </Box>
       </Drawer>
     </>

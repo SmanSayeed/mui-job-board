@@ -1,9 +1,12 @@
 "use client"
 import { Button } from "@mui/material"
+import Link from "next/link"
 
 export default function LoginButton() {
   return (
-    <Button
+    <>
+        <Link href="/login">
+        <Button
       sx={{
         minWidth: { xs: "70px", md: "90.5px" },
         height: "40px",
@@ -25,5 +28,8 @@ export default function LoginButton() {
     >
       Login
     </Button>
+        </Link>
+    </>
+   
   )
 }

@@ -21,7 +21,7 @@ export default function UserProfile() {
   return (
     <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: "#FFFFFF", borderRadius: "8px", mb: 3 }}>
       {/* User Avatar and Info */}
-      <Box sx={{ display: "flex", alignItems: "center", mb: 2, flexDirection: { xs: "column", sm: "row" } }}>
+      <Box sx={{ display: "flex", alignItems: "start", mb: 2, flexDirection: { xs: "column", sm: "column" } }}>
       <ProfileImage src="/profile1.jpg" profileVariant="job_profile_image" />
         <Box sx={{ textAlign: { xs: "center", sm: "left" } }}>
           <Typography
