@@ -1,0 +1,84 @@
+/*
+ * Global CSS for Next.js with Material UI
+ * Purpose: Minimal resets and app-wide styles to complement MUI's CssBaseline
+ */
+
+/* Box-sizing reset for all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins and padding */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* Ensure full height for layout */
+  min-height: 100vh;
+  /* Smooth scrolling for anchor links */
+  scroll-behavior: smooth;
+}
+
+/* Root element styles */
+html {
+  /* Base font size for rem units (adjustable via MUI theme) */
+  font-size: 16px;
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+}
+
+/* Body styles */
+body {
+  /* Fallback font until MUI theme loads */
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  /* Prevent text size adjustment on mobile */
+  -webkit-text-size-adjust: 100%;
+  /* Ensure background color consistency */
+  background-color: #fff;
+  color: #000;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Normalize anchor tags */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Improve accessibility for focus states */
+:focus {
+  outline: 2px solid #1976d2; /* Match MUI primary color */
+  outline-offset: 2px;
+}
+
+/* Remove default button styles */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Prevent horizontal scrollbars */
+@media (max-width: 600px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
