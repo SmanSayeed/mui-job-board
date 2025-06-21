@@ -18,7 +18,7 @@ import Link from "next/link"
 import CButton from '../atoms/CButton'
 import { useAuth } from "@/hooks/useAuth"
 import { AuthIcons } from "./AuthButtons"
-import Button from '@mui/material/Button'
+import LoginButton from '../atoms/LoginButton'
 
 const navigationItems = [
   { label: "Home", href: "/" },
@@ -113,7 +113,12 @@ export default function MobileNavigation() {
         </List>
         <Divider sx={{ mt: 2 }} />
         <Box sx={{ p: 2, display: "flex", flexDirection: "column", gap: 2 }}>
-          {user ? <AuthIcons /> : <><Button variant="text" color="inherit" sx={{ fontFamily: 'Roboto, sans-serif', fontWeight: 600, fontSize: 14, lineHeight: 1, color: '#303030', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { color: '#3F83F8', background: 'none' } }}>Login</Button><CButton variant="signup">Signup</CButton></>}
+          {user ? <AuthIcons /> : (
+            <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, width: '100%' }}>
+              <LoginButton size="small" variant="outlined" fullWidth  />
+              <CButton variant="signup" size="small" fullWidth >Signup</CButton>
+            </Box>
+          )}
         </Box>
       </Drawer>
     </>

@@ -16,6 +16,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ProfileMenu from './ProfileMenu';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import { ButtonProps } from '@mui/material/Button';
+import LoginButton from '../atoms/LoginButton';
 
 export function AuthIcons() {
   const { logout } = useAuth();
@@ -50,15 +52,7 @@ export default function AuthButtons() {
 
   return (
     <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2, alignItems: "center" }}>
-      <Button
-        component={Link}
-        href="/login"
-        variant="text"
-        color="inherit"
-        sx={{ fontFamily: 'Roboto, sans-serif', fontWeight: 600, fontSize: 14, lineHeight: 1, color: '#303030', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { color: '#3F83F8', background: 'none' } }}
-      >
-        Login
-      </Button>
+      <LoginButton />
       <CButton variant="signup">Signup</CButton>
     </Box>
   )

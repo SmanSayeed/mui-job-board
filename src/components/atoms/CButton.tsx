@@ -11,11 +11,12 @@ export type CButtonVariant =
 
 interface CButtonProps extends Omit<ButtonProps, 'variant'> {
   variant: CButtonVariant;
+  fullWidth?: boolean;
 }
 
 const CButton: React.FC<CButtonProps> = ({ variant, children, ...props }) => {
   return (
-    <Button variant={variant as any} {...props}>
+    <Button variant={variant as any} {...props} fullWidth={props.fullWidth}>
       {children}
     </Button>
   );
