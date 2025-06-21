@@ -1,7 +1,7 @@
 "use client"
 import type React from "react"
 import { useState } from "react"
-
+import sidebarItems from "@/lib/sidebarItems"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import {
@@ -47,92 +47,7 @@ interface SidebarItem {
   children?: SidebarItem[]
 }
 
-const sidebarItems: SidebarItem[] = [
-  {
-    id: "dashboard",
-    label: "Dashboard",
-    icon: <DashboardIcon />,
-    href: "/dashboard",
-  },
-  {
-    id: "explore",
-    label: "Explore",
-    icon: <ExploreIcon />,
-    href: "/explore",
-  },
-  {
-    id: "job-listings",
-    label: "Job Listings",
-    icon: <WorkIcon />,
-    children: [
-      { id: "job", label: "Job", icon: null, href: "/dashboard/jobs" },
-      { id: "extra-job", label: "Extra Job", icon: null, href: "/dashboard/extra-jobs" },
-      { id: "freelance", label: "Freelance", icon: null, href: "/dashboard/freelance" },
-    ],
-  },
-  {
-    id: "participants",
-    label: "Participants",
-    icon: <PeopleIcon />,
-    href: "/dashboard/participants",
-  },
-  {
-    id: "companies",
-    label: "Companies",
-    icon: <BusinessIcon />,
-    href: "/dashboard/companies",
-  },
-  {
-    id: "orders",
-    label: "Orders",
-    icon: <OrdersIcon />,
-    href: "/dashboard/orders",
-  },
-  {
-    id: "workmatch-tasks",
-    label: "WorkMatch Tasks",
-    icon: <TasksIcon />,
-    href: "/dashboard/tasks",
-  },
-  {
-    id: "analytics",
-    label: "Analytics",
-    icon: <AnalyticsIcon />,
-    href: "/dashboard/analytics",
-  },
-  {
-    id: "calendar",
-    label: "Calendar",
-    icon: <CalendarIcon />,
-    href: "/dashboard/calendar",
-  },
-  {
-    id: "payments",
-    label: "Payments",
-    icon: <PaymentIcon />,
-    href: "/dashboard/payments",
-  },
-  {
-    id: "messages",
-    label: "Messages",
-    icon: <MessageIcon />,
-    href: "/dashboard/messages",
-    badge: 5,
-  },
-  {
-    id: "notifications",
-    label: "Notifications",
-    icon: <NotificationsIcon />,
-    href: "/dashboard/notifications",
-    badge: 3,
-  },
-  {
-    id: "contact-us",
-    label: "Contact Us",
-    icon: <ContactIcon />,
-    href: "/dashboard/contact",
-  },
-]
+
 
 interface DashboardSidebarProps {
   open: boolean
@@ -148,32 +63,34 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
     setExpandedItems((prev) => (prev.includes(itemId) ? prev.filter((id) => id !== itemId) : [...prev, itemId]))
   }
 
+  const isChildActive = (child: SidebarItem) => {
+    if (child.href && pathname === child.href) return true;
+    if (child.children) return child.children.some(isChildActive);
+    return false;
+  };
+
   const renderSidebarItem = (item: SidebarItem, level = 0) => {
     const isExpanded = expandedItems.includes(item.id)
-    const isActive = pathname === item.href
     const hasChildren = item.children && item.children.length > 0
+    const isActive =
+      pathname === item.href ||
+      (hasChildren && (item.children?.some(isChildActive) || isExpanded));
 
     const listItemButtonProps: any = {
       component: item.href && !hasChildren ? Link : "div",
       onClick: hasChildren ? () => handleExpandClick(item.id) : undefined,
       selected: isActive,
       sx: {
-        pl: 2 + level * 2,
-        py: 1,
-        "&.Mui-selected": {
-          backgroundColor: "#E3F2FD",
-          // borderRight: "3px solid #1976D2",
-          borderRight:"none",
-          "& .MuiListItemText-primary": {
-            color: "#1976D2",
-            fontWeight: 600,
-          },
-          "& .MuiListItemIcon-root": {
-            color: "#1976D2",
-          },
+        pl: 0,
+        py: 0,
+        height: '45px',
+        mb: '16px',
+        backgroundColor: 'transparent',
+        '&.Mui-selected': {
+          backgroundColor: 'transparent',
         },
-        "&:hover": {
-          backgroundColor: "#F5F5F5",
+        '&:hover': {
+          backgroundColor: '#F5F5F5',
         },
       },
     };
@@ -183,33 +100,52 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
 
     return (
       <Box key={item.id}>
-        <ListItem disablePadding>
+        <ListItem disablePadding sx={{ height: '45px', mb: '16px' }}>
           <ListItemButton {...listItemButtonProps}>
-            {item.icon && (
-              <ListItemIcon
+            {isActive && (
+              <Box
                 sx={{
-                  minWidth: 40,
-                  color: isActive ? "#1976D2" : "#6B7280",
+                  width: 6,
+                  height: 45,
+                  borderTopRightRadius: 10,
+                  borderBottomRightRadius: 10,
+                  backgroundColor: '#1A56DB',
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
                 }}
-              >
-                {item.badge ? (
-                  <Badge badgeContent={item.badge} color="error" variant="dot">
-                    {item.icon}
-                  </Badge>
-                ) : (
-                  item.icon
-                )}
-              </ListItemIcon>
+              />
             )}
-            <ListItemText
-              primary={item.label}
-              primaryTypographyProps={{
-                fontSize: "0.875rem",
-                fontWeight: isActive ? 600 : 400,
-                color: isActive ? "#1976D2" : "#374151",
-              }}
-            />
-            {hasChildren && (isExpanded ? <ExpandLess /> : <ExpandMore />)}
+            <Box sx={{ display: 'flex', alignItems: 'center', pl: isActive ? '18px' : '24px', width: '100%' }}>
+              {item.icon && (
+                <ListItemIcon
+                  sx={{
+                    minWidth: 40,
+                    color: isActive ? '#1A56DB' : '#6B7280',
+                  }}
+                >
+                  {item.badge ? (
+                    <Badge badgeContent={item.badge} color="error" variant="dot">
+                      {item.icon}
+                    </Badge>
+                  ) : (
+                    item.icon
+                  )}
+                </ListItemIcon>
+              )}
+              <ListItemText
+                primary={item.label}
+                primaryTypographyProps={{
+                  fontSize: '16px',
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: 500,
+                  lineHeight: 1.3,
+                  letterSpacing: 0,
+                  color: isActive ? '#1A56DB' : '#374151',
+                }}
+              />
+              {hasChildren && (isExpanded ? <ExpandLess /> : <ExpandMore />)}
+            </Box>
           </ListItemButton>
         </ListItem>
         {hasChildren && (
