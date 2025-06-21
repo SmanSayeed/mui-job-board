@@ -14,7 +14,7 @@ export default function LeftSidebar() {
     <Box
       sx={{
         width: { xs: 260, sm: 280, lg: 320 },
-        p: { xs: 2, md: 3 },
+        p: { xs: 2, md: 3, lg: 0 },
         backgroundColor: theme.palette.background.paper,
         borderRadius: { xs: 2, lg: theme.shape.borderRadius },
         minHeight: { xs: '100vh', lg: 'auto' },
