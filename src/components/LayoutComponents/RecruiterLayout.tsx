@@ -52,15 +52,16 @@ export default function RecruiterLayout({
           {/* Desktop Permanent Drawer */}
           <DashboardSidebar open={true} onClose={() => {}} variant="permanent" />
         </Box>
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh', overflowX: { xs: 'auto', sm: 'visible' } }}>
           <Container
             maxWidth="xl"
             sx={{
-              px: { xs: 0, sm: 2, md: 3, lg: 4 },
+              px: { xs: 2, sm: 2, md: 3, lg: 4 },
               mx: { xs: 0, sm: 'auto' },
               my: { xs: 2, md: 3 },
               flex: 1,
               width: '100%',
+              minWidth: 0,
             }}
           >
             <Box

@@ -11,7 +11,7 @@ export default function LeftSidebar() {
         width: { xs: 260, sm: 280, lg: 320 },
         p: { xs: 2, md: 3, lg: 0 },
         backgroundColor: "none",
-        borderRadius: { xs: 2, lg: (theme) => theme.shape.borderRadius },
+        borderRadius: { xs: 2, lg: 4 },
         minHeight: { xs: '100vh', lg: 'auto' },
         boxShadow: { xs: 1, lg: 'none' },
         display: 'flex',

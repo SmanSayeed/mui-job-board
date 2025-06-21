@@ -29,7 +29,15 @@ export default function RecruiterDashboardContentLayout({
 
     return (
         <>
-            <Box sx={{ display: "flex", minHeight: "100vh", width: "100%" }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flex: 1,
+                    minHeight: 0,
+                    flexDirection: { xs: 'column', sm: 'row' },
+                    px: { xs: 2, sm: 0 },
+                }}
+            >
                 {/* Main Content */}
                 <Box
                     component="main"

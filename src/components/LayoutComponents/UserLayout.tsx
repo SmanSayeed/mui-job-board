@@ -1,7 +1,7 @@
 "use client"
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter"
 import type React from "react"
-import React, { useState } from "react"
+import { useState } from "react"
 import { Box, Container, Drawer, Button, useTheme, useMediaQuery } from "@mui/material"
 import theme from "@/lib/theme"
 import Header from "../organisms/Header"
@@ -50,13 +50,21 @@ export default function UserLayout({
           </Box>
         </Drawer>
       </Box>
-      <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2 }, my: 3, mx: 2 }}>
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 2, md: 3, lg: 4 }, my: { xs: 2, md: 3 }, mx: { xs: 0, sm: 'auto' }, flex: 1, width: '100%', minWidth: 0 }}>
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", lg: "row" },
-            gap: { xs: 0, lg: 2 },
+            gap: { xs: 2, md: 3, lg: 4 },
             py: { xs: 1, md: 2 },
+            width: '100%',
+            minWidth: 0,
+            overflowX: { xs: 'auto', sm: 'visible' },
+            '& > *': {
+              width: { xs: '100%', sm: '100%', md: '100%' },
+              maxWidth: { xs: '100%', sm: '100%', md: '100%' },
+              minWidth: 0,
+            },
           }}
         >
           {/* Desktop-only: LeftSidebar */}
