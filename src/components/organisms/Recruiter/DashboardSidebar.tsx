@@ -162,7 +162,7 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
         py: 1,
         "&.Mui-selected": {
           backgroundColor: "#E3F2FD",
-          borderRight: "3px solid #1976D2",
+          // borderRight: "3px solid #1976D2",
           "& .MuiListItemText-primary": {
             color: "#1976D2",
             fontWeight: 600,
@@ -227,7 +227,7 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
       <Box sx={{ p: 2 }}>
       <Logo type={"recruiter"} />
       </Box>
-      <Divider />
+  
       <List sx={{ pt: 1 }}>{sidebarItems.map((item) => renderSidebarItem(item))}</List>
     </Box>
   )

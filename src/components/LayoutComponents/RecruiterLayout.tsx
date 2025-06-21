@@ -1,6 +1,9 @@
 "use client"
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter"
 import type React from "react"
+import { useEffect } from "react"
+import { useAuth } from "@/hooks/useAuth"
+import { useRouter } from "next/navigation"
 
 import { ThemeProvider, CssBaseline, Box, Container } from "@mui/material"
 import theme from "@/lib/theme"
@@ -16,6 +19,15 @@ export default function RecruiterLayout({
   children: React.ReactNode
 }>) {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { getUser } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    const user = getUser()
+    if (!user || user.role !== 'recruiter') {
+      router.replace('/login')
+    }
+  }, [getUser, router])
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)

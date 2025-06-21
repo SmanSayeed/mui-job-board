@@ -12,10 +12,7 @@ export default function RecruiterJobListTemplate() {
   
   return (
   <>
-   
           <DashboardTemplate />
-          <RightSidebar />
-       
   </>
     
 

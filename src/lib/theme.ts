@@ -428,6 +428,36 @@ const theme = createTheme({
             },
           },
         },
+        // New Job button variant
+        {
+          props: { 'data-newjob': 'true' },
+          style: {
+            width: "156px",
+            height: "52px",
+            paddingTop: "14px",
+            paddingRight: "24px",
+            paddingBottom: "14px",
+            paddingLeft: "24px",
+            borderRadius: "8px",
+            backgroundColor: "#1A56DB",
+            color: "#FFFFFF",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "18px",
+            lineHeight: 1.3,
+            letterSpacing: 0,
+            textTransform: "none",
+            boxShadow: "none",
+            gap: 16, // theme.spacing(2)
+            '& .MuiButton-startIcon, & .MuiSvgIcon-root': {
+              color: '#fff',
+            },
+            '&:hover': {
+              backgroundColor: "#1E40AF",
+              boxShadow: "none",
+            },
+          },
+        },
       ],
     },
     // Badge/Chip styles for skills, job types, etc.
@@ -833,6 +863,12 @@ declare module '@mui/material/styles' {
     jobMetaApply?: React.CSSProperties;
     jobMetaCompany?: React.CSSProperties;
     jobMetaSalary?: React.CSSProperties;
+  }
+}
+
+declare module '@mui/material/Button' {
+  interface ButtonProps {
+    newjob?: boolean;
   }
 }
 

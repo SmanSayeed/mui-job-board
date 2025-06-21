@@ -5,7 +5,7 @@ import SignupButton from "../atoms/SignupButton"
 import ProfileImage from "../atoms/ProfileImage"
 import { useAuth } from "@/hooks/useAuth"
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import SettingsIcon from '@mui/icons-material/Settings';
+
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import React from "react"
 import { useRouter } from "next/navigation"
@@ -15,9 +15,12 @@ import { useTheme } from "@mui/material/styles"
 import RoundedIconButton from '@/components/atoms/RoundedIconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ProfileMenu from './ProfileMenu';
+import SettingsIcon from '@mui/icons-material/Settings';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
-export function AuthIcons() {
-  const { logout } = useAuth();
+export function RecruiterAuthButtons() {
+  const { getUser, logout } = useAuth();
+  const user = getUser();
   const router = useRouter();
   const theme = useTheme();
 
@@ -26,10 +29,14 @@ export function AuthIcons() {
     router.refresh();
   };
 
+  if (!user || user.role !== 'recruiter') {
+    return null;
+  }
+
   return (
     <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-      <RoundedIconButton icon={<CalendarTodayIcon />} color="blue" sizeVariant="mid" />
-      <RoundedIconButton icon={<SmsIcon />} color="blue" sizeVariant="mid" />
+      <RoundedIconButton icon={<SettingsIcon />} color="blue" sizeVariant="mid" />
+      <RoundedIconButton icon={<NotificationsNoneIcon />} color="blue" sizeVariant="mid" />
       <ProfileMenu
         src="/profile1.jpg"
         profileVariant="job_profile_image"
@@ -37,20 +44,4 @@ export function AuthIcons() {
       />
     </Box>
   );
-}
-
-export default function AuthButtons() {
-  const { getUser } = useAuth();
-  const user = getUser();
-
-  if (user) {
-    return <AuthIcons />;
-  }
-
-  return (
-    <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2, alignItems: "center" }}>
-      <LoginButton />
-      <SignupButton />
-    </Box>
-  )
 }
