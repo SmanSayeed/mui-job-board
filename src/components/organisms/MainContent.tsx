@@ -11,8 +11,10 @@ export default function MainContent() {
     <Box
       sx={{
         flex: 1,
+        minWidth: 0,
+        width: '100%',
         p: { xs: 1, md: 3 },
-        maxWidth: { xs: "100%", lg: "calc(100% - 640px)" },
+        maxWidth: { xs: '100%', sm: '100%' },
       }}
     >
       {/* Page Title */}
