@@ -13,10 +13,12 @@ import {
 } from "@mui/material"
 import type React from "react"
 import { useState } from "react"
+import { useTheme } from '@mui/material/styles';
 import JobListingTitle from "@/components/atoms/JobListingTitle"
 import JobListingToolbar from "@/components/molecules/JobListingToolbar"
 import JobListingTableRow from "@/components/molecules/JobListingTableRow"
 import mockJobListingsData from "@/lib/jobListingRecruiterData"
+import SearchInput from "@/components/atoms/SearchInput"
 
 interface JobListing {
   id: string
@@ -42,6 +44,7 @@ export default function JobListingsTable({
   showFilters = true,
   itemsPerPage = 3,
 }: JobListingsTableProps) {
+  const theme = useTheme();
   // Filter states
   const [jobStatus, setJobStatus] = useState("all")
   const [jobType, setJobType] = useState("all")
@@ -96,19 +99,31 @@ export default function JobListingsTable({
     setCurrentPage(page)
   }
 
+  // Define columns for the table header
+  const columns = [
+    { id: 'jobTitle', label: 'Job Title' },
+    { id: 'jobType', label: 'Job Type' },
+    { id: 'datePosted', label: 'Date Posted' },
+    { id: 'applicants', label: 'Applicants' },
+    { id: 'views', label: 'Views' },
+    { id: 'actions', label: 'Actions', align: 'right' },
+  ];
+
   return (
     <Paper sx={{
       width: 1137,
       height: 'auto',
       borderRadius: '12px',
-      background: '#fff',
+      background: theme.jobListingTable.tableHeadBg,
       p: '20px 0',
       display: 'flex',
       flexDirection: 'column',
       gap: '20px',
       boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)',
       overflowX: 'hidden',
+      border: `1px solid ${theme.jobListingTable.border}`,
     }}>
+     
       <Box sx={{ px: 3 }}>
         <JobListingTitle>{title}</JobListingTitle>
       </Box>
@@ -130,14 +145,21 @@ export default function JobListingsTable({
       <TableContainer sx={{ flex: 1, background: 'transparent', boxShadow: 'none', borderRadius: 0, width: '100%', overflowX: 'hidden' }}>
         <Table sx={{ width: '100%', tableLayout: 'fixed' }}>
           <TableHead>
-            <TableRow sx={{ backgroundColor: '#F9FAFB' }}>
+            <TableRow sx={{ backgroundColor: theme.table.headerBg }}>
               <TableCell padding="checkbox" />
-              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Job Title</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Job Type</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Date Posted</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Applicants</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Views</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }} align="right">Actions</TableCell>
+              {columns.map((col) => (
+                <TableCell
+                  key={col.id}
+                  align={col.align as 'right' | 'center' | 'left' | 'inherit' | 'justify' | undefined}
+                  sx={{
+                    ...theme.typography.subtitle2,
+                    color: theme.table.headerText,
+                    backgroundColor: 'inherit',
+                  }}
+                >
+                  {col.label}
+                </TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -155,7 +177,7 @@ export default function JobListingsTable({
             ) : null}
             {/* Add empty rows if needed */}
             {emptyRows > 0 && Array.from({ length: emptyRows }).map((_, idx) => (
-              <TableRow key={`empty-row-${idx}`} sx={{ borderBottom: '1px solid #E5E7EB', height: 53 }}>
+              <TableRow key={`empty-row-${idx}`} sx={{ borderBottom: `1px solid ${theme.jobListingTable.border}`, height: 53 }}>
                 <TableCell padding="checkbox" />
                 <TableCell />
                 <TableCell />

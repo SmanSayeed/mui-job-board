@@ -42,6 +42,7 @@ export default function RecruiterHeader({ type = 'user', onSidebarOpen }: Header
           onChange={e => setSearch(e.target.value)}
           size="small"
           sx={{ minWidth: 200 }}
+          colorVariant="blue"
         />
       </Box>
       <NewJobButton />
@@ -99,6 +100,7 @@ export default function RecruiterHeader({ type = 'user', onSidebarOpen }: Header
           onChange={e => setSearch(e.target.value)}
           size="small"
           sx={{ minWidth: 200 }}
+          colorVariant="blue"
         />
         <NewJobButton />
         {isRecruiter ? <RecruiterAuthButtons /> : <><LoginButton /><SignupButton /></>}

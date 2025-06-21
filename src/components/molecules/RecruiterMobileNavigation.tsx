@@ -124,6 +124,7 @@ export default function RecruiterMobileNavigation() {
             onChange={e => setSearch(e.target.value)}
             size="small"
             sx={{ minWidth: 200 }}
+            colorVariant="blue"
           />
           <NewJobButton />
           {isRecruiter ? <RecruiterAuthButtons /> : <><LoginButton /><SignupButton /></>}

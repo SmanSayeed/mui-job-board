@@ -798,6 +798,26 @@ const theme = createTheme({
       },
     },
   },
+  jobListingTable: {
+    rowHover: '#E5E7EB', // gray/200
+    rowText: '#1F2937', // gray/800
+    actionButtonBg: '#F3F4F6', // gray/100
+    actionButtonHover: '#E5E7EB', // gray/200
+    actionButtonIcon: '#1F2937', // gray/800
+    tableHeadBg: '#F9FAFB', // gray/50
+    tableHeadText: '#374151', // gray/700
+    border: '#E5E7EB', // gray/200
+  },
+  table: {
+    headerBg: '#E5E7EB', // gray/200
+    headerText: '#4B5563', // gray/600
+    rowText: '#1F2937', // gray/800
+    border: '#E5E7EB', // gray/200
+    rowHover: '#F3F4F6', // gray/100
+    actionButtonBg: '#F3F4F6',
+    actionButtonHover: '#E5E7EB',
+    actionButtonIcon: '#1F2937',
+  },
 })
 
 // Extend the theme interface to include custom colors
@@ -869,6 +889,53 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/Button' {
   interface ButtonProps {
     newjob?: boolean;
+  }
+}
+
+declare module '@mui/material/styles' {
+  interface Theme {
+    jobListingTable: {
+      rowHover: string;
+      rowText: string;
+      actionButtonBg: string;
+      actionButtonHover: string;
+      actionButtonIcon: string;
+      tableHeadBg: string;
+      tableHeadText: string;
+      border: string;
+    }
+    table: {
+      headerBg: string;
+      headerText: string;
+      rowText: string;
+      border: string;
+      rowHover: string;
+      actionButtonBg: string;
+      actionButtonHover: string;
+      actionButtonIcon: string;
+    }
+  }
+  interface ThemeOptions {
+    jobListingTable?: {
+      rowHover?: string;
+      rowText?: string;
+      actionButtonBg?: string;
+      actionButtonHover?: string;
+      actionButtonIcon?: string;
+      tableHeadBg?: string;
+      tableHeadText?: string;
+      border?: string;
+    }
+    table?: {
+      headerBg?: string;
+      headerText?: string;
+      rowText?: string;
+      border?: string;
+      rowHover?: string;
+      actionButtonBg?: string;
+      actionButtonHover?: string;
+      actionButtonIcon?: string;
+    }
   }
 }
 

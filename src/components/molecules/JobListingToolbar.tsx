@@ -35,6 +35,7 @@ export default function JobListingToolbar({
         onChange={e => onSearchChange(e.target.value)}
         size="small"
         sx={{ minWidth: 240 }}
+        colorVariant="gray"
       />
     </Box>
   );
