@@ -198,15 +198,16 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
       variant="permanent"
       sx={{
         display: { xs: "none", md: "block" },
-        "& .MuiDrawer-paper": {
-          boxSizing: "border-box",
+        '& .MuiDrawer-paper': {
+          boxSizing: 'border-box',
           width: DRAWER_WIDTH,
-          position: "fixed",
+          position: 'fixed',
           left: 0,
-          top: { xs: '56px', md: '64px' },
-          height: { xs: 'calc(100vh - 56px)', md: 'calc(100vh - 64px)' },
-          overflowY: "auto",
-          borderRight: "none",
+          top: 'var(--header-height, 64px)',
+          height: 'calc(100vh - var(--header-height, 64px))',
+          overflowY: 'auto',
+          overflowX: 'hidden',
+          borderRight: 'none',
         },
       }}
       open
