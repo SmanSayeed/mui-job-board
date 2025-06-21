@@ -53,7 +53,7 @@ export default function RecruiterLayout({
           <DashboardSidebar open={true} onClose={() => {}} variant="permanent" />
         </Box>
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2 }, my: 3, mx: 2, flex: 1 }}>
+          <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2 }, my: 3, mx: 2, flex: 1}}>
             <Box
               sx={{
                 display: "flex",

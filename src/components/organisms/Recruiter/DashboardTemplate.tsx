@@ -15,7 +15,7 @@ export default function DashboardTemplate() {
 
   return (
     <>
-     <Box sx={{ display: "flex", minHeight: "100vh", backgroundColor: "#F9FAFB" }}>
+     <Box sx={{ display: "flex", minHeight: "100vh", width:"100%"}}>
    
 
       {/* Main Content */}
@@ -23,7 +23,7 @@ export default function DashboardTemplate() {
         component="main"
         sx={{
           flexGrow: 1,
-          width: { md: "calc(100% - 240px)" },
+          flex: 1,
           minHeight: "100vh",
         }}
       >

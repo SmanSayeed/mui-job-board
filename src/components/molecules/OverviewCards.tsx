@@ -1,7 +1,10 @@
 "use client"
 import { Box, Typography, Card, CardContent } from "@mui/material"
 import type React from "react"
-
+import type { ReactElement } from "react"
+import RoundedIconButton from "../atoms/RoundedIconButton"
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import {
   Description as ApplicationsIcon,
   Visibility as ViewsIcon,
@@ -13,71 +16,126 @@ interface OverviewCardProps {
   title: string
   value: number
   change: string
-  icon: React.ReactNode
+  icon: ReactElement
   color: string
-  backgroundColor: string
+  backgroundColor: string,
+  trending: "up" | "down"
 }
 
-function OverviewCard({ title, value, change, icon, color, backgroundColor }: OverviewCardProps) {
-  const isPositive = change.startsWith("+")
+// Map the color hex to the RoundedIconButton color prop
+const colorHexToVariant = (color: string) => {
+  switch (color) {
+    case "#F59E0B": return "yellow";
+    case "#10B981": return "green";
+    case "#8B5CF6": return "purple";
+    case "#EC4899": return "pink";
+    default: return "blue";
+  }
+}
+
+function OverviewCard({ title, value, change, trending, icon, color, backgroundColor }: OverviewCardProps) {
+  // Figma colors
+  const gray500 = "#6B7280";
+  const gray800 = "#1F2937";
+  const roundedColor = colorHexToVariant(color);
 
   return (
     <Card
       sx={{
+        width: 266.25,
+        height: 119,
         borderRadius: "12px",
+        background: "#fff",
         boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1)",
         border: "1px solid #E5E7EB",
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        gap: 2,
+        p: 0,
       }}
     >
-      <CardContent sx={{ p: 3 }}>
-        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 2 }}>
-          <Box
-            sx={{
-              width: 48,
-              height: 48,
-              borderRadius: "12px",
-              backgroundColor,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Box sx={{ color, fontSize: "24px" }}>{icon}</Box>
-          </Box>
+      <CardContent sx={{
+        p: 3,
+        display: 'flex',
+        alignItems: 'flex-start',
+        flexDirection: 'row',
+        gap: 2,
+        height: '100%',
+        width: '100%',
+        '&:last-child': { p: 3 },
+      }}>
+        <Box sx={{ alignSelf: 'flex-start', flexShrink: 0, display: 'flex' }}>
+          <RoundedIconButton icon={icon} color={roundedColor} sizeVariant="large" />
+        </Box>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: '100%',
+          flex: 1,
+          minWidth: 0,
+        }}>
           <Typography
             sx={{
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              color: isPositive ? "#10B981" : "#EF4444",
-              backgroundColor: isPositive ? "#ECFDF5" : "#FEF2F2",
-              px: 1,
-              py: 0.5,
-              borderRadius: "4px",
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: 400,
+              fontSize: 16,
+              lineHeight: 1.3,
+              letterSpacing: 0,
+              color: gray500,
+              mb: 1,
+              verticalAlign: 'middle',
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word',
+              maxWidth: '100%',
             }}
           >
-            {change}
+            {title}
           </Typography>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+            gap: 1,
+            mt: 'auto',
+            // flexWrap: 'wrap',  
+          }}>
+            <Typography
+              sx={{
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: 600,
+                fontSize: 24,
+                lineHeight: 1.1,
+                letterSpacing: 0,
+                color: gray800,
+                verticalAlign: 'middle',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {value.toLocaleString()}
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: 400,
+                fontSize: 14,
+                lineHeight: 1.5,
+                letterSpacing: 0,
+                color: gray500,
+                verticalAlign: 'middle',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 0.5,
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {change}
+              {trending === 'up' && <TrendingUpIcon sx={{ fontSize: 18, color: gray500, ml: 0.5 }} />}
+              {trending === 'down' && <TrendingDownIcon sx={{ fontSize: 18, color: gray500, ml: 0.5 }} />}
+            </Typography>
+          </Box>
         </Box>
-        <Typography
-          sx={{
-            fontSize: "0.875rem",
-            fontWeight: 500,
-            color: "#6B7280",
-            mb: 1,
-          }}
-        >
-          {title}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "2rem",
-            fontWeight: 700,
-            color: "#111928",
-            lineHeight: 1,
-          }}
-        >
-          {value.toLocaleString()}
-        </Typography>
       </CardContent>
     </Card>
   )
@@ -92,6 +150,7 @@ export default function OverviewCards() {
       icon: <ApplicationsIcon />,
       color: "#F59E0B",
       backgroundColor: "#FEF3C7",
+      trending: "up",
     },
     {
       title: "Views",
@@ -100,6 +159,7 @@ export default function OverviewCards() {
       icon: <ViewsIcon />,
       color: "#10B981",
       backgroundColor: "#D1FAE5",
+      trending: "down",
     },
     {
       title: "Hired",
@@ -108,6 +168,7 @@ export default function OverviewCards() {
       icon: <HiredIcon />,
       color: "#8B5CF6",
       backgroundColor: "#EDE9FE",
+      trending: "up",
     },
     {
       title: "Rejected",
@@ -116,11 +177,12 @@ export default function OverviewCards() {
       icon: <RejectedIcon />,
       color: "#EC4899",
       backgroundColor: "#FCE7F3",
+      trending: "up",
     },
-  ]
+  ] as OverviewCardProps[]
 
   return (
-    <Box sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 3, mb: 4 }}>
+    <Box sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(266.25px, 1fr))", gap: 2 }}>
       {overviewData.map((item) => (
         <OverviewCard key={item.title} {...item} />
       ))}
