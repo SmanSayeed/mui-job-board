@@ -81,19 +81,19 @@ export default function JobCard({
         >
           <Box sx={{ display: "flex", alignItems: "center",gap:{xs:2} }}>
            
-          <ProfileImage src="/profile2.jpg" profileVariant="user_profile_image" />
+          <ProfileImage src="/profile2.jpg" profileVariant="job_profile_image" />
           
             <Box>
               <Typography
                 sx={{
                   ...theme.typography.h5,
-                  color: theme.palette.text.primary,
-                  verticalAlign: "middle",
+                  color: '#000',
+                  verticalAlign: 'middle',
                 }}
               >
                 {position}
               </Typography>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, flexWrap: "wrap" }}>
+              <Box sx={{ display: "flex",flexDirection:"column", alignItems: "start",justifyContent:"start", gap: 0.5, flexWrap: "wrap" }}>
                 <Typography
                   sx={{
                     ...theme.typography.body2,
