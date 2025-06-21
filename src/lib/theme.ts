@@ -18,6 +18,7 @@ import {
   COLOR_BRAND_ONBRAND,
   JOB_LISTING_TABLE_COLORS,
   TABLE_COLORS,
+  CANDIDATE_STATUS_COLORS,
 } from "./theme-constants"
 
 const theme = createTheme({
@@ -584,6 +585,7 @@ const theme = createTheme({
   },
   jobListingTable: { ...JOB_LISTING_TABLE_COLORS },
   table: { ...TABLE_COLORS },
+  candidateStatus: { ...CANDIDATE_STATUS_COLORS },
 })
 
 // Extend the theme interface to include custom colors
@@ -682,6 +684,12 @@ declare module '@mui/material/styles' {
       actionButtonHover: string;
       actionButtonIcon: string;
     }
+    candidateStatus: {
+      hired: { bg: string; text: string }
+      inReview: { bg: string; text: string }
+      rejected: { bg: string; text: string }
+      default: { bg: string; text: string }
+    }
   }
   interface ThemeOptions {
     jobListingTable?: {
@@ -703,6 +711,12 @@ declare module '@mui/material/styles' {
       actionButtonBg?: string;
       actionButtonHover?: string;
       actionButtonIcon?: string;
+    }
+    candidateStatus?: {
+      hired?: { bg: string; text: string }
+      inReview?: { bg: string; text: string }
+      rejected?: { bg: string; text: string }
+      default?: { bg: string; text: string }
     }
   }
 }

@@ -10,7 +10,8 @@ export default function JobListingTableRow({
   job, 
   checked = false,
   onCheckChange,
-  onEdit, 
+  onEdit,
+  onOpen,
   onDuplicate, 
   onViewStats, 
   onDelete 
@@ -19,6 +20,7 @@ export default function JobListingTableRow({
   checked?: boolean;
   onCheckChange?: (checked: boolean) => void;
   onEdit: (id: string) => void;
+  onOpen: (id: string) => void;
   onDuplicate: (id: string) => void;
   onViewStats: (id: string) => void;
   onDelete: (id: string) => void;
@@ -80,7 +82,7 @@ export default function JobListingTableRow({
             onClick={(e) => e.stopPropagation()}
           >
             <MenuItem onClick={() => { onEdit(job.id); handleClose(); }}>Edit</MenuItem>
-            <MenuItem onClick={handleClose}>Open</MenuItem>
+            <MenuItem onClick={() => { onOpen(job.id); handleClose(); }}>Open</MenuItem>
             <MenuItem onClick={() => { onDuplicate(job.id); handleClose(); }}>Duplicate</MenuItem>
             <MenuItem onClick={() => { onViewStats(job.id); handleClose(); }}>View Stats</MenuItem>
             <Divider />

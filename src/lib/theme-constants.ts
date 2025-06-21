@@ -91,4 +91,23 @@ export const TABLE_COLORS = {
   actionButtonBg: '#F3F4F6',
   actionButtonHover: '#E5E7EB',
   actionButtonIcon: '#1F2937',
+};
+
+export const CANDIDATE_STATUS_COLORS = {
+  hired: {
+    bg: "#D1FAE5",
+    text: "#065F46",
+  },
+  inReview: {
+    bg: "#FEF3C7",
+    text: "#92400E",
+  },
+  rejected: {
+    bg: "#FEE2E2",
+    text: "#991B1B",
+  },
+  default: {
+    bg: "#F3F4F6",
+    text: "#374151",
+  },
 }; 

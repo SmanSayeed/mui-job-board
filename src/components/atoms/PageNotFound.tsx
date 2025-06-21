@@ -7,7 +7,6 @@ import {
   Card,
   CardContent,
   Container,
-  Grid,
   Paper,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -142,24 +141,26 @@ const PageNotFound: React.FC<PageNotFoundProps> = ({
                 >
                   Try these instead:
                 </Typography>
-                <Grid container spacing={2} justifyContent="center">
+                <Typography variant="h5" sx={{ mb: 4 }}>
+                  Here are some helpful links:
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center' }}>
                   {['Jobs', 'Extra Jobs', 'Career Help', 'Profile'].map((item) => (
-                    <Grid item key={item}>
-                      <Button
-                        variant="outlined"
-                        size="small"
-                        onClick={() => router.push(`/${item.toLowerCase().replace(' ', '-')}`)}
-                        sx={{
-                          borderRadius: 2,
-                          textTransform: 'none',
-                          fontWeight: 500,
-                        }}
-                      >
-                        {item}
-                      </Button>
-                    </Grid>
+                    <Button
+                      key={item}
+                      variant="outlined"
+                      size="small"
+                      onClick={() => router.push(`/${item.toLowerCase().replace(' ', '-')}`)}
+                      sx={{
+                        borderRadius: 2,
+                        textTransform: 'none',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {item}
+                    </Button>
                   ))}
-                </Grid>
+                </Box>
               </Box>
             )}
 

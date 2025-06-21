@@ -7,7 +7,7 @@ import { useTheme } from "@mui/material/styles"
 export default function Logo({ type = 'user' }: { type?: 'user' | 'recruiter' }) {
   const theme = useTheme();
   return (
-    <Link href="/" style={{ textDecoration: "none" }}>
+    <Link href={type === "user" ? "/" : "/recruiter/job-listings"} style={{ textDecoration: "none" }}>
       {
         type === "user" ? (
           <Typography

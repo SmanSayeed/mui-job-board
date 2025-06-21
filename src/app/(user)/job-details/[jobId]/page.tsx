@@ -14,7 +14,7 @@ import DialogContent from "@mui/material/DialogContent"
 import DialogActions from "@mui/material/DialogActions"
 import Alert from "@mui/material/Alert"
 import CloseIcon from "@mui/icons-material/Close"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import BackButton from "../../../../components/atoms/BackButton"
 import DesignationTitle from "@/components/atoms/DesignationTitle"
 import CButton from "@/components/atoms/CButton"
@@ -22,10 +22,38 @@ import RoundedIconButton from "@/components/atoms/RoundedIconButton"
 import JobMetaInformation from "@/components/molecules/JobMetaInformation"
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import Loader from "@/components/atoms/Loader"
+
 export default function JobDetailPage() {
   const [openApply, setOpenApply] = useState(false);
+  const [loading, setLoading] = useState(true);
+  
   const handleApplyClick = () => setOpenApply(true);
   const handleCloseApply = () => setOpenApply(false);
+
+  useEffect(() => {
+    // Simulate loading time for job details
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <Box sx={{ 
+        minHeight: "100vh", 
+        backgroundColor: "#F3F4F6",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }}>
+        <Loader />
+      </Box>
+    );
+  }
+
   return (
     <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}>
       <Container maxWidth="lg" sx={{ py: 0 }}>
