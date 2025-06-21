@@ -62,7 +62,7 @@ export default function JobCard({
 
   return (
     <Link href="/job-details/1" style={{ textDecoration: "none" }}>
-      <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: theme.palette.background.paper, borderRadius: theme.shape.borderRadius, mb: 3, cursor: "pointer", transition: "box-shadow 0.2s", boxShadow: { xs: 1, md: 2 }, '&:hover': { boxShadow: 6 } }}>
+      <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: theme.palette.background.paper, borderRadius: theme.shape.borderRadius, mb: 3, cursor: "pointer", transition: "box-shadow 0.2s", '&:hover': { boxShadow: 6 } }}>
         {/* Match Percentage */}
         {matchPercentage && matchPercentage > 0 && (
           <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
