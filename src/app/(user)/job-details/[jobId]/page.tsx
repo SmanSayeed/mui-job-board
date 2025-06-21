@@ -18,6 +18,7 @@ import { useState } from "react"
 import BackButton from "../../../../components/atoms/BackButton"
 import DesignationTitle from "@/components/atoms/DesignationTitle"
 import ApplyNowButton from "@/components/atoms/ApplyNowButton"
+import RoundedIconButton from "@/components/atoms/RoundedIconButton"
 
 export default function JobDetailPage() {
   const [openApply, setOpenApply] = useState(false);
@@ -42,16 +43,7 @@ export default function JobDetailPage() {
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               <ApplyNowButton onClick={handleApplyClick} />
-              <IconButton
-                sx={{
-                  color: "#6B7280",
-                  "&:hover": {
-                    backgroundColor: "#F3F4F6",
-                  },
-                }}
-              >
-                <MoreHorizIcon />
-              </IconButton>
+              <RoundedIconButton icon={<MoreHorizIcon />} color="blue" size="medium" />
             </Box>
           </Box>
 

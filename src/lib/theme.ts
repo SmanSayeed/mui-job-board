@@ -476,6 +476,116 @@ const theme = createTheme({
             letterSpacing: 0,
           },
         },
+        // RoundedIcon blue default
+        {
+          props: { roundedcolor: 'blue', size: 'medium' },
+          style: {
+            width: '50px',
+            height: '50px',
+            borderRadius: '50%',
+            backgroundColor: '#F3F4F6', // gray/100
+            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
+              color: '#3F83F8', // blue/500
+              width: '28px',
+              height: '28px',
+            },
+            '& .MuiChip-label': {
+              display: 'none',
+            },
+          },
+        },
+        // RoundedIcon blue small
+        {
+          props: { roundedcolor: 'blue', size: 'small' },
+          style: {
+            width: '32px',
+            height: '32px',
+            borderRadius: '50%',
+            paddingRight: '20px',
+            paddingLeft: '20px',
+            backgroundColor: '#F3F4F6',
+            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
+              color: '#3F83F8',
+              width: '20px',
+              height: '20px',
+            },
+            '& .MuiChip-label': {
+              display: 'none',
+            },
+          },
+        },
+        // RoundedIcon yellow large
+        {
+          props: { roundedcolor: 'yellow', size: 'large' },
+          style: {
+            width: '70px',
+            height: '70px',
+            borderRadius: '50%',
+            backgroundColor: '#FDF6B2', // yellow/100
+            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
+              color: '#E3A008', // yellow/400
+              width: '36px',
+              height: '36px',
+            },
+            '& .MuiChip-label': {
+              display: 'none',
+            },
+          },
+        },
+        // RoundedIcon green
+        {
+          props: { roundedcolor: 'green', size: 'large' },
+          style: {
+            width: '70px',
+            height: '70px',
+            borderRadius: '50%',
+            backgroundColor: '#DEF7EC', // green/100
+            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
+              color: '#31C48D', // green/400
+              width: '36px',
+              height: '36px',
+            },
+            '& .MuiChip-label': {
+              display: 'none',
+            },
+          },
+        },
+        // RoundedIcon purple
+        {
+          props: { roundedcolor: 'purple', size: 'large' },
+          style: {
+            width: '70px',
+            height: '70px',
+            borderRadius: '50%',
+            backgroundColor: '#EDEBFE', // purple/100
+            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
+              color: '#AC94FA', // purple/400
+              width: '36px',
+              height: '36px',
+            },
+            '& .MuiChip-label': {
+              display: 'none',
+            },
+          },
+        },
+        // RoundedIcon pink
+        {
+          props: { roundedcolor: 'pink', size: 'large' },
+          style: {
+            width: '70px',
+            height: '70px',
+            borderRadius: '50%',
+            backgroundColor: '#FCE8F3', // pink/100
+            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
+              color: '#F17EB8', // pink/400
+              width: '36px',
+              height: '36px',
+            },
+            '& .MuiChip-label': {
+              display: 'none',
+            },
+          },
+        },
       ],
     },
     // Input field styles

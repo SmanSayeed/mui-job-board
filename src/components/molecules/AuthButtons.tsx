@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation"
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import SmsIcon from '@mui/icons-material/Sms';
 import { useTheme } from "@mui/material/styles"
+import RoundedIconButton from '@/components/atoms/RoundedIconButton';
 
 export function AuthIcons() {
   const { logout } = useAuth();
@@ -34,32 +35,8 @@ export function AuthIcons() {
 
   return (
     <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-      <IconButton color="inherit" sx={{ p: 0 }}>
-        <Box sx={{
-          width: 40,
-          height: 40,
-          borderRadius: '50%',
-          backgroundColor: theme.palette.grey[100],
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-          <CalendarTodayIcon sx={{ color: theme.palette.primary[500] }} />
-        </Box>
-      </IconButton>
-      <IconButton color="inherit" sx={{ p: 0 }}>
-        <Box sx={{
-          width: 40,
-          height: 40,
-          borderRadius: '50%',
-          backgroundColor: theme.palette.grey[100],
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-          <SmsIcon sx={{ color: theme.palette.primary[500] }} />
-        </Box>
-      </IconButton>
+      <RoundedIconButton icon={<CalendarTodayIcon />} color="blue" size="small" />
+      <RoundedIconButton icon={<SmsIcon />} color="blue" size="small" />
       <IconButton color="inherit" onClick={handleMenu} sx={{ p: 0 }}>
         <ProfileImage src="/profile1.jpg" profileVariant="user_profile_image" />
         <ArrowDropDownIcon />
