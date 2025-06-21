@@ -16,6 +16,7 @@ import Alert from "@mui/material/Alert"
 import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
 import { useState } from "react"
+import MatchChip from "../atoms/MatchChip"
 
 interface JobCardProps {
   position: string
@@ -25,7 +26,7 @@ interface JobCardProps {
   salary: string
   jobTypes: string[]
   tags: string[]
-  matchPercentage: number
+  matchPercentage?: number
   description: string
 }
 
@@ -61,14 +62,11 @@ export default function JobCard({
     <Link href="/job-details/1" style={{ textDecoration: "none" }}>
       <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: theme.palette.background.paper, borderRadius: theme.shape.borderRadius, mb: 3, cursor: "pointer", transition: "box-shadow 0.2s", boxShadow: { xs: 1, md: 2 }, '&:hover': { boxShadow: 6 } }}>
         {/* Match Percentage */}
-        <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-            <Avatar src="/icons/star.svg" sx={{ height: 16, width: 16, mr: 0.5 }} />
-            <Typography component="span" sx={{ ...theme.typography.body2, color: theme.palette.primary[500], display: "inline-flex", alignItems: "center" }}>
-              {matchPercentage}% match
-            </Typography>
+        {matchPercentage && matchPercentage > 0 && (
+          <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+            <MatchChip matchPercentage={matchPercentage} />
           </Box>
-        </Box>
+        )}
 
         {/* Job Header */}
         <Box

@@ -430,21 +430,6 @@ const theme = createTheme({
             letterSpacing: 0,
           },
         },
-        // JobType chip (job type)
-        {
-          props: { variant: "jobType", color: "primary" },
-          style: {
-            backgroundColor: "#F3F4F6",
-            color: "#111928",
-            borderRadius: "6px",
-            fontFamily: "var(--font-inter), Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: "0.875rem",
-            lineHeight: 1.5,
-            letterSpacing: 0,
-            textTransform: "uppercase",
-          },
-        },
       ],
     },
     // Input field styles

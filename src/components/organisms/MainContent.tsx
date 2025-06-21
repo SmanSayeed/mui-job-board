@@ -12,7 +12,6 @@ const jobsData = [
     salary: "100,000 EUR/yr",
     jobTypes: ["FULL TIME", "HYBRID"],
     tags: ["IT", "Social", "Recruiting", "HR"],
-    matchPercentage: 95,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },

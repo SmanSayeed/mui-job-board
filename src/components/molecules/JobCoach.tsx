@@ -1,8 +1,8 @@
 "use client"
 import { Box, Typography, Avatar } from "@mui/material"
-import SkillChip from "../atoms/SkillChip"
 import ProfileImage from "../atoms/ProfileImage"
 import { useTheme } from "@mui/material/styles"
+import JobTypeChip from "../atoms/JobTypeChip"
 
 export default function JobCoach() {
   const theme = useTheme();
@@ -44,8 +44,8 @@ export default function JobCoach() {
       </Box>
 
       <Box sx={{ display: "flex", gap: 1 }}>
-        <SkillChip label="HR" />
-        <SkillChip label="IT Recruiter" />
+        <JobTypeChip label="HR" uppercase={false} />
+        <JobTypeChip variant="jobType" label="IT Recruiter" uppercase={false} />
       </Box>
     </Box>
   )

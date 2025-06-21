@@ -1,7 +1,6 @@
 "use client"
 import { Box, Typography, Avatar, Button } from "@mui/material"
 import UserProfile from "../molecules/UserProfile"
-import SkillBadge from "../atoms/SkillBadge"
 import EmailIcon from "@mui/icons-material/Email"
 import PhoneIcon from "@mui/icons-material/Phone"
 import LocationOnIcon from "@mui/icons-material/LocationOn"
