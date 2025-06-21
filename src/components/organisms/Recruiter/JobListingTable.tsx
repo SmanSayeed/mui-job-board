@@ -124,7 +124,7 @@ export default function JobListingsTable({
       border: `1px solid ${theme.jobListingTable.border}`,
     }}>
      
-      <Box sx={{ px: 3 }}>
+      <Box sx={{ px: 3,my:2 }}>
         <JobListingTitle>{title}</JobListingTitle>
       </Box>
       <Box sx={{ px: 3 }}>
@@ -142,54 +142,90 @@ export default function JobListingsTable({
         />
       </Box>
       <Box sx={{ mb: 2 }} />
-      <TableContainer sx={{ flex: 1, background: 'transparent', boxShadow: 'none', borderRadius: 0, width: '100%', overflowX: 'hidden' }}>
-        <Table sx={{ width: '100%', tableLayout: 'fixed' }}>
-          <TableHead>
-            <TableRow sx={{ backgroundColor: theme.table.headerBg }}>
-              <TableCell padding="checkbox" />
-              {columns.map((col) => (
-                <TableCell
-                  key={col.id}
-                  align={col.align as 'right' | 'center' | 'left' | 'inherit' | 'justify' | undefined}
-                  sx={{
-                    ...theme.typography.subtitle2,
-                    color: theme.table.headerText,
-                    backgroundColor: 'inherit',
-                  }}
-                >
-                  {col.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {paginatedData.length > 0 ? (
-              paginatedData.map((job) => (
-                <JobListingTableRow
-                  key={job.id}
-                  job={job}
-                  onEdit={handleEdit}
-                  onDuplicate={handleDuplicate}
-                  onViewStats={handleViewStats}
-                  onDelete={handleDelete}
-                />
-              ))
-            ) : null}
-            {/* Add empty rows if needed */}
-            {emptyRows > 0 && Array.from({ length: emptyRows }).map((_, idx) => (
-              <TableRow key={`empty-row-${idx}`} sx={{ borderBottom: `1px solid ${theme.jobListingTable.border}`, height: 53 }}>
+      <Box
+        sx={{
+          width: '100%',
+          overflowX: { xs: 'auto', sm: 'auto', md: 'auto', lg: 'visible' },
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: { xs: 'thin', lg: 'auto' },
+          '&::-webkit-scrollbar': {
+            height: { xs: 8, lg: 0 },
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: { xs: '#E5E7EB', lg: 'transparent' },
+            borderRadius: 4,
+          },
+        }}
+      >
+        <TableContainer
+          sx={{
+            flex: 1,
+            background: 'transparent',
+            boxShadow: 'none',
+            borderRadius: 0,
+            width: '100%',
+            minWidth: { xs: 600, sm: 800, md: 900, lg: '100%' },
+            overflowX: { xs: 'auto', sm: 'auto', md: 'auto', lg: 'unset' },
+            display: { xs: 'block', sm: 'block', md: 'block', lg: 'table' },
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: { xs: 'thin', lg: 'auto' },
+            '&::-webkit-scrollbar': {
+              height: { xs: 8, lg: 0 },
+            },
+            '&::-webkit-scrollbar-thumb': {
+              background: { xs: '#E5E7EB', lg: 'transparent' },
+              borderRadius: 4,
+            },
+          }}
+        >
+          <Table sx={{ width: '100%', tableLayout: 'fixed', minWidth: 800 }}>
+            <TableHead>
+              <TableRow sx={{ backgroundColor: theme.table.headerBg }}>
                 <TableCell padding="checkbox" />
-                <TableCell />
-                <TableCell />
-                <TableCell />
-                <TableCell />
-                <TableCell />
-                <TableCell align="right" />
+                {columns.map((col) => (
+                  <TableCell
+                    key={col.id}
+                    align={col.align as 'right' | 'center' | 'left' | 'inherit' | 'justify' | undefined}
+                    sx={{
+                      ...theme.typography.subtitle2,
+                      color: theme.table.headerText,
+                      backgroundColor: 'inherit',
+                    }}
+                  >
+                    {col.label}
+                  </TableCell>
+                ))}
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {paginatedData.length > 0 ? (
+                paginatedData.map((job) => (
+                  <JobListingTableRow
+                    key={job.id}
+                    job={job}
+                    onEdit={handleEdit}
+                    onDuplicate={handleDuplicate}
+                    onViewStats={handleViewStats}
+                    onDelete={handleDelete}
+                  />
+                ))
+              ) : null}
+              {/* Add empty rows if needed */}
+              {emptyRows > 0 && Array.from({ length: emptyRows }).map((_, idx) => (
+                <TableRow key={`empty-row-${idx}`} sx={{ borderBottom: `1px solid ${theme.jobListingTable.border}`, height: 53 }}>
+                  <TableCell padding="checkbox" />
+                  <TableCell />
+                  <TableCell />
+                  <TableCell />
+                  <TableCell />
+                  <TableCell />
+                  <TableCell align="right" />
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
       {totalPages > 1 && (
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', pr: 3, mt: 'auto' }}>
           <Stack spacing={2}>

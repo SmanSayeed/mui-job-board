@@ -42,7 +42,8 @@ function OverviewCard({ title, value, change, trending, icon, color, backgroundC
   return (
     <Card
       sx={{
-        width: 266.25,
+        width: { xs: '100%', sm: '100%', md: '48%', lg: 266.25 },
+        minWidth: 0,
         height: 119,
         borderRadius: "12px",
         background: "#fff",
@@ -57,14 +58,14 @@ function OverviewCard({ title, value, change, trending, icon, color, backgroundC
       }}
     >
       <CardContent sx={{
-        p: 3,
+        p: { xs: 2, sm: 2, md: 3 },
         display: 'flex',
         alignItems: 'flex-start',
         flexDirection: 'row',
         gap: 2,
         height: '100%',
         width: '100%',
-        '&:last-child': { p: 3 },
+        '&:last-child': { p: { xs: 2, sm: 2, md: 3 } },
       }}>
         <Box sx={{ alignSelf: 'flex-start', flexShrink: 0, display: 'flex' }}>
           <RoundedIconButton icon={icon} color={roundedColor} sizeVariant="large" />
@@ -100,7 +101,6 @@ function OverviewCard({ title, value, change, trending, icon, color, backgroundC
             alignItems: 'flex-end',
             gap: 1,
             mt: 'auto',
-            // flexWrap: 'wrap',  
           }}>
             <Typography
               sx={{
@@ -183,7 +183,18 @@ export default function OverviewCards() {
   ] as OverviewCardProps[]
 
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 2 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: { xs: 'column', sm: 'row' },
+        gap: 2,
+        rowGap: { xs: 2, sm: 2, md: 3 },
+        columnGap: { xs: 0, sm: 2, md: 3 },
+        justifyContent: { xs: 'center', sm: 'space-between', md: 'flex-start', lg: 'space-between' },
+        alignItems: { xs: 'stretch', sm: 'flex-start' },
+      }}
+    >
       {overviewData.map((item) => (
         <OverviewCard key={item.title} {...item} />
       ))}

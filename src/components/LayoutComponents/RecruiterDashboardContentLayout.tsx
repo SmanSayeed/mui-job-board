@@ -39,28 +39,12 @@ export default function RecruiterDashboardContentLayout({
                         minHeight: "100vh",
                     }}
                 >
-                    {/* Mobile Header */}
-                    <Box
-                        sx={{
-                            display: { xs: "flex", md: "none" },
-                            alignItems: "center",
-                            p: 2,
-                            backgroundColor: "#FFFFFF",
-                            borderBottom: "1px solid #E5E7EB",
-                        }}
-                    >
-                        <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ mr: 2 }}>
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                            Dashboard
-                        </Typography>
-                    </Box>
+                   
 
                     {/* Content */}
-                    <Container maxWidth="xl" sx={{ py: 4, px: { xs: 2, md: 4 } }}>
+                    <Container maxWidth="xl" sx={{ py: 4, px: { xs: 2, sm: 2, md: 4 } }}>
                         {/* Overview Section */}
-                        <Box sx={{ mb: 4 }}>
+                        <Box sx={{ mb: 4, width: '100%' }}>
                             <Typography
                                 sx={{
                                     fontSize: "1.5rem",
@@ -73,8 +57,9 @@ export default function RecruiterDashboardContentLayout({
                             </Typography>
                             <OverviewCards />
                         </Box>
-                        {children}
-
+                        <Box sx={{ width: '100%', maxWidth: '100%', minWidth: 0 }}>
+                          {children}
+                        </Box>
                     </Container>
                 </Box>
             </Box>

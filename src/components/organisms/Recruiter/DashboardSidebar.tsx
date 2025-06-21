@@ -183,8 +183,8 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
             width: DRAWER_WIDTH,
             borderRight: "none",
             overflowY: "auto",
-            top: { xs: '56px', md: '64px' },
-            height: { xs: 'calc(100vh - 56px)', md: 'calc(100vh - 64px)' },
+            top: 0,
+            height: '100vh',
           },
         }}
       >

@@ -74,8 +74,8 @@ export default function RecruiterHeader({ type = 'user', onSidebarOpen }: Header
       sx={{
         display: { xs: 'block', md: 'none' },
         '& .MuiDrawer-paper': {
-          top: '56px',
-          height: 'calc(100vh - 56px)',
+          top: 0,
+          height: '100vh',
           width: 320,
           right: 0,
           backgroundColor: '#fff',
