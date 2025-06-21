@@ -301,6 +301,29 @@ const theme = createTheme({
             },
           },
         },
+        // Back button variant
+        {
+          props: { variant: "text", color: "primary", size: "medium" },
+          style: {
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem", // 14px
+            lineHeight: 1.5, // 150%
+            letterSpacing: 0,
+            color: "#1A56DB", // primary/700
+            backgroundColor: "transparent",
+            boxShadow: "none",
+            border: "none",
+            textTransform: "none",
+            minWidth: "auto",
+            padding: 0,
+            '&:hover': {
+              backgroundColor: "transparent",
+              color: "#1E40AF", // primary/800 on hover
+              boxShadow: "none",
+            },
+          },
+        },
         // Signup button variant
         {
           props: { variant: "contained", color: "primary", size: "large" },
@@ -340,6 +363,29 @@ const theme = createTheme({
             letterSpacing: 0,
             '&:hover': {
               backgroundColor: "#E5E7EB",
+            },
+          },
+        },
+        // Login button variant
+        {
+          props: { variant: "text", color: "inherit", size: "medium" },
+          style: {
+            width: "90.5px",
+            height: "40px",
+            borderRadius: "8px",
+            padding: "8px",
+            borderWidth: "1px",
+            backgroundColor: "transparent",
+            fontFamily: "Roboto, sans-serif",
+            fontWeight: 600,
+            fontSize: "14px",
+            lineHeight: 1,
+            color: "#303030",
+            textTransform: "none",
+            boxShadow: "none",
+            '&:hover': {
+              color: "#3F83F8",
+              backgroundColor: "transparent",
             },
           },
         },

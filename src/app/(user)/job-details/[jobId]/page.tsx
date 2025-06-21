@@ -15,6 +15,9 @@ import DialogActions from "@mui/material/DialogActions"
 import Alert from "@mui/material/Alert"
 import CloseIcon from "@mui/icons-material/Close"
 import { useState } from "react"
+import BackButton from "../../../../components/atoms/BackButton"
+import DesignationTitle from "@/components/atoms/DesignationTitle"
+import ApplyNowButton from "@/components/atoms/ApplyNowButton"
 
 export default function JobDetailPage() {
   const [openApply, setOpenApply] = useState(false);
@@ -24,68 +27,21 @@ export default function JobDetailPage() {
     <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}>
       <Container maxWidth="lg" sx={{ py: 3 }}>
         <Box sx={{ backgroundColor: "#FFFFFF", borderRadius: "8px", p: 4 }}>
-          {/* Back Button */}
-          <Button
-            startIcon={<ArrowBackIcon />}
-            sx={{
-              color: "#3F83F8",
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 500,
-              fontSize: "0.875rem",
-              textTransform: "none",
-              mb: 3,
-              p: 0,
-              minWidth: "auto",
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            }}
-          >
-            Back
-          </Button>
+            {/* Back Button */}
+            <BackButton sx={{ mb: 3 }} />
 
           {/* Job Header */}
           <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", mb: 3 }}>
             <Box sx={{ flex: 1 }}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
-                <Typography
-                  sx={{
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: 600,
-                    fontSize: "1.5rem",
-                    lineHeight: 1.3,
-                    color: "#111928",
-                  }}
-                >
-                  Senior UX Designer
-                </Typography>
+                <DesignationTitle>Senior UX Designer</DesignationTitle>
                 <JobTypeChip label="FULL-TIME" />
                 <JobTypeChip label="HYBRID" />
               </Box>
             </Box>
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#3F83F8",
-                  color: "#FFFFFF",
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 500,
-                  fontSize: "0.875rem",
-                  textTransform: "none",
-                  borderRadius: "6px",
-                  padding: "8px 16px",
-                  boxShadow: "none",
-                  "&:hover": {
-                    backgroundColor: "#1E40AF",
-                    boxShadow: "none",
-                  },
-                }}
-                onClick={handleApplyClick}
-              >
-                Apply Now
-              </Button>
+              <ApplyNowButton onClick={handleApplyClick} />
               <IconButton
                 sx={{
                   color: "#6B7280",
@@ -398,6 +354,8 @@ export default function JobDetailPage() {
               </Button>
             </DialogActions>
           </Dialog>
+
+       
         </Box>
       </Container>
     </Box>

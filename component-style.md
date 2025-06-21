@@ -852,3 +852,23 @@ line-height: 150%;
 letter-spacing: 0%;
 
 color: #fff
+
+
+
+Back button:
+font-family: Inter;
+font-weight: 500;
+font-size: 14px;
+line-height: 150%;
+letter-spacing: 0%;
+color of the back button: primary/700
+it has a left arrow icon at first of the back text
+
+designationTitle (Senior UX Designer) component
+Typography style:
+font-family: Inter;
+font-weight: 600;
+font-size: 26px;
+line-height: 130%;
+letter-spacing: 0%;
+color: gray/60
