@@ -19,17 +19,35 @@ export default function CandidateFilterControls({
 }: CandidateFilterControlsProps) {
   const theme = useTheme()
   return (
-    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 3 }}>
+    <Box sx={{ 
+      display: "flex", 
+      flexDirection: { xs: "column", md: "row" },
+      alignItems: { xs: "stretch", md: "center" }, 
+      justifyContent: "space-between", 
+      gap: { xs: 2, md: 0 },
+      mb: 3 
+    }}>
       <SearchInput
         placeholder="Search for..."
         colorVariant="gray"
         height={52}
-        width={260}
+        width="100%"
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
       />
-      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-        <Typography sx={{ color: theme.palette.grey[500], fontWeight: 500, fontSize: 16, mr: 1 }}>
+      <Box sx={{ 
+        display: "flex", 
+        flexDirection: { xs: "column", sm: "row" },
+        alignItems: { xs: "stretch", sm: "center" }, 
+        gap: { xs: 1, sm: 1 } 
+      }}>
+        <Typography sx={{ 
+          color: theme.palette.grey[500], 
+          fontWeight: 500, 
+          fontSize: { xs: 14, md: 16 }, 
+          mr: { xs: 0, sm: 1 },
+          textAlign: { xs: "left", sm: "center" }
+        }}>
           Sort by:
         </Typography>
         <Select
@@ -40,10 +58,10 @@ export default function CandidateFilterControls({
           sx={{
             color: theme.palette.grey[400],
             fontWeight: 500,
-            fontSize: 16,
+            fontSize: { xs: 14, md: 16 },
             borderRadius: 2,
-            minWidth: 160,
-            height: 40,
+            minWidth: { xs: "100%", sm: 160 },
+            height: { xs: 48, md: 40 },
             "& .MuiOutlinedInput-notchedOutline": {
               borderColor: theme.palette.grey[200],
             },

@@ -89,51 +89,80 @@ export default function CandidateTable() {
   ]
 
   return (
-    <TableContainer
-      sx={{
-        "& .MuiTableRow-root:hover .MuiButtonBase-root": {
-          visibility: "visible",
-        },
-      }}
-    >
-      <Table sx={{ minWidth: 650 }} aria-label="candidate table">
-        <TableHead sx={{ backgroundColor: theme.jobListingTable.tableHeadBg }}>
-          <TableRow>
-            <TableCell padding="checkbox">
-              <BpCheckbox
-                checked={selectAll}
-                onChange={(e) => handleSelectAll(e.target.checked)}
-              />
-            </TableCell>
-            {columns.map((column) => (
-              <TableCell key={column.key} align={column.align} sx={{ color: theme.jobListingTable.tableHeadText, fontWeight: 500 }}>
-                {column.sortable ? (
-                  <TableSortLabel active direction="desc">
-                    {column.label}
-                  </TableSortLabel>
-                ) : (
-                  column.label
-                )}
+    <Box sx={{ 
+      overflowX: "auto",
+      "&::-webkit-scrollbar": { 
+        height: "8px",
+        backgroundColor: theme.palette.grey[100]
+      },
+      "&::-webkit-scrollbar-thumb": {
+        backgroundColor: theme.palette.grey[300],
+        borderRadius: "4px"
+      },
+      "&::-webkit-scrollbar-track": {
+        backgroundColor: theme.palette.grey[100]
+      }
+    }}>
+      <TableContainer
+        sx={{
+          minWidth: { xs: 800, md: 650 },
+          "& .MuiTableRow-root:hover .MuiButtonBase-root": {
+            visibility: "visible",
+          },
+        }}
+      >
+        <Table sx={{ minWidth: { xs: 800, md: 650 } }} aria-label="candidate table">
+          <TableHead sx={{ backgroundColor: theme.jobListingTable.tableHeadBg }}>
+            <TableRow>
+              <TableCell padding="checkbox" sx={{ minWidth: { xs: 50, md: 40 } }}>
+                <BpCheckbox
+                  checked={selectAll}
+                  onChange={(e) => handleSelectAll(e.target.checked)}
+                />
               </TableCell>
+              {columns.map((column) => (
+                <TableCell 
+                  key={column.key} 
+                  align={column.align} 
+                  sx={{ 
+                    color: theme.jobListingTable.tableHeadText, 
+                    fontWeight: 500,
+                    fontSize: { xs: 12, md: 14 },
+                    padding: { xs: "8px 4px", md: "16px" },
+                    minWidth: column.key === "candidate" ? { xs: 150, md: 200 } : 
+                             column.key === "skills" ? { xs: 120, md: 150 } :
+                             column.key === "actions" ? { xs: 80, md: 100 } : 
+                             { xs: 80, md: 100 }
+                  }}
+                >
+                  {column.sortable ? (
+                    <TableSortLabel active direction="desc">
+                      {column.label}
+                    </TableSortLabel>
+                  ) : (
+                    column.label
+                  )}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {tableData.map((candidate) => (
+              <CandidateTableRow
+                key={candidate.id}
+                candidate={candidate}
+                checked={selectedRows.has(candidate.id)}
+                onCheckChange={(checked) => handleRowSelect(candidate.id, checked)}
+                onEdit={handleEdit}
+                onOpen={handleOpen}
+                onDuplicate={handleDuplicate}
+                onViewStats={handleViewStats}
+                onDelete={handleDelete}
+              />
             ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {tableData.map((candidate) => (
-            <CandidateTableRow
-              key={candidate.id}
-              candidate={candidate}
-              checked={selectedRows.has(candidate.id)}
-              onCheckChange={(checked) => handleRowSelect(candidate.id, checked)}
-              onEdit={handleEdit}
-              onOpen={handleOpen}
-              onDuplicate={handleDuplicate}
-              onViewStats={handleViewStats}
-              onDelete={handleDelete}
-            />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   )
 } 

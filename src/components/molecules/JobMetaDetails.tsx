@@ -19,15 +19,24 @@ export default function JobMetaDetails({
   salary,
 }: JobMetaDetailsProps) {
   const theme = useTheme()
-  const iconStyle = { fontSize: 18, color: theme.palette.grey[500] }
-  const textStyle = { color: theme.palette.grey[500], fontWeight: 500 }
+  const iconStyle = { fontSize: { xs: 16, md: 18 }, color: theme.palette.grey[500] }
+  const textStyle = { 
+    color: theme.palette.grey[500], 
+    fontWeight: 500,
+    fontSize: { xs: 12, md: 14 }
+  }
 
   return (
     <Stack
-      direction="row"
-      alignItems="start"
-      spacing={3}
-      sx={{ color: "text.secondary", mb: 2, px: 3 }}
+      direction={{ xs: "column", md: "row" }}
+      alignItems={{ xs: "flex-start", md: "start" }}
+      spacing={{ xs: 2, md: 3 }}
+      sx={{ 
+        color: "text.secondary", 
+        mb: 2, 
+        px: { xs: 2, md: 3 },
+        gap: { xs: 1.5, md: 3 }
+      }}
     >
       <Stack direction="row" alignItems="center" spacing={1}>
         <PeopleOutlineIcon sx={iconStyle} />

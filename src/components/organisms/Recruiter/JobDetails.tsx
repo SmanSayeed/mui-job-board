@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from "react"
-import { Paper } from "@mui/material"
+import { Paper, Box } from "@mui/material"
 import JobActionsBar from "@/components/molecules/JobActionsBar"
 import JobMetaDetails from "@/components/molecules/JobMetaDetails"
 import JobFullDescription from "@/components/molecules/JobFullDescription"
@@ -39,14 +39,15 @@ export default function JobDetails({
     <Paper
       sx={{
         width: "100%",
-        borderRadius: 3,
-        p: 1,
+        borderRadius: { xs: 2, md: 3 },
+        p: { xs: 0.5, md: 1 },
         mb: 3,
         display: "flex",
         flexDirection: "column",
         alignItems: "start",
         justifyContent: "space-between",
         boxShadow: "0px 1px 3px rgba(0,0,0,0.04)",
+        overflow: "hidden",
       }}
     >
       <JobActionsBar title={jobTitle} />
@@ -62,7 +63,13 @@ export default function JobDetails({
         activeTab={activeTab}
         onTabClick={setActiveTab}
       />
-      <CandidateTable />
+      <Box sx={{ 
+        width: "100%", 
+        overflowX: "auto",
+        px: { xs: 1, md: 0 }
+      }}>
+        <CandidateTable />
+      </Box>
     </Paper>
   )
 } 

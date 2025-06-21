@@ -16,8 +16,8 @@ export default function JobActionsBar({ title }: JobActionsBarProps) {
     fontWeight: 500,
     fontFamily: "Inter, sans-serif",
     textTransform: "none",
-    fontSize: 16,
-    p: 0,
+    fontSize: { xs: 14, md: 16 },
+    p: { xs: 1, md: 0 },
     minWidth: 0,
     background: "none",
     boxShadow: "none",
@@ -32,17 +32,31 @@ export default function JobActionsBar({ title }: JobActionsBarProps) {
       sx={{
         width: "100%",
         borderRadius: 3,
-        p: 3,
+        p: { xs: 2, md: 3 },
         mb: 3,
         display: "flex",
-        alignItems: "center",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: { xs: "stretch", md: "center" },
         justifyContent: "space-between",
+        gap: { xs: 2, md: 0 },
       }}
     >
-      <Typography sx={{ fontWeight: 600, fontSize: 20, fontFamily: "Inter, sans-serif" }}>
+      <Typography sx={{ 
+        fontWeight: 600, 
+        fontSize: { xs: 18, md: 20 }, 
+        fontFamily: "Inter, sans-serif",
+        textAlign: { xs: "center", md: "left" }
+      }}>
         {title}
       </Typography>
-      <Stack direction="row" spacing={2}>
+      <Stack 
+        direction={{ xs: "column", sm: "row" }} 
+        spacing={{ xs: 1, sm: 2 }}
+        sx={{ 
+          width: { xs: "100%", md: "auto" },
+          alignItems: { xs: "stretch", sm: "center" }
+        }}
+      >
         <Button startIcon={<VisibilityOutlinedIcon />} variant="text" sx={buttonStyles}>
           View
         </Button>
