@@ -1,13 +1,13 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
-This is a Job next js 15 application that is using material UI (MUI)
-1. Develop with next js 15 App router way
-2. Follow atomic design pattern. Check the project structure how the atomic design pattern is added here.
-3. Always follow src/lib/theme.ts file
-4. Check the component-style.md file in root the idea of the projects theming pattern
-5. Always use typescript best practices
+- Develop using Next.js 15, react js 19, typescript best practices and material UI
+- Always use theme.ts for applying all type of typography, buttons, chips, mui theme style for all mui components. src/lib/theme.ts
 
-6. Make re-usable atoms, molecules and pass proper by maintaining types properly
+
+- Check component-style.md file at root for figma design idea always and use the given styles that is given in src/lib/theme.ts file.
+- Develop with atomic design pattern, check whole project structure once with package.json and remember
+
+- There are two types of users dashboard with two different layouts. One is user and other is recruiter. Check the structure and remember.

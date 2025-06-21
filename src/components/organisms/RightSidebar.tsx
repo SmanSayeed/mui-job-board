@@ -49,7 +49,7 @@ export default function RightSidebar() {
         </Typography>
 
         {/* Search Input */}
-        <SearchInput />
+        <SearchInput sx={{ mb: 4, width: '100%' }} />
 
         {/* Company Select */}
         <CompanySelect

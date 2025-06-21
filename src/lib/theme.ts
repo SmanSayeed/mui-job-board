@@ -437,7 +437,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "& .MuiOutlinedInput-root": {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "transparent",
             borderRadius: "8px",
             "& fieldset": {
               borderColor: "#D1D5DB",
@@ -467,6 +467,66 @@ const theme = createTheme({
               color: "#76A9FA", // Blue/400
               opacity: 1,
             },
+          },
+          // Search input specific styles
+          "& .MuiOutlinedInput-input[data-search='true']": {
+            width: 302,
+            height: 52,
+            paddingTop: 14,
+            paddingRight: 24,
+            paddingBottom: 14,
+            paddingLeft: 24,
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 400,
+            fontSize: 18,
+            lineHeight: 1.3,
+            letterSpacing: 0,
+            color: "#111928",
+            borderRadius: 8,
+            backgroundColor: "transparent", // Always transparent
+            border: "none", // Remove any border from the input itself
+            boxSizing: "border-box",
+            "&::placeholder": {
+              color: "#76A9FA",
+              opacity: 1,
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 400,
+              fontSize: 18,
+              lineHeight: 1.3,
+              letterSpacing: 0,
+            },
+          },
+          "& .MuiOutlinedInput-root[data-search='true']": {
+            backgroundColor: "transparent", // Always transparent
+            borderRadius: 8,
+            border: "1px solid #BFDBFE",
+            minHeight: 52,
+            boxSizing: "border-box",
+            "& fieldset": {
+              borderColor: "#BFDBFE",
+              borderWidth: 1,
+            },
+            "&:hover fieldset": {
+              borderColor: "#76A9FA",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#1A56DB",
+              borderWidth: 2,
+            },
+            // Remove border/background from icon area
+            "& .MuiInputAdornment-root": {
+              backgroundColor: "transparent",
+              border: "none",
+              marginRight: 0,
+              paddingLeft: 0,
+            },
+          },
+          // Remove border/gap between icon and input
+          "& .MuiInputAdornment-root": {
+            marginRight: 0,
+          },
+          "& .MuiInputAdornment-root .MuiSvgIcon-root": {
+            color: "#76A9FA", // blue/400
           },
         },
       },
