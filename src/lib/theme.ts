@@ -57,10 +57,6 @@ const theme = createTheme({
     brand: {
       onBrand: "#F5F5F5", // Text/Brand/On Brand for signup button text
     },
-    coolGray: {
-      60: '#697077',
-      70: '#4D5358',
-    },
   },
   typography: {
     fontFamily: "var(--font-inter), Inter, sans-serif",
@@ -205,6 +201,14 @@ const theme = createTheme({
       lineHeight: 1.4,
       letterSpacing: 0,
       color: '#4D5358', // Custom bold color
+    },
+    // Add custom designationTitle variant for DesignationTitle atom
+    designationTitle: {
+      fontFamily: "var(--font-inter), Inter, sans-serif",
+      fontWeight: 500,
+      fontSize: "1rem", // 16px, adjust as needed for Figma spec
+      lineHeight: 1.3,
+      color: "#697077", // CoolGray/600, adjust as needed
     },
   },
   spacing: 8, // Base spacing unit
@@ -428,36 +432,6 @@ const theme = createTheme({
             },
           },
         },
-        // New Job button variant
-        {
-          props: { 'data-newjob': 'true' },
-          style: {
-            width: "156px",
-            height: "52px",
-            paddingTop: "14px",
-            paddingRight: "24px",
-            paddingBottom: "14px",
-            paddingLeft: "24px",
-            borderRadius: "8px",
-            backgroundColor: "#1A56DB",
-            color: "#FFFFFF",
-            fontFamily: "var(--font-inter), Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: "18px",
-            lineHeight: 1.3,
-            letterSpacing: 0,
-            textTransform: "none",
-            boxShadow: "none",
-            gap: 16, // theme.spacing(2)
-            '& .MuiButton-startIcon, & .MuiSvgIcon-root': {
-              color: '#fff',
-            },
-            '&:hover': {
-              backgroundColor: "#1E40AF",
-              boxShadow: "none",
-            },
-          },
-        },
       ],
     },
     // Badge/Chip styles for skills, job types, etc.
@@ -543,116 +517,6 @@ const theme = createTheme({
             fontSize: "0.875rem",
             lineHeight: 1.5,
             letterSpacing: 0,
-          },
-        },
-        // RoundedIcon blue default
-        {
-          props: { roundedcolor: 'blue', size: 'medium' },
-          style: {
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            backgroundColor: '#F3F4F6', // gray/100
-            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
-              color: '#3F83F8', // blue/500
-              width: '28px',
-              height: '28px',
-            },
-            '& .MuiChip-label': {
-              display: 'none',
-            },
-          },
-        },
-        // RoundedIcon blue small
-        {
-          props: { roundedcolor: 'blue', size: 'small' },
-          style: {
-            width: '32px',
-            height: '32px',
-            borderRadius: '50%',
-            paddingRight: '20px',
-            paddingLeft: '20px',
-            backgroundColor: '#F3F4F6',
-            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
-              color: '#3F83F8',
-              width: '20px',
-              height: '20px',
-            },
-            '& .MuiChip-label': {
-              display: 'none',
-            },
-          },
-        },
-        // RoundedIcon yellow large
-        {
-          props: { roundedcolor: 'yellow', size: 'large' },
-          style: {
-            width: '70px',
-            height: '70px',
-            borderRadius: '50%',
-            backgroundColor: '#FDF6B2', // yellow/100
-            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
-              color: '#E3A008', // yellow/400
-              width: '36px',
-              height: '36px',
-            },
-            '& .MuiChip-label': {
-              display: 'none',
-            },
-          },
-        },
-        // RoundedIcon green
-        {
-          props: { roundedcolor: 'green', size: 'large' },
-          style: {
-            width: '70px',
-            height: '70px',
-            borderRadius: '50%',
-            backgroundColor: '#DEF7EC', // green/100
-            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
-              color: '#31C48D', // green/400
-              width: '36px',
-              height: '36px',
-            },
-            '& .MuiChip-label': {
-              display: 'none',
-            },
-          },
-        },
-        // RoundedIcon purple
-        {
-          props: { roundedcolor: 'purple', size: 'large' },
-          style: {
-            width: '70px',
-            height: '70px',
-            borderRadius: '50%',
-            backgroundColor: '#EDEBFE', // purple/100
-            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
-              color: '#AC94FA', // purple/400
-              width: '36px',
-              height: '36px',
-            },
-            '& .MuiChip-label': {
-              display: 'none',
-            },
-          },
-        },
-        // RoundedIcon pink
-        {
-          props: { roundedcolor: 'pink', size: 'large' },
-          style: {
-            width: '70px',
-            height: '70px',
-            borderRadius: '50%',
-            backgroundColor: '#FCE8F3', // pink/100
-            '& .MuiAvatar-root, & .MuiSvgIcon-root': {
-              color: '#F17EB8', // pink/400
-              width: '36px',
-              height: '36px',
-            },
-            '& .MuiChip-label': {
-              display: 'none',
-            },
           },
         },
       ],
@@ -877,18 +741,20 @@ declare module '@mui/material/styles' {
     jobMetaApply: React.CSSProperties;
     jobMetaCompany: React.CSSProperties;
     jobMetaSalary: React.CSSProperties;
+    designationTitle: React.CSSProperties;
   }
   interface TypographyVariantsOptions {
     jobMetaPosted?: React.CSSProperties;
     jobMetaApply?: React.CSSProperties;
     jobMetaCompany?: React.CSSProperties;
     jobMetaSalary?: React.CSSProperties;
+    designationTitle?: React.CSSProperties;
   }
 }
 
-declare module '@mui/material/Button' {
-  interface ButtonProps {
-    newjob?: boolean;
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    designationTitle: true;
   }
 }
 

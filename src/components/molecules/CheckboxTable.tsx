@@ -24,7 +24,7 @@ export interface CheckboxTableProps<T> {
   selectedRows?: T[];
 }
 
-export default function CheckboxTable<T extends { id: string | number }>({
+export default function CheckboxTable<T extends { id: string | number; [key: string]: any }>({
   columns,
   rows,
   actionComponent,
