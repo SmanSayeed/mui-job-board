@@ -4,9 +4,7 @@ import Logo from "../../atoms/Logo";
 import Navigation from "../../molecules/Navigation";
 import { RecruiterAuthButtons } from "@/components/molecules/RecruiterAuthButtons";
 import SearchInput from "@/components/atoms/SearchInput";
-import NewJobButton from "@/components/atoms/NewJobButton";
-import LoginButton from "@/components/atoms/LoginButton";
-import SignupButton from "@/components/atoms/SignupButton";
+import CButton from "../../atoms/CButton";
 import MenuIcon from '@mui/icons-material/Menu';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloseIcon from '@mui/icons-material/Close';
@@ -45,13 +43,13 @@ export default function RecruiterHeader({ type = 'user', onSidebarOpen }: Header
           colorVariant="blue"
         />
       </Box>
-      <NewJobButton />
+      <CButton variant="newJob">New Job</CButton>
       {isRecruiter ? (
         <RecruiterAuthButtons />
       ) : (
         <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-          <LoginButton />
-          <SignupButton />
+          <CButton variant="login" />
+          <CButton variant="signup" />
         </Box>
       )}
     </>
@@ -102,8 +100,8 @@ export default function RecruiterHeader({ type = 'user', onSidebarOpen }: Header
           sx={{ minWidth: 200 }}
           colorVariant="blue"
         />
-        <NewJobButton />
-        {isRecruiter ? <RecruiterAuthButtons /> : <><LoginButton /><SignupButton /></>}
+        <CButton variant="newJob">New Job</CButton>
+        {isRecruiter ? <RecruiterAuthButtons /> : <><CButton variant="login" /><CButton variant="signup" /></>}
       </Box>
     </Drawer>
   );

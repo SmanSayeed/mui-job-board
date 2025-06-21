@@ -245,55 +245,123 @@ const theme = createTheme({
           lineHeight: 1.5,
           letterSpacing: 0,
           minWidth: "auto",
-          "&:hover": {
-            boxShadow: "none",
-          },
-        },
-        contained: {
-          backgroundColor: COLOR_PRIMARY.main,
-          color: COLOR_PRIMARY.contrastText,
-          fontFamily: FONT_FAMILY_INTER,
-          fontWeight: FONT_WEIGHT_MEDIUM,
-          fontSize: "0.875rem",
-          lineHeight: 1.5,
-          letterSpacing: 0,
           boxShadow: "none",
-          "&:hover": {
-            backgroundColor: COLOR_PRIMARY.dark,
+          '&:hover': {
             boxShadow: "none",
-          },
-        },
-        outlined: {
-          backgroundColor: "transparent",
-          border: `1px solid ${COLOR_GREY[400]}`,
-          color: COLOR_TEXT_PRIMARY,
-          fontFamily: FONT_FAMILY_INTER,
-          fontWeight: FONT_WEIGHT_MEDIUM,
-          fontSize: "0.875rem",
-          lineHeight: 1.5,
-          letterSpacing: 0,
-          "&:hover": {
-            backgroundColor: COLOR_GREY[50],
-            border: `1px solid ${COLOR_GREY[500]}`,
-          },
-        },
-        text: {
-          backgroundColor: "transparent",
-          color: COLOR_NEUTRAL.default,
-          fontFamily: FONT_FAMILY_ROBOTO,
-          fontWeight: FONT_WEIGHT_SEMIBOLD,
-          fontSize: "0.875rem",
-          lineHeight: 1,
-          letterSpacing: 0,
-          "&:hover": {
-            backgroundColor: "transparent",
-            color: COLOR_NEUTRAL.default,
           },
         },
       },
       variants: [
+        // Login Button
         {
-          props: { variant: "outlined", color: "primary", size: "medium" },
+          props: { variant: "login" },
+          style: {
+            width: "90.5px",
+            height: "40px",
+            borderRadius: "8px",
+            padding: "8px",
+            borderWidth: "1px",
+            background: "transparent",
+            fontFamily: FONT_FAMILY_ROBOTO,
+            fontWeight: FONT_WEIGHT_SEMIBOLD,
+            fontSize: "14px",
+            lineHeight: 1,
+            color: COLOR_NEUTRAL.default,
+            border: `1px solid ${COLOR_GREY[400]}`,
+            '&:hover': {
+              color: COLOR_PRIMARY[500],
+              background: "transparent",
+            },
+          },
+        },
+        // Signup Button
+        {
+          props: { variant: "signup" },
+          style: {
+            width: "90.5px",
+            height: "40px",
+            borderRadius: "8px",
+            backgroundColor: COLOR_PRIMARY.main,
+            color: COLOR_BRAND_ONBRAND,
+            fontFamily: FONT_FAMILY_ROBOTO,
+            fontWeight: FONT_WEIGHT_SEMIBOLD,
+            fontSize: "14px",
+            lineHeight: 1,
+            '&:hover': {
+              backgroundColor: COLOR_PRIMARY[500],
+            },
+          },
+        },
+        // Apply Now Button
+        {
+          props: { variant: "applyNow" },
+          style: {
+            width: "139px",
+            height: "51px",
+            padding: "14px 24px",
+            borderRadius: "8px",
+            backgroundColor: COLOR_PRIMARY.main,
+            color: COLOR_PRIMARY.contrastText,
+            fontFamily: FONT_FAMILY_INTER,
+            fontWeight: FONT_WEIGHT_MEDIUM,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+            textTransform: "none",
+            boxShadow: "none",
+            gap: 2,
+            '&:hover': {
+              backgroundColor: COLOR_PRIMARY.dark,
+              boxShadow: "none",
+            },
+          },
+        },
+        // New Job Button
+        {
+          props: { variant: "newJob" },
+          style: {
+            height: "52px",
+            borderRadius: "8px",
+            backgroundColor: COLOR_PRIMARY.main,
+            color: COLOR_PRIMARY.contrastText,
+            fontFamily: FONT_FAMILY_INTER,
+            fontWeight: FONT_WEIGHT_MEDIUM,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+            textTransform: "none",
+            boxShadow: "none",
+            '&:hover': {
+              backgroundColor: COLOR_PRIMARY[500],
+              boxShadow: "none",
+            },
+          },
+        },
+        // Quick Apply Button
+        {
+          props: { variant: "quickApply" },
+          style: {
+            width: "132px",
+            height: "40px",
+            borderRadius: "8px",
+            backgroundColor: COLOR_PRIMARY.main,
+            color: COLOR_PRIMARY.contrastText,
+            fontFamily: FONT_FAMILY_INTER,
+            fontWeight: FONT_WEIGHT_MEDIUM,
+            fontSize: "14px",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+            textTransform: "none",
+            boxShadow: "none",
+            '&:hover': {
+              backgroundColor: COLOR_PRIMARY[500],
+              boxShadow: "none",
+            },
+          },
+        },
+        // Save Button
+        {
+          props: { variant: "save" },
           style: {
             width: "84px",
             height: "40px",
@@ -301,6 +369,7 @@ const theme = createTheme({
             backgroundColor: COLOR_BACKGROUND_DEFAULT,
             color: COLOR_PRIMARY[500],
             border: "none",
+            borderRadius: "8px",
             fontFamily: FONT_FAMILY_INTER,
             fontWeight: FONT_WEIGHT_MEDIUM,
             fontSize: "0.875rem",
@@ -312,171 +381,70 @@ const theme = createTheme({
             },
           },
         },
-        {
-          props: { variant: "text", color: "primary", size: "medium" },
-          style: {
-            fontFamily: FONT_FAMILY_INTER,
-            fontWeight: FONT_WEIGHT_MEDIUM,
-            fontSize: "0.875rem",
-            lineHeight: 1.5,
-            letterSpacing: 0,
-            color: COLOR_PRIMARY.main,
-            backgroundColor: "transparent",
-            boxShadow: "none",
-            border: "none",
-            textTransform: "none",
-            minWidth: "auto",
-            padding: 0,
-            '&:hover': {
-              backgroundColor: "transparent",
-              color: COLOR_PRIMARY.dark,
-              boxShadow: "none",
-            },
-          },
-        },
-        {
-          props: { variant: "contained", color: "primary", size: "large" },
-          style: {
-            width: "90.5px",
-            height: "40px",
-            padding: "8px 16px",
-            backgroundColor: COLOR_PRIMARY.main,
-            color: COLOR_BRAND_ONBRAND,
-            borderRadius: "8px",
-            fontFamily: FONT_FAMILY_ROBOTO,
-            fontWeight: FONT_WEIGHT_SEMIBOLD,
-            fontSize: "0.875rem",
-            lineHeight: 1,
-            letterSpacing: 0,
-            boxShadow: "none",
-            '&:hover': {
-              backgroundColor: COLOR_PRIMARY[500],
-              boxShadow: "none",
-            },
-          },
-        },
-        {
-          props: { variant: "contained", color: "primary", size: "small" },
-          style: {
-            width: "157px",
-            height: "37px",
-            padding: "8px 12px",
-            backgroundColor: COLOR_BACKGROUND_DEFAULT,
-            color: COLOR_PRIMARY[500],
-            borderRadius: "8px",
-            fontFamily: FONT_FAMILY_INTER,
-            fontWeight: FONT_WEIGHT_MEDIUM,
-            fontSize: "0.875rem",
-            lineHeight: 1.5,
-            letterSpacing: 0,
-            '&:hover': {
-              backgroundColor: COLOR_GREY[200],
-            },
-          },
-        },
-        {
-          props: { variant: "text", color: "inherit", size: "medium" },
-          style: {
-            width: "90.5px",
-            height: "40px",
-            borderRadius: "8px",
-            padding: "8px",
-            borderWidth: "1px",
-            backgroundColor: "transparent",
-            fontFamily: FONT_FAMILY_ROBOTO,
-            fontWeight: FONT_WEIGHT_SEMIBOLD,
-            fontSize: "14px",
-            lineHeight: 1,
-            color: COLOR_NEUTRAL.default,
-            textTransform: "none",
-            boxShadow: "none",
-            '&:hover': {
-              color: COLOR_PRIMARY[500],
-              backgroundColor: "transparent",
-            },
-          },
-        },
       ],
     },
     MuiChip: {
       styleOverrides: {
         root: {
-          height: "25px",
-          padding: "4px 12px",
-          fontFamily: FONT_FAMILY_INTER,
-          fontWeight: FONT_WEIGHT_MEDIUM,
+          fontWeight: 500,
           fontSize: "0.875rem",
-          lineHeight: 1.5,
-          letterSpacing: 0,
           borderRadius: "6px",
-          '& .MuiChip-label': {
-            padding: 0,
-          },
-        },
-        filled: {
-          backgroundColor: COLOR_PRIMARY[100],
-          color: COLOR_GREY[900],
-        },
-        outlined: {
-          backgroundColor: "transparent",
-          color: COLOR_GREY[900],
-          border: `1px solid ${COLOR_PRIMARY[100]}`,
+          letterSpacing: 0,
+          textTransform: "none",
         },
       },
       variants: [
+        // Status Chips
         {
-          props: { variant: "filled", color: "primary" },
-          style: {
-            backgroundColor: COLOR_PRIMARY[100],
-            color: COLOR_GREY[900],
-            borderRadius: "6px",
-            fontFamily: FONT_FAMILY_INTER,
-            fontWeight: FONT_WEIGHT_MEDIUM,
-            fontSize: "0.875rem",
-            lineHeight: 1.5,
-            letterSpacing: 0,
-          },
+          props: { variant: "status", color: "freelance" },
+          style: { backgroundColor: "#FEF3C7", color: "#92400E", fontSize: "0.75rem", height: 24 },
         },
         {
-          props: { variant: "outlined", color: "primary" },
-          style: {
-            backgroundColor: "transparent",
-            color: COLOR_GREY[900],
-            border: `1px solid ${COLOR_PRIMARY[100]}`,
-            borderRadius: "6px",
-            fontFamily: FONT_FAMILY_INTER,
-            fontWeight: FONT_WEIGHT_MEDIUM,
-            fontSize: "0.875rem",
-            lineHeight: 1.5,
-            letterSpacing: 0,
-          },
+          props: { variant: "status", color: "extra-job" },
+          style: { backgroundColor: "#D1FAE5", color: "#065F46", fontSize: "0.75rem", height: 24 },
         },
         {
-          props: { variant: "outlined", color: "default" },
-          style: {
-            backgroundColor: "transparent",
-            color: COLOR_TEXT_PRIMARY,
-            border: `1px solid ${COLOR_GREY[200]}`,
-            borderRadius: "6px",
-            fontFamily: FONT_FAMILY_INTER,
-            fontWeight: FONT_WEIGHT_MEDIUM,
-            fontSize: "0.875rem",
-            lineHeight: 1.5,
-            letterSpacing: 0,
-          },
+          props: { variant: "status", color: "part-time" },
+          style: { backgroundColor: "#DBEAFE", color: "#1E40AF", fontSize: "0.75rem", height: 24 },
         },
         {
-          props: { variant: "filled", color: "secondary" },
+          props: { variant: "status", color: "full-time" },
+          style: { backgroundColor: "#F3E8FF", color: "#7C3AED", fontSize: "0.75rem", height: 24 },
+        },
+        {
+          props: { variant: "status", color: "default" },
+          style: { backgroundColor: "#F3F4F6", color: "#374151", fontSize: "0.75rem", height: 24 },
+        },
+        // Skill Chip
+        {
+          props: { variant: "skill" },
+          style: { backgroundColor: "#E1EFFE", color: "#111928" },
+        },
+        // Match Chip
+        {
+          props: { variant: "match" },
           style: {
-            backgroundColor: COLOR_PRIMARY[100],
-            color: COLOR_GREY[900],
-            borderRadius: "6px",
-            fontFamily: FONT_FAMILY_INTER,
-            fontWeight: FONT_WEIGHT_MEDIUM,
+            backgroundColor: "#F3F4F6",
+            color: "#3F83F8",
+            borderRadius: "16px",
+            fontWeight: 500,
             fontSize: "0.875rem",
             lineHeight: 1.5,
             letterSpacing: 0,
+            height: 32,
+            paddingLeft: 12,
+            paddingRight: 12,
           },
+        },
+        // Job Type Chip
+        {
+          props: { variant: "jobType" },
+          style: { backgroundColor: "#F3F4F6", color: "#111928", fontWeight: 500, fontSize: "0.875rem", borderRadius: "6px", height: 25, paddingLeft: 12, paddingRight: 12 },
+        },
+        // Tag Chip
+        {
+          props: { variant: "tag" },
+          style: { backgroundColor: "#F3F4F6", color: "#111928", fontWeight: 500, fontSize: "0.875rem", borderRadius: "6px", height: 25, paddingLeft: 12, paddingRight: 12 },
         },
       ],
     },
@@ -736,6 +704,34 @@ declare module '@mui/material/styles' {
       actionButtonHover?: string;
       actionButtonIcon?: string;
     }
+  }
+}
+
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    login: true;
+    signup: true;
+    applyNow: true;
+    newJob: true;
+    quickApply: true;
+    save: true;
+  }
+}
+
+declare module '@mui/material/Chip' {
+  interface ChipPropsVariantOverrides {
+    status: true;
+    skill: true;
+    match: true;
+    jobType: true;
+    tag: true;
+  }
+  interface ChipPropsColorOverrides {
+    freelance: true;
+    'extra-job': true;
+    'part-time': true;
+    'full-time': true;
+    default: true;
   }
 }
 

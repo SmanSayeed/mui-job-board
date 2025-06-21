@@ -11,15 +11,14 @@ import {
   Box,
   Typography,
   Divider,
+  Button,
 } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
 import Link from "next/link"
-import LoginButton from "../atoms/LoginButton"
-import SignupButton from "../atoms/SignupButton"
+import CButton from '../atoms/CButton'
 import { useAuth } from "@/hooks/useAuth"
 import { AuthIcons } from "./AuthButtons"
-import NewJobButton from "@/components/atoms/NewJobButton"
 import SearchInput from "@/components/atoms/SearchInput"
 import { RecruiterAuthButtons } from "./RecruiterAuthButtons"
 
@@ -126,8 +125,8 @@ export default function RecruiterMobileNavigation() {
             sx={{ minWidth: 200 }}
             colorVariant="blue"
           />
-          <NewJobButton />
-          {isRecruiter ? <RecruiterAuthButtons /> : <><LoginButton /><SignupButton /></>}
+          <CButton variant="newJob">New Job</CButton>
+          {isRecruiter ? <RecruiterAuthButtons /> : <><Button variant="text" color="inherit" sx={{ fontFamily: 'Roboto, sans-serif', fontWeight: 600, fontSize: 14, lineHeight: 1, color: '#303030', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { color: '#3F83F8', background: 'none' } }}>Login</Button><CButton variant="signup">Signup</CButton></>}
         </Box>
       </Drawer>
     </>

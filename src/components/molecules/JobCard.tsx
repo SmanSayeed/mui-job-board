@@ -17,8 +17,7 @@ import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
 import { useState } from "react"
 import MatchChip from "../atoms/MatchChip"
-import SaveButton from "../atoms/SaveButton"
-import QuickApplyButton from "../atoms/QuickApplyButton"
+import CButton from "../atoms/CButton"
 import JobCardOverview from "../atoms/JobCardOverview"
 
 interface JobCardProps {
@@ -185,8 +184,8 @@ export default function JobCard({
             mt: 2,
           }}
         >
-          <SaveButton onClick={handleSaveClick} sx={{ width: { xs: "100%", sm: 84 }, height: 40 }} />
-          <QuickApplyButton onClick={handleApplyClick} sx={{ width: { xs: "100%", sm: 132 }, height: 40 }} />
+          <CButton variant="save" onClick={handleSaveClick} sx={{ width: { xs: "100%", sm: 84 }, height: 40 }}>Save</CButton>
+          <CButton variant="quickApply" onClick={handleApplyClick} sx={{ width: { xs: "100%", sm: 132 }, height: 40 }}>Quick Apply</CButton>
         </Box>
 
         {/* Quick Apply Dialog */}

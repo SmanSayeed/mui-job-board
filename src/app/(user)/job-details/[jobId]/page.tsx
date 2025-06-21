@@ -17,7 +17,7 @@ import CloseIcon from "@mui/icons-material/Close"
 import { useState } from "react"
 import BackButton from "../../../../components/atoms/BackButton"
 import DesignationTitle from "@/components/atoms/DesignationTitle"
-import ApplyNowButton from "@/components/atoms/ApplyNowButton"
+import CButton from "@/components/atoms/CButton"
 import RoundedIconButton from "@/components/atoms/RoundedIconButton"
 import JobMetaInformation from "@/components/molecules/JobMetaInformation"
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
@@ -44,7 +44,7 @@ export default function JobDetailPage() {
             </Box>
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <ApplyNowButton onClick={handleApplyClick} />
+              <CButton variant="applyNow" onClick={handleApplyClick}>Apply Now</CButton>
               <RoundedIconButton icon={<MoreHorizIcon />} color="blue" sizeVariant="small" />
             </Box>
           </Box>

@@ -1,7 +1,8 @@
 "use client"
+"use client"
 import { Box, IconButton, Menu, MenuItem } from "@mui/material"
-import LoginButton from "../atoms/LoginButton"
-import SignupButton from "../atoms/SignupButton"
+// import LoginButton from "../atoms/LoginButton"
+// import SignupButton from "../atoms/SignupButton"
 import ProfileImage from "../atoms/ProfileImage"
 import { useAuth } from "@/hooks/useAuth"
 import NotificationsIcon from '@mui/icons-material/Notifications';

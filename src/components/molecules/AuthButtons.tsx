@@ -1,7 +1,6 @@
 "use client"
 import { Box, IconButton, Menu, MenuItem } from "@mui/material"
-import LoginButton from "../atoms/LoginButton"
-import SignupButton from "../atoms/SignupButton"
+import CButton from '../atoms/CButton';
 import ProfileImage from "../atoms/ProfileImage"
 import { useAuth } from "@/hooks/useAuth"
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -15,6 +14,7 @@ import { useTheme } from "@mui/material/styles"
 import RoundedIconButton from '@/components/atoms/RoundedIconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ProfileMenu from './ProfileMenu';
+import Button from '@mui/material/Button';
 
 export function AuthIcons() {
   const { logout } = useAuth();
@@ -49,8 +49,8 @@ export default function AuthButtons() {
 
   return (
     <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2, alignItems: "center" }}>
-      <LoginButton />
-      <SignupButton />
+      <Button variant="text" color="inherit" sx={{ fontFamily: 'Roboto, sans-serif', fontWeight: 600, fontSize: 14, lineHeight: 1, color: '#303030', textTransform: 'none', minWidth: 0, p: 0, '&:hover': { color: '#3F83F8', background: 'none' } }}>Login</Button>
+      <CButton variant="signup">Signup</CButton>
     </Box>
   )
 }
