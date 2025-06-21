@@ -1,21 +1,22 @@
 "use client"
 import {
   Box,
-  Typography,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
   Pagination,
+  Stack,
 } from "@mui/material"
 import type React from "react"
-
 import { useState } from "react"
-import TableFilters from "@/components/molecules/TableFilters"
-import JobTableRow from "@/components/molecules/JobTableRow"
+import JobListingTitle from "@/components/atoms/JobListingTitle"
+import JobListingToolbar from "@/components/molecules/JobListingToolbar"
+import JobListingTableRow from "@/components/molecules/JobListingTableRow"
+import mockJobListingsData from "@/lib/jobListingRecruiterData"
 
 interface JobListing {
   id: string
@@ -27,53 +28,6 @@ interface JobListing {
   status?: string
 }
 
-const mockJobListingsData: JobListing[] = [
-  {
-    id: "1",
-    jobTitle: "Senior UI/UX Designer",
-    jobType: "Freelance",
-    datePosted: "2025-02-10",
-    applicants: 0,
-    views: 0,
-    status: "active",
-  },
-  {
-    id: "2",
-    jobTitle: "Senior UI/UX Designer",
-    jobType: "Extra Job",
-    datePosted: "2025-01-15",
-    applicants: 5,
-    views: 120,
-    status: "active",
-  },
-  {
-    id: "3",
-    jobTitle: "Senior UI/UX Designer",
-    jobType: "Part time",
-    datePosted: "2024-12-20",
-    applicants: 10,
-    views: 80,
-    status: "closed",
-  },
-  {
-    id: "4",
-    jobTitle: "Frontend Developer",
-    jobType: "Full time",
-    datePosted: "2025-02-05",
-    applicants: 15,
-    views: 200,
-    status: "active",
-  },
-  {
-    id: "5",
-    jobTitle: "Product Manager",
-    jobType: "Full time",
-    datePosted: "2025-01-28",
-    applicants: 8,
-    views: 95,
-    status: "active",
-  },
-]
 
 interface JobListingsTableProps {
   data?: JobListing[]
@@ -86,7 +40,7 @@ export default function JobListingsTable({
   data = mockJobListingsData,
   title = "Job Listings",
   showFilters = true,
-  itemsPerPage = 10,
+  itemsPerPage = 3,
 }: JobListingsTableProps) {
   // Filter states
   const [jobStatus, setJobStatus] = useState("all")
@@ -113,6 +67,10 @@ export default function JobListingsTable({
   const startIndex = (currentPage - 1) * itemsPerPage
   const paginatedData = filteredData.slice(startIndex, startIndex + itemsPerPage)
 
+  // Always show at least 3 rows
+  const minRows = 3;
+  const emptyRows = Math.max(0, minRows - paginatedData.length);
+
   // Action handlers
   const handleEdit = (jobId: string) => {
     console.log("Edit job:", jobId)
@@ -134,32 +92,28 @@ export default function JobListingsTable({
     // Implement delete logic
   }
 
-  const handleArchive = (jobId: string) => {
-    console.log("Archive job:", jobId)
-    // Implement archive logic
-  }
-
   const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page)
   }
 
   return (
-    <Box>
-      {/* Title */}
-      <Typography
-        sx={{
-          fontSize: "1.25rem",
-          fontWeight: 600,
-          color: "#111928",
-          mb: 3,
-        }}
-      >
-        {title}
-      </Typography>
-
-      {/* Filters */}
-      {showFilters && (
-        <TableFilters
+    <Paper sx={{
+      width: 1137,
+      height: 'auto',
+      borderRadius: '12px',
+      background: '#fff',
+      p: '20px 0',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '20px',
+      boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)',
+      overflowX: 'hidden',
+    }}>
+      <Box sx={{ px: 3 }}>
+        <JobListingTitle>{title}</JobListingTitle>
+      </Box>
+      <Box sx={{ px: 3 }}>
+        <JobListingToolbar
           jobStatus={jobStatus}
           jobType={jobType}
           datePosted={datePosted}
@@ -171,76 +125,62 @@ export default function JobListingsTable({
           onApplicantsChange={setApplicants}
           onSearchChange={setSearchQuery}
         />
-      )}
-
-      {/* Results Summary */}
-      <Box sx={{ mb: 2 }}>
-        <Typography sx={{ color: "#6B7280", fontSize: "0.875rem" }}>
-          Showing {startIndex + 1}-{Math.min(startIndex + itemsPerPage, filteredData.length)} of {filteredData.length}{" "}
-          jobs
-        </Typography>
       </Box>
-
-      {/* Table */}
-      <TableContainer
-        component={Paper}
-        sx={{
-          borderRadius: "8px",
-          boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1)",
-          border: "1px solid #E5E7EB",
-        }}
-      >
-        <Table>
+      <Box sx={{ mb: 2 }} />
+      <TableContainer sx={{ flex: 1, background: 'transparent', boxShadow: 'none', borderRadius: 0, width: '100%', overflowX: 'hidden' }}>
+        <Table sx={{ width: '100%', tableLayout: 'fixed' }}>
           <TableHead>
-            <TableRow sx={{ backgroundColor: "#F9FAFB" }}>
-              <TableCell sx={{ fontWeight: 600, color: "#374151", fontSize: "0.875rem" }}>Job Title</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: "#374151", fontSize: "0.875rem" }}>Job Type</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: "#374151", fontSize: "0.875rem" }}>Date Posted</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: "#374151", fontSize: "0.875rem" }}>Applicants</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: "#374151", fontSize: "0.875rem" }}>Views</TableCell>
-              <TableCell sx={{ fontWeight: 600, color: "#374151", fontSize: "0.875rem" }}>Actions</TableCell>
+            <TableRow sx={{ backgroundColor: '#F9FAFB' }}>
+              <TableCell padding="checkbox" />
+              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Job Title</TableCell>
+              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Job Type</TableCell>
+              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Date Posted</TableCell>
+              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Applicants</TableCell>
+              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }}>Views</TableCell>
+              <TableCell sx={{ fontWeight: 600, color: '#374151', fontSize: '0.875rem', fontFamily: 'Inter, sans-serif' }} align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {paginatedData.length > 0 ? (
               paginatedData.map((job) => (
-                <JobTableRow
+                <JobListingTableRow
                   key={job.id}
                   job={job}
                   onEdit={handleEdit}
                   onDuplicate={handleDuplicate}
                   onViewStats={handleViewStats}
                   onDelete={handleDelete}
-                  onArchive={handleArchive}
                 />
               ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={6} sx={{ textAlign: "center", py: 4 }}>
-                  <Typography sx={{ color: "#6B7280", fontSize: "0.875rem" }}>
-                    No jobs found matching your criteria
-                  </Typography>
-                </TableCell>
+            ) : null}
+            {/* Add empty rows if needed */}
+            {emptyRows > 0 && Array.from({ length: emptyRows }).map((_, idx) => (
+              <TableRow key={`empty-row-${idx}`} sx={{ borderBottom: '1px solid #E5E7EB', height: 53 }}>
+                <TableCell padding="checkbox" />
+                <TableCell />
+                <TableCell />
+                <TableCell />
+                <TableCell />
+                <TableCell />
+                <TableCell align="right" />
               </TableRow>
-            )}
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
-
-      {/* Pagination */}
       {totalPages > 1 && (
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
-          <Pagination
-            count={totalPages}
-            page={currentPage}
-            onChange={handlePageChange}
-            color="primary"
-            size="medium"
-            showFirstButton
-            showLastButton
-          />
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', pr: 3, mt: 'auto' }}>
+          <Stack spacing={2}>
+            <Pagination
+              count={totalPages}
+              page={currentPage}
+              onChange={handlePageChange}
+              variant="outlined"
+              shape="rounded"
+            />
+          </Stack>
         </Box>
       )}
-    </Box>
+    </Paper>
   )
 }
