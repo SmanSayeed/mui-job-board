@@ -19,6 +19,7 @@ import { useState } from "react"
 import MatchChip from "../atoms/MatchChip"
 import SaveButton from "../atoms/SaveButton"
 import QuickApplyButton from "../atoms/QuickApplyButton"
+import JobCardOverview from "../atoms/JobCardOverview"
 
 interface JobCardProps {
   position: string
@@ -171,27 +172,7 @@ export default function JobCard({
         </Box>
 
         {/* Job Overview */}
-        <Box sx={{ mb: 3 }}>
-          <Typography
-            sx={{
-              ...theme.typography.subtitle2,
-              color: theme.palette.text.primary,
-              mb: 1,
-            }}
-          >
-            Job Overview
-          </Typography>
-          <Typography
-            sx={{
-              ...theme.typography.overline,
-              color: theme.palette.text.primary,
-            }}
-          >
-            {description}
-          </Typography>
-        </Box>
-
-      
+        <JobCardOverview description={description} />
 
         {/* Action Buttons */}
         <Box

@@ -3,43 +3,7 @@ import { Box, Typography } from "@mui/material"
 import JobCard from "../molecules/JobCard"
 import { useTheme } from "@mui/material/styles"
 
-const jobsData = [
-  {
-    position: "Graphic Designer",
-    company: "KNEG AB",
-    location: "Sweden",
-    date: "March 22, 2025",
-    salary: "100,000 EUR/yr",
-    jobTypes: ["FULL TIME", "HYBRID"],
-    tags: ["IT", "Social", "Recruiting", "HR"],
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    position: "Graphic Designer",
-    company: "KNEG AB",
-    location: "Sweden",
-    date: "March 22, 2025",
-    salary: "100,000 EUR/yr",
-    jobTypes: ["FULL TIME", "HYBRID"],
-    tags: ["IT", "Social", "Recruiting", "HR"],
-    matchPercentage: 95,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-  {
-    position: "Graphic Designer",
-    company: "KNEG AB",
-    location: "Sweden",
-    date: "March 22, 2025",
-    salary: "100,000 EUR/yr",
-    jobTypes: ["FULL TIME", "HYBRID"],
-    tags: ["IT", "Social", "Recruiting", "HR"],
-    matchPercentage: 95,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  },
-]
+import jobsData from "@/lib/jobsData"
 
 export default function MainContent() {
   const theme = useTheme();
