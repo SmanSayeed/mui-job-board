@@ -2,96 +2,86 @@ import React, { ReactElement } from 'react';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 
-const styleMap = {
+const colorMap = {
   blue: {
-    medium: {
-      size: 50,
-      iconSize: 28,
-      bg: '#F3F4F6',
-      color: '#3F83F8',
-      hoverBg: '#e0e7ef',
-    },
-    small: {
-      size: 32,
-      iconSize: 20,
-      bg: '#F3F4F6',
-      color: '#3F83F8',
-      hoverBg: '#e0e7ef',
-    },
+    bg: '#F3F4F6',
+    color: '#3F83F8',
+    hoverBg: '#e0e7ef',
   },
   yellow: {
-    large: {
-      size: 70,
-      iconSize: 36,
-      bg: '#FDF6B2',
-      color: '#E3A008',
-      hoverBg: '#f7e6a2',
-    },
+    bg: '#FDF6B2',
+    color: '#E3A008',
+    hoverBg: '#f7e6a2',
   },
   green: {
-    large: {
-      size: 70,
-      iconSize: 36,
-      bg: '#DEF7EC',
-      color: '#31C48D',
-      hoverBg: '#c6f0dd',
-    },
+    bg: '#DEF7EC',
+    color: '#31C48D',
+    hoverBg: '#c6f0dd',
   },
   purple: {
-    large: {
-      size: 70,
-      iconSize: 36,
-      bg: '#EDEBFE',
-      color: '#AC94FA',
-      hoverBg: '#d6d1fa',
-    },
+    bg: '#EDEBFE',
+    color: '#AC94FA',
+    hoverBg: '#d6d1fa',
   },
   pink: {
-    large: {
-      size: 70,
-      iconSize: 36,
-      bg: '#FCE8F3',
-      color: '#F17EB8',
-      hoverBg: '#f9d0e7',
-    },
+    bg: '#FCE8F3',
+    color: '#F17EB8',
+    hoverBg: '#f9d0e7',
   },
 };
 
-type RoundedIconButtonColor = 'blue' | 'yellow' | 'green' | 'purple' | 'pink';
-type RoundedIconButtonSize = 'small' | 'medium' | 'large';
+const sizeStyles = {
+  mid: {
+    width: 50,
+    height: 50,
+    gap: '10px',
+    borderRadius: '30px',
+    iconSize: 28,
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+  small: {
+    width: 32,
+    height: 32,
+    gap: undefined,
+    borderRadius: '50%',
+    iconSize: 20,
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+  large: {
+    width: 70,
+    height: 70,
+    gap: '10px',
+    borderRadius: '40px',
+    iconSize: 36,
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+};
+
+type RoundedIconButtonColor = keyof typeof colorMap;
+type RoundedIconButtonSizeVariant = keyof typeof sizeStyles;
 
 type RoundedIconButtonProps = {
   icon: ReactElement;
-  color?: RoundedIconButtonColor;
-  size?: RoundedIconButtonSize;
+  color: RoundedIconButtonColor;
+  sizeVariant?: RoundedIconButtonSizeVariant;
   sx?: any;
-} & Omit<ButtonProps, 'children'>;
+  buttonProps?: ButtonProps;
+};
 
-function getVariant(color: string, size: string) {
-  const colorMap = styleMap[color as keyof typeof styleMap];
-  if (colorMap && (colorMap as any)[size]) {
-    return (colorMap as any)[size];
-  }
-  // fallback: blue/medium
-  return styleMap.blue.medium;
-}
-
-export default function RoundedIconButton(props: RoundedIconButtonProps) {
-  const {
-    icon,
-    color = 'blue',
-    size = 'medium',
-    sx,
-    ...rest
-  } = props;
-  const variant = getVariant(color, size);
+export default function RoundedIconButton({ icon, color, sizeVariant = 'mid', sx, buttonProps }: RoundedIconButtonProps) {
+  const safeColor: RoundedIconButtonColor = (color in colorMap ? color : 'blue');
+  const variant = colorMap[safeColor];
+  const size = sizeStyles[sizeVariant];
   return (
     <Button
       sx={{
         minWidth: 0,
-        width: variant.size,
-        height: variant.size,
-        borderRadius: '50%',
+        width: size.width,
+        height: size.height,
+        borderRadius: size.borderRadius,
         backgroundColor: variant.bg,
         display: 'flex',
         alignItems: 'center',
@@ -99,6 +89,9 @@ export default function RoundedIconButton(props: RoundedIconButtonProps) {
         cursor: 'pointer',
         boxShadow: 'none',
         p: 0,
+        ...(size.gap ? { gap: size.gap } : {}),
+        paddingLeft: size.paddingLeft,
+        paddingRight: size.paddingRight,
         transition: 'background 0.2s',
         '&:hover': {
           backgroundColor: variant.hoverBg,
@@ -106,14 +99,14 @@ export default function RoundedIconButton(props: RoundedIconButtonProps) {
         },
         ...sx,
       }}
-      {...rest}
+      {...buttonProps}
     >
       <Avatar
         sx={{
           bgcolor: 'transparent',
           color: variant.color,
-          width: variant.iconSize,
-          height: variant.iconSize,
+          width: size.iconSize,
+          height: size.iconSize,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

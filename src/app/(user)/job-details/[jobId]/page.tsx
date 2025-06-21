@@ -43,7 +43,7 @@ export default function JobDetailPage() {
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               <ApplyNowButton onClick={handleApplyClick} />
-              <RoundedIconButton icon={<MoreHorizIcon />} color="blue" size="medium" />
+              <RoundedIconButton icon={<MoreHorizIcon />} color="blue" sizeVariant="small" />
             </Box>
           </Box>
 

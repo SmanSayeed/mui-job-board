@@ -35,10 +35,10 @@ export function AuthIcons() {
 
   return (
     <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-      <RoundedIconButton icon={<CalendarTodayIcon />} color="blue" size="small" />
-      <RoundedIconButton icon={<SmsIcon />} color="blue" size="small" />
-      <IconButton color="inherit" onClick={handleMenu} sx={{ p: 0 }}>
-        <ProfileImage src="/profile1.jpg" profileVariant="user_profile_image" />
+      <RoundedIconButton icon={<CalendarTodayIcon />} color="blue" sizeVariant="mid" />
+      <RoundedIconButton icon={<SmsIcon />} color="blue" sizeVariant="mid" />
+      <IconButton color="inherit" onClick={handleMenu} sx={{ p: 0 }}> 
+        <ProfileImage src="/profile1.jpg" profileVariant="job_profile_image" />
         <ArrowDropDownIcon />
       </IconButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
