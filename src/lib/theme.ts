@@ -52,10 +52,14 @@ const theme = createTheme({
     neutral: {
       default: "#303030", // Text/Neutral/Default for login button
       coolGray900: "#21272A", // CoolGray/900 for coach names
-      coolGray600: "#697077", // CoolGray/600 for coach designations
+      coolGray600: "#697077", // CoolGray/600 for coach designations and meta info
     },
     brand: {
       onBrand: "#F5F5F5", // Text/Brand/On Brand for signup button text
+    },
+    coolGray: {
+      60: '#697077',
+      70: '#4D5358',
     },
   },
   typography: {
@@ -166,6 +170,41 @@ const theme = createTheme({
       lineHeight: 1.5, // 150% from Figma
       letterSpacing: 0,
       textTransform: "none",
+    },
+    jobMetaPosted: {
+      fontFamily: 'Roboto, sans-serif',
+      fontWeight: 400,
+      fontSize: '12px',
+      lineHeight: 1.4,
+      letterSpacing: 0,
+      color: '#697077', // CoolGray/600
+    },
+    jobMetaApply: {
+      fontFamily: 'Roboto, sans-serif',
+      fontWeight: 400,
+      fontSize: '12px',
+      lineHeight: 1.4,
+      letterSpacing: 0,
+      color: '#697077', // CoolGray/600
+    },
+    jobMetaCompany: {
+      fontFamily: 'Roboto, sans-serif',
+      fontWeight: 700,
+      fontSize: '14px',
+      lineHeight: 1.4,
+      letterSpacing: 0,
+      color: '#4D5358', // Custom bold color
+      textDecoration: 'underline',
+      textDecorationStyle: 'solid',
+      textDecorationSkip: 'auto',
+    },
+    jobMetaSalary: {
+      fontFamily: 'Roboto, sans-serif',
+      fontWeight: 700,
+      fontSize: '14px',
+      lineHeight: 1.4,
+      letterSpacing: 0,
+      color: '#4D5358', // Custom bold color
     },
   },
   spacing: 8, // Base spacing unit
@@ -779,6 +818,21 @@ declare module "@mui/material/styles" {
     700?: string
     800?: string
     900?: string
+  }
+}
+
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    jobMetaPosted: React.CSSProperties;
+    jobMetaApply: React.CSSProperties;
+    jobMetaCompany: React.CSSProperties;
+    jobMetaSalary: React.CSSProperties;
+  }
+  interface TypographyVariantsOptions {
+    jobMetaPosted?: React.CSSProperties;
+    jobMetaApply?: React.CSSProperties;
+    jobMetaCompany?: React.CSSProperties;
+    jobMetaSalary?: React.CSSProperties;
   }
 }
 

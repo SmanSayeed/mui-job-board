@@ -19,14 +19,16 @@ import BackButton from "../../../../components/atoms/BackButton"
 import DesignationTitle from "@/components/atoms/DesignationTitle"
 import ApplyNowButton from "@/components/atoms/ApplyNowButton"
 import RoundedIconButton from "@/components/atoms/RoundedIconButton"
-
+import JobMetaInformation from "@/components/molecules/JobMetaInformation"
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 export default function JobDetailPage() {
   const [openApply, setOpenApply] = useState(false);
   const handleApplyClick = () => setOpenApply(true);
   const handleCloseApply = () => setOpenApply(false);
   return (
     <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}>
-      <Container maxWidth="lg" sx={{ py: 3 }}>
+      <Container maxWidth="lg" sx={{ py: 0 }}>
         <Box sx={{ backgroundColor: "#FFFFFF", borderRadius: "8px", p: 4 }}>
             {/* Back Button */}
             <BackButton sx={{ mb: 3 }} />
@@ -49,65 +51,15 @@ export default function JobDetailPage() {
 
           {/* Job Meta Information */}
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5, mb: 3 }}>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <CalendarTodayIcon sx={{ fontSize: 16, color: "#6B7280" }} />
-              <Typography
-                sx={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 400,
-                  fontSize: "0.875rem",
-                  color: "#6B7280",
-                }}
-              >
-                Posted on March 22, 2025
-              </Typography>
-            </Box>
-
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <AccessTimeIcon sx={{ fontSize: 16, color: "#6B7280" }} />
-              <Typography
-                sx={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 400,
-                  fontSize: "0.875rem",
-                  color: "#6B7280",
-                }}
-              >
-                Apply before April 30, 2025
-              </Typography>
-            </Box>
-
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <BusinessIcon sx={{ fontSize: 16, color: "#6B7280" }} />
-              <Typography
-                sx={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 400,
-                  fontSize: "0.875rem",
-                  color: "#6B7280",
-                }}
-              >
-                Intelligent Apps
-              </Typography>
-            </Box>
-
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <AttachMoneyIcon sx={{ fontSize: 16, color: "#6B7280" }} />
-              <Typography
-                sx={{
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 400,
-                  fontSize: "0.875rem",
-                  color: "#6B7280",
-                }}
-              >
-                100,000 EUR/yr
-              </Typography>
-            </Box>
+            <JobMetaInformation icon={<CalendarTodayIcon />} label="Posted on March 22, 2025" variant="posted" />
+            <JobMetaInformation icon={<AccessTimeIcon />} label="Apply before April 30, 2025" variant="apply" />
+            <JobMetaInformation icon={<BusinessCenterIcon />} label="Intelligent Apps" variant="company" />
+            <JobMetaInformation icon={<AttachMoneyIcon />} label="100,000 EUR/yr" variant="salary" />
           </Box>
 
           {/* Skills/Tags */}
           <Box sx={{ display: "flex", gap: 1, mb: 4, flexWrap: "wrap" }}>
+            <VpnKeyIcon/>
             <SkillChip label="Data" />
             <SkillChip label="Product" />
             <SkillChip label="UX" />

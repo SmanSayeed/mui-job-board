@@ -13,7 +13,7 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import SmsIcon from '@mui/icons-material/Sms';
 import { useTheme } from "@mui/material/styles"
 import RoundedIconButton from '@/components/atoms/RoundedIconButton';
-
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 export function AuthIcons() {
   const { logout } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -39,7 +39,7 @@ export function AuthIcons() {
       <RoundedIconButton icon={<SmsIcon />} color="blue" sizeVariant="mid" />
       <IconButton color="inherit" onClick={handleMenu} sx={{ p: 0 }}> 
         <ProfileImage src="/profile1.jpg" profileVariant="job_profile_image" />
-        <ArrowDropDownIcon />
+        <ExpandMoreIcon />
       </IconButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
