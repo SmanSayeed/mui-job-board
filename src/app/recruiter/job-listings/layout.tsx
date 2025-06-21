@@ -5,6 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 import theme from "@/lib/theme";
 import { Inter } from "next/font/google";
 import RecruiterDashboardContentLayout from "@/components/LayoutComponents/RecruiterDashboardContentLayout";
+import ErrorBoundary from "@/components/atoms/ErrorBoundary";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -20,11 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <RecruiterDashboardContentLayout>
-        {children}
-      </RecruiterDashboardContentLayout>
+      <ErrorBoundary>
+        <RecruiterDashboardContentLayout>
+          {children}
+        </RecruiterDashboardContentLayout>
+      </ErrorBoundary>
     </>
-
-
   );
 }

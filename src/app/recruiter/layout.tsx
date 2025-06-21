@@ -7,6 +7,7 @@ import theme from "@/lib/theme";
 import UserLayout from "../../components/LayoutComponents/UserLayout";
 import { Inter } from "next/font/google";
 import RecruiterLayout from "@/components/LayoutComponents/RecruiterLayout";
+import ErrorBoundary from "@/components/atoms/ErrorBoundary";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -22,11 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <RecruiterLayout>
-        {children}
-      </RecruiterLayout>
+      <ErrorBoundary>
+        <RecruiterLayout>
+          {children}
+        </RecruiterLayout>
+      </ErrorBoundary>
     </>
-
-
   );
 }
