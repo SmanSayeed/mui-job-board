@@ -6,8 +6,18 @@ import { useTheme } from '@mui/material/styles';
 import BpCheckbox from '../atoms/BpCheckbox';
 
 
-export default function JobListingTableRow({ job, onEdit, onDuplicate, onViewStats, onDelete }: {
+export default function JobListingTableRow({ 
+  job, 
+  checked = false,
+  onCheckChange,
+  onEdit, 
+  onDuplicate, 
+  onViewStats, 
+  onDelete 
+}: {
   job: any;
+  checked?: boolean;
+  onCheckChange?: (checked: boolean) => void;
   onEdit: (id: string) => void;
   onDuplicate: (id: string) => void;
   onViewStats: (id: string) => void;
@@ -15,11 +25,14 @@ export default function JobListingTableRow({ job, onEdit, onDuplicate, onViewSta
 }) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => setAnchorEl(event.currentTarget);
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setAnchorEl(event.currentTarget);
+  };
   const handleClose = () => setAnchorEl(null);
   const theme = useTheme();
   const valueCellSx = { color: theme.jobListingTable.rowText, fontFamily: 'Inter, sans-serif', fontWeight: 400 };
-  const [checked, setChecked] = useState(false);
   
   return (
     <TableRow
@@ -31,7 +44,10 @@ export default function JobListingTableRow({ job, onEdit, onDuplicate, onViewSta
       }}
     >
       <TableCell padding="checkbox">
-        <BpCheckbox checked={checked} onChange={e => setChecked(e.target.checked)} />
+        <BpCheckbox 
+          checked={checked} 
+          onChange={e => onCheckChange?.(e.target.checked)} 
+        />
       </TableCell>
       <TableCell sx={valueCellSx}>{job.jobTitle}</TableCell>
       <TableCell sx={valueCellSx}>{job.jobType}</TableCell>
@@ -46,9 +62,23 @@ export default function JobListingTableRow({ job, onEdit, onDuplicate, onViewSta
           <RoundedIconButton
             icon={<MoreVertIcon sx={{ color: theme.jobListingTable.actionButtonIcon }} />}
             color="blue"
-            buttonProps={{ onClick: handleMenu, size: 'small' }}
+            buttonProps={{ 
+              onClick: handleMenu, 
+              size: 'small',
+              'aria-controls': open ? 'job-menu' : undefined,
+              'aria-haspopup': 'true',
+              'aria-expanded': open ? 'true' : undefined,
+            }}
           />
-          <Menu anchorEl={anchorEl} open={open} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
+          <Menu 
+            id="job-menu"
+            anchorEl={anchorEl} 
+            open={open} 
+            onClose={handleClose} 
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} 
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <MenuItem onClick={() => { onEdit(job.id); handleClose(); }}>Edit</MenuItem>
             <MenuItem onClick={handleClose}>Open</MenuItem>
             <MenuItem onClick={() => { onDuplicate(job.id); handleClose(); }}>Duplicate</MenuItem>

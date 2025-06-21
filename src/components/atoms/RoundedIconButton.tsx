@@ -76,6 +76,16 @@ export default function RoundedIconButton({ icon, color, sizeVariant = 'mid', sx
   const safeColor: RoundedIconButtonColor = (color in colorMap ? color : 'blue');
   const variant = colorMap[safeColor];
   const size = sizeStyles[sizeVariant];
+  
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (onClick) {
+      onClick(event);
+    }
+    if (buttonProps?.onClick) {
+      buttonProps.onClick(event);
+    }
+  };
+  
   return (
     <Button
       sx={{
@@ -101,7 +111,7 @@ export default function RoundedIconButton({ icon, color, sizeVariant = 'mid', sx
         ...sx,
       }}
       {...buttonProps}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <Avatar
         sx={{

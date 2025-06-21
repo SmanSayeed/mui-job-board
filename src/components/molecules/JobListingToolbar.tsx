@@ -29,7 +29,7 @@ export default function JobListingToolbar({
         width: '100%',
       }}
     >
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: { xs: '100%', md: 'auto' }, flex: { md: 1 } }}>
         <JobListingFilters
           jobStatus={jobStatus}
           jobType={jobType}
@@ -41,13 +41,13 @@ export default function JobListingToolbar({
           onApplicantsChange={onApplicantsChange}
         />
       </Box>
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: { xs: '100%', md: 224 }, display: 'flex', justifyContent: { xs: 'flex-start', md: 'flex-end' } }}>
         <SearchInput
           placeholder="Search candidates"
           value={searchQuery}
           onChange={e => onSearchChange(e.target.value)}
           size="small"
-          sx={{ minWidth: { xs: '100%', md: 240 }, width: '100%' }}
+          sx={{ width: { xs: '100%', md: 224 } }}
           colorVariant="gray"
         />
       </Box>

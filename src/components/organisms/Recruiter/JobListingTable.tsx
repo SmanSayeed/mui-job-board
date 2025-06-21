@@ -19,6 +19,7 @@ import JobListingToolbar from "@/components/molecules/JobListingToolbar"
 import JobListingTableRow from "@/components/molecules/JobListingTableRow"
 import mockJobListingsData from "@/lib/jobListingRecruiterData"
 import SearchInput from "@/components/atoms/SearchInput"
+import BpCheckbox from "@/components/atoms/BpCheckbox"
 
 interface JobListing {
   id: string
@@ -55,6 +56,10 @@ export default function JobListingsTable({
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1)
 
+  // Select all state
+  const [selectAll, setSelectAll] = useState(false)
+  const [selectedRows, setSelectedRows] = useState<Set<string>>(new Set())
+
   // Filter data based on current filters
   const filteredData = data.filter((job) => {
     const matchesStatus = jobStatus === "all" || job.status === jobStatus
@@ -73,6 +78,33 @@ export default function JobListingsTable({
   // Always show at least 3 rows
   const minRows = 3;
   const emptyRows = Math.max(0, minRows - paginatedData.length);
+
+  // Handle select all
+  const handleSelectAll = (checked: boolean) => {
+    setSelectAll(checked);
+    if (checked) {
+      const allIds = new Set(paginatedData.map(job => job.id));
+      setSelectedRows(allIds);
+    } else {
+      setSelectedRows(new Set());
+    }
+  };
+
+  // Handle individual row selection
+  const handleRowSelect = (jobId: string, checked: boolean) => {
+    const newSelected = new Set(selectedRows);
+    if (checked) {
+      newSelected.add(jobId);
+    } else {
+      newSelected.delete(jobId);
+    }
+    setSelectedRows(newSelected);
+    
+    // Update select all state
+    const allPaginatedIds = new Set(paginatedData.map(job => job.id));
+    const allSelected = Array.from(allPaginatedIds).every(id => newSelected.has(id));
+    setSelectAll(allSelected);
+  };
 
   // Action handlers
   const handleEdit = (jobId: string) => {
@@ -181,7 +213,12 @@ export default function JobListingsTable({
           <Table sx={{ width: '100%', tableLayout: 'fixed', minWidth: 800 }}>
             <TableHead>
               <TableRow sx={{ backgroundColor: theme.table.headerBg }}>
-                <TableCell padding="checkbox" />
+                <TableCell padding="checkbox">
+                  <BpCheckbox 
+                    checked={selectAll}
+                    onChange={(e) => handleSelectAll(e.target.checked)}
+                  />
+                </TableCell>
                 {columns.map((col) => (
                   <TableCell
                     key={col.id}
@@ -203,6 +240,8 @@ export default function JobListingsTable({
                   <JobListingTableRow
                     key={job.id}
                     job={job}
+                    checked={selectedRows.has(job.id)}
+                    onCheckChange={(checked) => handleRowSelect(job.id, checked)}
                     onEdit={handleEdit}
                     onDuplicate={handleDuplicate}
                     onViewStats={handleViewStats}
