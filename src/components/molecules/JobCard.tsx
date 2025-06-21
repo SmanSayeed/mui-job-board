@@ -17,6 +17,8 @@ import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
 import { useState } from "react"
 import MatchChip from "../atoms/MatchChip"
+import SaveButton from "../atoms/SaveButton"
+import QuickApplyButton from "../atoms/QuickApplyButton"
 
 interface JobCardProps {
   position: string
@@ -116,12 +118,15 @@ export default function JobCard({
             </Box>
           </Box>
 
-          <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+          {/* Job Types - top right aligned */}
+          <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", alignItems: "center", justifyContent: "flex-end" }}>
             {jobTypes.map((type) => (
               <JobTypeChip key={type} label={type} variant="jobType" uppercase />
             ))}
           </Box>
         </Box>
+
+        
 
         {/* Job Details */}
         <Box
@@ -158,8 +163,8 @@ export default function JobCard({
           </Box>
         </Box>
 
-        {/* Tags */}
-        <Box sx={{ display: "flex", gap: 1, mb: 2, flexWrap: "wrap" }}>
+          {/* Tags */}
+          <Box sx={{ display: "flex", gap: 1, mb: 2, flexWrap: "wrap" }}>
           {tags.map((tag) => (
             <JobTypeChip key={tag} label={tag} variant="tag" />
           ))}
@@ -186,67 +191,23 @@ export default function JobCard({
           </Typography>
         </Box>
 
+      
+
         {/* Action Buttons */}
         <Box
           sx={{
             display: "flex",
             gap: 2,
             flexDirection: { xs: "column", sm: "row" },
+            justifyContent: { xs: "flex-start", sm: "flex-end" },
+            alignItems: "center",
+            mt: 2,
           }}
         >
-          <Button
-            variant="outlined"
-            color="primary"
-            sx={{
-              width: { xs: "100%", sm: "84px" },
-              height: "40px",
-              padding: "8px 12px",
-              gap: "8px",
-              borderRadius: "8px",
-              backgroundColor: "#F3F4F6",
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 500,
-              fontSize: "0.875rem",
-              lineHeight: 1.5,
-              letterSpacing: 0,
-              color: "#3F83F8",
-              textTransform: "none",
-              "&:hover": {
-                backgroundColor: "#E5E7EB",
-              },
-            }}
-            onClick={handleSaveClick}
-          >
-            Save
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              width: { xs: "100%", sm: "132px" },
-              height: "40px",
-              padding: "8px 12px",
-              gap: "8px",
-              borderRadius: "8px",
-              backgroundColor: "#1A56DB",
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 500,
-              fontSize: "0.875rem",
-              lineHeight: 1.5,
-              letterSpacing: 0,
-              color: "#FFFFFF",
-              textTransform: "none",
-              boxShadow: "none",
-              "&:hover": {
-                backgroundColor: "#1E40AF",
-                boxShadow: "none",
-              },
-            }}
-            onClick={handleApplyClick}
-          >
-            Quick Apply
-          </Button>
+          <SaveButton onClick={handleSaveClick} sx={{ width: { xs: "100%", sm: 84 }, height: 40 }} />
+          <QuickApplyButton onClick={handleApplyClick} sx={{ width: { xs: "100%", sm: 132 }, height: 40 }} />
         </Box>
+
         {/* Quick Apply Dialog */}
         <Dialog open={openApply} onClose={handleCloseApply} maxWidth="xs" fullWidth>
           <DialogTitle sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pb: 0 }}>

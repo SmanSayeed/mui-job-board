@@ -1,14 +1,18 @@
 "use client"
-import { Button } from "@mui/material"
+import { Button, ButtonProps } from "@mui/material"
 import { useTheme } from "@mui/material/styles"
+import React from "react"
 
-export default function QuickApplyButton() {
+const QuickApplyButton: React.FC<ButtonProps> = (props) => {
   const theme = useTheme();
   return (
     <Button
       variant="contained"
+      {...props}
     >
       Quick Apply
     </Button>
   )
 }
+
+export default QuickApplyButton

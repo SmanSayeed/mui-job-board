@@ -1,15 +1,19 @@
 "use client"
-import { Button } from "@mui/material"
+import { Button, ButtonProps } from "@mui/material"
 import { useTheme } from "@mui/material/styles"
+import React from "react"
 
-export default function SaveButton() {
+const SaveButton: React.FC<ButtonProps> = (props) => {
   const theme = useTheme();
   return (
     <Button
       variant="outlined"
       color="primary"
+      {...props}
     >
       Save
     </Button>
   )
 }
+
+export default SaveButton
