@@ -163,6 +163,7 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
         "&.Mui-selected": {
           backgroundColor: "#E3F2FD",
           // borderRight: "3px solid #1976D2",
+          borderRight:"none",
           "& .MuiListItemText-primary": {
             color: "#1976D2",
             fontWeight: 600,
@@ -224,10 +225,7 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
 
   const drawerContent = (
     <Box sx={{ width: DRAWER_WIDTH, height: "100%" }}>
-      <Box sx={{ p: 2 }}>
-      <Logo type={"recruiter"} />
-      </Box>
-  
+      {/* Logo removed for cleaner sidebar */}
       <List sx={{ pt: 1 }}>{sidebarItems.map((item) => renderSidebarItem(item))}</List>
     </Box>
   )
@@ -241,11 +239,16 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
         ModalProps={{
           keepMounted: true,
         }}
+        anchor="left"
         sx={{
           display: { xs: "block", md: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: DRAWER_WIDTH,
+            borderRight: "none",
+            overflowY: "auto",
+            top: { xs: '56px', md: '64px' },
+            height: { xs: 'calc(100vh - 56px)', md: 'calc(100vh - 64px)' },
           },
         }}
       >
@@ -264,9 +267,10 @@ export default function DashboardSidebar({ open, onClose, variant = "permanent" 
           width: DRAWER_WIDTH,
           position: "fixed",
           left: 0,
-          top: 0,
-          height: "100vh",
+          top: { xs: '56px', md: '64px' },
+          height: { xs: 'calc(100vh - 56px)', md: 'calc(100vh - 64px)' },
           overflowY: "auto",
+          borderRight: "none",
         },
       }}
       open

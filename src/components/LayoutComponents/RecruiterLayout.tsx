@@ -33,35 +33,39 @@ export default function RecruiterLayout({
     setMobileOpen(!mobileOpen)
   }
   return (
-    <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6", display: 'flex' }}>
-      {/* Sidebar: fixed on desktop, drawer on mobile */}
-      <Box
-        component="nav"
-        sx={{
-          width: { md: 240 },
-          flexShrink: { md: 0 },
-        }}
-        aria-label="sidebar navigation"
-      >
-        {/* Mobile Drawer */}
-        <DashboardSidebar open={mobileOpen} onClose={handleDrawerToggle} variant="temporary" />
-        {/* Desktop Permanent Drawer */}
-        <DashboardSidebar open={true} onClose={() => {}} variant="permanent" />
-      </Box>
-      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <RecruiterHeader />
-        <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2 }, my: 3, mx: 2, flex: 1 }}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", lg: "row" },
-              gap: { xs: 0, lg: 2 },
-              py: { xs: 1, md: 2 },
-            }}
-          >
-            {children}
-          </Box>
-        </Container>
+    <Box sx={{ minHeight: "100vh", backgroundColor: "#F3F4F6", display: 'flex', flexDirection: 'column' }}>
+      {/* Header always at the top, full width */}
+      <RecruiterHeader onSidebarOpen={handleDrawerToggle} />
+      {/* Main content row: sidebar + main */}
+      <Box sx={{ display: 'flex', flex: 1, minHeight: 0 }}>
+        {/* Sidebar: fixed on desktop, drawer on mobile */}
+        <Box
+          component="nav"
+          sx={{
+            width: { md: 240 },
+            flexShrink: { md: 0 },
+          }}
+          aria-label="sidebar navigation"
+        >
+          {/* Mobile Drawer */}
+          <DashboardSidebar open={mobileOpen} onClose={handleDrawerToggle} variant="temporary" />
+          {/* Desktop Permanent Drawer */}
+          <DashboardSidebar open={true} onClose={() => {}} variant="permanent" />
+        </Box>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2 }, my: 3, mx: 2, flex: 1 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", lg: "row" },
+                gap: { xs: 0, lg: 2 },
+                py: { xs: 1, md: 2 },
+              }}
+            >
+              {children}
+            </Box>
+          </Container>
+        </Box>
       </Box>
     </Box>
   )
