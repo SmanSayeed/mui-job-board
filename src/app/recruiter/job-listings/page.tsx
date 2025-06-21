@@ -1,7 +1,7 @@
 "use client"
 
-import RecruiterJobListTemplate from "@/components/templates/RecruiterJobListTemplate"
+import JobListingsTable from "@/components/organisms/Recruiter/JobListingTable"
 
 export default function HomePage() {
-  return <RecruiterJobListTemplate />
+  return    <JobListingsTable />
 }

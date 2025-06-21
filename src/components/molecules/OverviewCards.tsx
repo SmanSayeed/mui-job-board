@@ -51,6 +51,7 @@ function OverviewCard({ title, value, change, trending, icon, color, backgroundC
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'flex-start',
+        justifyContent:'space-between',
         gap: 2,
         p: 0,
       }}
@@ -182,7 +183,7 @@ export default function OverviewCards() {
   ] as OverviewCardProps[]
 
   return (
-    <Box sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(266.25px, 1fr))", gap: 2 }}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 2 }}>
       {overviewData.map((item) => (
         <OverviewCard key={item.title} {...item} />
       ))}

@@ -111,11 +111,11 @@ export default function JobListingsTable({
 
   return (
     <Paper sx={{
-      width: 1137,
+      width: "100%",
       height: 'auto',
       borderRadius: '12px',
       background: theme.jobListingTable.tableHeadBg,
-      p: '20px 0',
+      p: '0px 0',
       display: 'flex',
       flexDirection: 'column',
       gap: '20px',
