@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Box, Card, CardContent, Typography, TextField, Button, Link, Alert } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
+import BackButton from '@/components/atoms/BackButton'
 
 export default function page() {
   const router = useRouter();
@@ -26,7 +27,11 @@ export default function page() {
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F3F4F6' }}>
+    <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F3F4F6', position: 'relative' }}>
+      {/* BackButton at top left */}
+      <Box sx={{ position: 'absolute', top: 24, left: 24 }}>
+        <BackButton />
+      </Box>
       <Card sx={{ width: 360, p: 2, borderRadius: 3, boxShadow: 3 }}>
         <CardContent>
           <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, textAlign: 'center', color: '#1A56DB' }}>
