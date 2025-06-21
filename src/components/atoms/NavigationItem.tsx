@@ -1,6 +1,7 @@
 "use client"
 import { Button } from "@mui/material"
 import Link from "next/link"
+import { useTheme } from "@mui/material/styles"
 
 interface NavigationItemProps {
   label: string
@@ -9,26 +10,22 @@ interface NavigationItemProps {
 }
 
 export default function NavigationItem({ label, href, isActive = false }: NavigationItemProps) {
+  const theme = useTheme();
   return (
     <Button
       component={Link}
       href={href}
       sx={{
-        fontFamily: "Inter, sans-serif",
-        fontWeight: 600,
-        fontSize: "0.875rem",
-        lineHeight: 1.5,
-        letterSpacing: 0,
-        textAlign: "center",
+        ...theme.typography.subtitle1,
         verticalAlign: "middle",
-        color: isActive ? "#3F83F8" : "#4B5563",
+        color: isActive ? theme.palette.action.active : theme.palette.text.primary,
         textTransform: "none",
         padding: "8px 12px",
         minWidth: "auto",
         position: "relative",
         "&:hover": {
           backgroundColor: "transparent",
-          color: "#3F83F8",
+          color: theme.palette.action.hover,
         },
         "&::after": isActive
           ? {
@@ -39,7 +36,7 @@ export default function NavigationItem({ label, href, isActive = false }: Naviga
               transform: "translateX(-50%)",
               width: "100%",
               height: "2px",
-              backgroundColor: "#3F83F8",
+              backgroundColor: theme.palette.action.active,
             }
           : {},
       }}

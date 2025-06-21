@@ -237,116 +237,109 @@ const theme = createTheme({
             boxShadow: "none",
           },
         },
-        // Login button styles
+        contained: {
+          backgroundColor: "#1A56DB",
+          color: "#fff",
+          fontFamily: "var(--font-inter), Inter, sans-serif",
+          fontWeight: 500,
+          fontSize: "0.875rem",
+          lineHeight: 1.5,
+          letterSpacing: 0,
+          boxShadow: "none",
+          "&:hover": {
+            backgroundColor: "#1E40AF",
+            boxShadow: "none",
+          },
+        },
+        outlined: {
+          backgroundColor: "transparent",
+          border: "1px solid #9CA3AF",
+          color: "#4B5563",
+          fontFamily: "var(--font-inter), Inter, sans-serif",
+          fontWeight: 500,
+          fontSize: "0.875rem",
+          lineHeight: 1.5,
+          letterSpacing: 0,
+          "&:hover": {
+            backgroundColor: "#F9FAFB",
+            border: "1px solid #6B7280",
+          },
+        },
         text: {
-          padding: "8px 16px",
-          color: "#303030", // Text/Neutral/Default
+          backgroundColor: "transparent",
+          color: "#303030",
           fontFamily: "Roboto, sans-serif",
           fontWeight: 600,
+          fontSize: "0.875rem",
           lineHeight: 1,
+          letterSpacing: 0,
           "&:hover": {
             backgroundColor: "transparent",
             color: "#303030",
           },
         },
-        // Signup button styles
-        contained: {
-          padding: "10px 20px",
-          backgroundColor: "#1A56DB", // Primary/700
-          color: "#F5F5F5", // Text/Brand/On Brand
-          fontFamily: "Roboto, sans-serif",
-          fontWeight: 600,
-          lineHeight: 1,
-          boxShadow: "none",
-          "&:hover": {
-            backgroundColor: "#3F83F8", // Blue/500
-            boxShadow: "none",
-          },
-        },
-        // Save button styles
-        outlined: {
-          padding: "8px 12px",
-          backgroundColor: "#F3F4F6", // Gray/100
-          color: "#3F83F8", // Primary/500
-          border: "none",
-          "&:hover": {
-            backgroundColor: "#E5E7EB",
-            border: "none",
-          },
-        },
       },
       variants: [
-        // Quick Apply button variant
-        {
-          props: { variant: "contained", color: "primary" },
-          style: {
-            width: "132px",
-            height: "40px",
-            padding: "8px 12px",
-            backgroundColor: "#1A56DB", // Primary/700
-            color: "#FFFFFF",
-            fontFamily: "var(--font-inter), Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: "0.875rem",
-            lineHeight: 1.5,
-            "&:hover": {
-              backgroundColor: "#1E40AF",
-            },
-          },
-        },
         // Save button variant
         {
-          props: { variant: "outlined", color: "primary" },
+          props: { variant: "outlined", color: "primary", size: "medium" },
           style: {
             width: "84px",
             height: "40px",
             padding: "8px 12px",
-            backgroundColor: "#F3F4F6", // Gray/100
-            color: "#3F83F8", // Primary/500
+            backgroundColor: "#F3F4F6",
+            color: "#3F83F8",
             border: "none",
-            "&:hover": {
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+            '&:hover': {
               backgroundColor: "#E5E7EB",
               border: "none",
             },
           },
         },
+        // Signup button variant
+        {
+          props: { variant: "contained", color: "primary", size: "large" },
+          style: {
+            width: "90.5px",
+            height: "40px",
+            padding: "8px 16px",
+            backgroundColor: "#1A56DB",
+            color: "#F5F5F5",
+            borderRadius: "8px",
+            fontFamily: "Roboto, sans-serif",
+            fontWeight: 600,
+            fontSize: "0.875rem",
+            lineHeight: 1,
+            letterSpacing: 0,
+            boxShadow: "none",
+            '&:hover': {
+              backgroundColor: "#3F83F8",
+              boxShadow: "none",
+            },
+          },
+        },
         // Edit Profile button variant
         {
-          props: { variant: "text", size: "small" },
+          props: { variant: "contained", color: "primary", size: "small" },
           style: {
             width: "157px",
             height: "37px",
             padding: "8px 12px",
-            backgroundColor: "#F3F4F6", // Gray/100
-            color: "#3F83F8", // Primary/500
+            backgroundColor: "#F3F4F6",
+            color: "#3F83F8",
             borderRadius: "8px",
             fontFamily: "var(--font-inter), Inter, sans-serif",
             fontWeight: 500,
             fontSize: "0.875rem",
             lineHeight: 1.5,
-            "&:hover": {
+            letterSpacing: 0,
+            '&:hover': {
               backgroundColor: "#E5E7EB",
-            },
-          },
-        },
-        // View Saved Jobs button variant
-        {
-          props: { variant: "outlined", size: "large" },
-          style: {
-            width: "302px",
-            height: "51px",
-            padding: "14px 24px",
-            backgroundColor: "transparent",
-            color: "#4B5563",
-            border: "1px solid #9CA3AF", // Gray/400
-            borderRadius: "8px",
-            fontFamily: "var(--font-inter), Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: "1.125rem", // 18px
-            lineHeight: 1.3,
-            "&:hover": {
-              backgroundColor: "#F9FAFB",
-              border: "1px solid #6B7280",
             },
           },
         },
@@ -358,30 +351,101 @@ const theme = createTheme({
         root: {
           height: "25px",
           padding: "4px 12px",
-          backgroundColor: "#E1EFFE", // Blue/100
-          color: "#111928", // Gray/900
           fontFamily: "var(--font-inter), Inter, sans-serif",
           fontWeight: 500,
           fontSize: "0.875rem",
           lineHeight: 1.5,
           letterSpacing: 0,
           borderRadius: "6px",
-          "& .MuiChip-label": {
+          '& .MuiChip-label': {
             padding: 0,
           },
         },
-        // Job type badges (FULL TIME, HYBRID)
         filled: {
-          backgroundColor: "#F3F4F6", // Gray/100
-          color: "#111928", // Gray/900
+          backgroundColor: "#E1EFFE",
+          color: "#111928",
         },
-        // Skill badges
         outlined: {
-          backgroundColor: "#E1EFFE", // Blue/100
-          color: "#111928", // Gray/900
-          border: "none",
+          backgroundColor: "transparent",
+          color: "#111928",
+          border: "1px solid #E1EFFE",
         },
       },
+      variants: [
+        // SkillChip (filled)
+        {
+          props: { variant: "filled", color: "primary" },
+          style: {
+            backgroundColor: "#E1EFFE",
+            color: "#111928",
+            borderRadius: "6px",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+          },
+        },
+        // Outlined chip
+        {
+          props: { variant: "outlined", color: "primary" },
+          style: {
+            backgroundColor: "transparent",
+            color: "#111928",
+            border: "1px solid #E1EFFE",
+            borderRadius: "6px",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+          },
+        },
+        // Date chip (no background, only border)
+        {
+          props: { variant: "outlined", color: "default" },
+          style: {
+            backgroundColor: "transparent",
+            color: "#4B5563",
+            border: "1px solid #E5E7EB",
+            borderRadius: "6px",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+          },
+        },
+        // Salary chip (filled with icon)
+        {
+          props: { variant: "filled", color: "secondary" },
+          style: {
+            backgroundColor: "#E1EFFE",
+            color: "#111928",
+            borderRadius: "6px",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+          },
+        },
+        // JobType chip (job type)
+        {
+          props: { variant: "jobType", color: "primary" },
+          style: {
+            backgroundColor: "#F3F4F6",
+            color: "#111928",
+            borderRadius: "6px",
+            fontFamily: "var(--font-inter), Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            lineHeight: 1.5,
+            letterSpacing: 0,
+            textTransform: "uppercase",
+          },
+        },
+      ],
     },
     // Input field styles
     MuiTextField: {

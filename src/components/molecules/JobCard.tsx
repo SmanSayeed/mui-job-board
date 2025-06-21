@@ -1,6 +1,6 @@
 "use client"
 import { Box, Typography, Avatar, Button } from "@mui/material"
-import JobTypeBadge from "../atoms/JobTypeBadge"
+import JobTypeChip from "../atoms/JobTypeChip"
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday"
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
 import ProfileImage from "../atoms/ProfileImage"
@@ -120,7 +120,7 @@ export default function JobCard({
 
           <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
             {jobTypes.map((type) => (
-              <JobTypeBadge key={type} label={type} />
+              <JobTypeChip key={type} label={type} variant="jobType" uppercase />
             ))}
           </Box>
         </Box>
@@ -163,7 +163,7 @@ export default function JobCard({
         {/* Tags */}
         <Box sx={{ display: "flex", gap: 1, mb: 2, flexWrap: "wrap" }}>
           {tags.map((tag) => (
-            <JobTypeBadge key={tag} label={tag} />
+            <JobTypeChip key={tag} label={tag} variant="tag" />
           ))}
         </Box>
 

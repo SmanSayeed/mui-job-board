@@ -2,8 +2,10 @@
 import { Avatar, Typography, Box } from "@mui/material"
 import Link from "next/link"
 import Image from "next/image"
+import { useTheme } from "@mui/material/styles"
 
 export default function Logo({ type = 'user' }: { type?: 'user' | 'recruiter' }) {
+  const theme = useTheme();
   return (
     <Link href="/" style={{ textDecoration: "none" }}>
       {
@@ -11,12 +13,8 @@ export default function Logo({ type = 'user' }: { type?: 'user' | 'recruiter' })
           <Typography
             component="div"
             sx={{
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 600,
-              fontSize: { xs: "1.5rem", md: "2rem" },
-              lineHeight: 1.1,
-              letterSpacing: 0,
-              color: "#4B5563",
+              ...theme.typography.h1,
+              color: theme.palette.text.primary,
               verticalAlign: "middle",
               cursor: "pointer",
             }}

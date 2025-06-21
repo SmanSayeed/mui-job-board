@@ -1,9 +1,10 @@
 "use client"
 import { Box, Typography, Avatar, Button } from "@mui/material"
 import EditIcon from "@mui/icons-material/Edit"
-import SkillBadge from "../atoms/SkillBadge"
+import SkillChip from "../atoms/SkillChip"
 import ProfileImage from "../atoms/ProfileImage"
 import { useTheme } from "@mui/material/styles"
+import EditProfileButton from "../atoms/EditProfileButton"
 
 const skills = [
   "Communication",
@@ -40,19 +41,12 @@ export default function UserProfile() {
         sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 2, justifyContent: { xs: "center", sm: "flex-start" } }}
       >
         {skills.map((skill) => (
-          <SkillBadge key={skill} label={skill} />
+          <SkillChip key={skill} label={skill} />
         ))}
       </Box>
 
       {/* Edit Profile Button */}
-      <Button
-        variant="text"
-        size="small"
-        startIcon={<EditIcon sx={{ color: theme.palette.primary[500] }} />}
-        sx={{ width: { xs: "100%", sm: "157px" } }}
-      >
-        Edit Profile
-      </Button>
+    <EditProfileButton/>
     </Box>
   )
 }

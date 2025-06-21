@@ -23,9 +23,10 @@ const NavItems: React.FC<NavItemsProps> = ({ navItems }) => {
           key={item.label}
           href={item.href}
           sx={{
+            ...theme.typography.subtitle1,
+            verticalAlign: "middle",
             color: item.isActive ? theme.palette.action.active : theme.palette.text.primary,
             textTransform: "none",
-            ...theme.typography.subtitle1, // Use the navigation typography variant
             padding: "8px 12px",
             minWidth: "auto",
             position: "relative",

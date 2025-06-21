@@ -1,18 +1,17 @@
 "use client"
 import { Box, Typography, Avatar } from "@mui/material"
-import SkillBadge from "../atoms/SkillBadge"
+import SkillChip from "../atoms/SkillChip"
+import ProfileImage from "../atoms/ProfileImage"
+import { useTheme } from "@mui/material/styles"
 
 export default function JobCoach() {
+  const theme = useTheme();
   return (
-    <Box sx={{ p: 3, backgroundColor: "#FFFFFF", borderRadius: "8px", mb: 3 }}>
+    <Box sx={{ p: 3, backgroundColor: theme.palette.background.paper, borderRadius: "8px", mb: 3 }}>
       <Typography
         sx={{
-          fontFamily: "var(--font-inter), Inter, sans-serif",
-          fontWeight: 600,
-          fontSize: "1.125rem", // 18px
-          lineHeight: 1.3, // 130%
-          letterSpacing: 0,
-          color: "#111928", // Gray/900
+          ...theme.typography.h3,
+          color: theme.palette.text.secondary,
           verticalAlign: "middle",
           mb: 2,
         }}
@@ -20,29 +19,23 @@ export default function JobCoach() {
         My Job Coach
       </Typography>
 
-      <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-        <Avatar src="/placeholder.svg?height=40&width=40" sx={{ width: 40, height: 40, mr: 2 }} />
-        <Box>
+      <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap:2 }}>
+        <ProfileImage src="/profile2.jpg" profileVariant="user_profile_image" />
+        <Box sx={{ display: "flex",flexDirection:"column", justifyItems:"start", alignItems: "start" }}>
           <Typography
             sx={{
-              fontFamily: "var(--font-inter), Inter, sans-serif",
+              ...theme.typography.subtitle1,
+              color: theme.palette.neutral.coolGray900,
               fontWeight: 600,
-              fontSize: "0.875rem", // 14px
-              lineHeight: 1.5, // 150%
-              letterSpacing: 0,
-              color: "#21272A", // CoolGray/900
             }}
           >
             Anna Brown
           </Typography>
           <Typography
             sx={{
-              fontFamily: "var(--font-inter), Inter, sans-serif",
+              ...theme.typography.subtitle1,
+              color: theme.palette.neutral.coolGray600,
               fontWeight: 400,
-              fontSize: "0.875rem", // 14px
-              lineHeight: 1.5, // 150%
-              letterSpacing: 0,
-              color: "#697077", // CoolGray/600
             }}
           >
             Job Coach
@@ -51,8 +44,8 @@ export default function JobCoach() {
       </Box>
 
       <Box sx={{ display: "flex", gap: 1 }}>
-        <SkillBadge label="HR" />
-        <SkillBadge label="IT Recruiter" />
+        <SkillChip label="HR" />
+        <SkillChip label="IT Recruiter" />
       </Box>
     </Box>
   )

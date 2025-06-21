@@ -7,14 +7,16 @@ import PhoneIcon from "@mui/icons-material/Phone"
 import LocationOnIcon from "@mui/icons-material/LocationOn"
 import BusinessIcon from "@mui/icons-material/Business"
 import { useTheme } from "@mui/material/styles"
+import JobCoach from "../molecules/JobCoach"
 
 export default function LeftSidebar() {
   const theme = useTheme();
   return (
     <Box
       sx={{
+        
         width: { xs: "100%", lg: 320 },
-        p: { xs: 1, md: 2 },
+        p: { xs: 0, md: 0 },
         display: { xs: "none", lg: "block" },
       }}
     >
@@ -58,31 +60,31 @@ export default function LeftSidebar() {
       </Box>
 
       {/* Job Coach */}
-      <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: theme.palette.background.paper, borderRadius: theme.shape.borderRadius, mb: 3 }}>
-        <Typography sx={{ ...theme.typography.h3, color: theme.palette.text.secondary, mb: 2 }}>
-          My Job Coach
-        </Typography>
-
-        <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-          <Avatar src="/placeholder.svg?height=40&width=40" sx={{ width: 40, height: 40, mr: 2 }} />
-          <Box>
-            <Typography sx={{ ...theme.typography.subtitle1, color: theme.palette.neutral.coolGray900 }}>
-              Anna Brown
-            </Typography>
-            <Typography sx={{ ...theme.typography.subtitle1, color: theme.palette.neutral.coolGray600, fontWeight: 400 }}>
-              Job Coach
-            </Typography>
-          </Box>
-        </Box>
-
-        <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
-          <SkillBadge label="HR" />
-          <SkillBadge label="IT Recruiter" />
-        </Box>
-      </Box>
+      <JobCoach />
 
       {/* View Saved Jobs Button */}
-      <Button variant="outlined" size="large" fullWidth>
+      <Button
+        variant="outlined"
+        size="large"
+        fullWidth
+        sx={(theme) => ({
+          ...theme.typography.h5,
+          fontWeight: 500,
+          fontSize: "1.125rem",
+          lineHeight: 1.3,
+          color: theme.palette.primary[500],
+          backgroundColor: "transparent",
+          border: `1px solid ${theme.palette.grey[400]}`,
+          borderRadius: "8px",
+          height: "51px",
+          padding: "14px 24px",
+          width:"100%",
+          '&:hover': {
+            backgroundColor: theme.palette.grey[50],
+            border: `1px solid ${theme.palette.grey[500]}`,
+          },
+        })}
+      >
         View Saved Jobs
       </Button>
     </Box>

@@ -6,8 +6,8 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import BusinessIcon from "@mui/icons-material/Business"
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz"
-import JobTypeBadge from "@/components/atoms/JobTypeBadge"
-import SkillBadge from "@/components/atoms/SkillBadge"
+import JobTypeChip from "../../../../components/atoms/JobTypeChip"
+import SkillChip from "../../../../components/atoms/SkillChip"
 import Dialog from "@mui/material/Dialog"
 import DialogTitle from "@mui/material/DialogTitle"
 import DialogContent from "@mui/material/DialogContent"
@@ -59,8 +59,8 @@ export default function JobDetailPage() {
                 >
                   Senior UX Designer
                 </Typography>
-                <JobTypeBadge label="FULL-TIME" />
-                <JobTypeBadge label="HYBRID" />
+                <JobTypeChip label="FULL-TIME" />
+                <JobTypeChip label="HYBRID" />
               </Box>
             </Box>
 
@@ -160,10 +160,10 @@ export default function JobDetailPage() {
 
           {/* Skills/Tags */}
           <Box sx={{ display: "flex", gap: 1, mb: 4, flexWrap: "wrap" }}>
-            <SkillBadge label="Data" />
-            <SkillBadge label="Product" />
-            <SkillBadge label="UX" />
-            <SkillBadge label="Design" />
+            <SkillChip label="Data" />
+            <SkillChip label="Product" />
+            <SkillChip label="UX" />
+            <SkillChip label="Design" />
           </Box>
 
           <Divider sx={{ mb: 4 }} />
